@@ -1,3 +1,60 @@
 [gd_scene format=3 uid="uid://bw7usgwaftanm"]
 
+[ext_resource type="Texture2D" uid="uid://cmfmomf1p6np6" path="res://ARTE/Goblins/Goblin Principal/Goblin Principal.png" id="1_nlx67"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_53evk"]
+atlas = ExtResource("1_nlx67")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8gv14"]
+atlas = ExtResource("1_nlx67")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1pujt"]
+atlas = ExtResource("1_nlx67")
+region = Rect2(128, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1ptw"]
+atlas = ExtResource("1_nlx67")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ly3q5"]
+atlas = ExtResource("1_nlx67")
+region = Rect2(128, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_13bbx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_53evk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8gv14")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1pujt")
+}],
+"loop": true,
+"name": &"CaminaArriba",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1ptw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ly3q5")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
 [node name="GoblinPrincipal" type="CharacterBody2D" unique_id=623908173]
+
+[node name="Animaciones" type="AnimatedSprite2D" parent="." unique_id=227738914]
+sprite_frames = SubResource("SpriteFrames_13bbx")
+animation = &"CaminaArriba"
+frame_progress = 0.8007623
+
+[node name="ColisionBasica" type="CollisionShape2D" parent="." unique_id=2023115227]
