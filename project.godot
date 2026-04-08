@@ -17,7 +17,8 @@ config/features=PackedStringArray("4.6", "Forward Plus")
 
 folder_colors={
 "res://ARTE/": "red",
-"res://ESCENAS/": "yellow"
+"res://ESCENAS/": "yellow",
+"res://SCRIPTS/": "teal"
 }
 
 [physics]
