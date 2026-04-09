@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://c2u5t2iwipuvp"]
+
+[ext_resource type="Texture2D" uid="uid://bfeyqj6rj3i62" path="res://ARTE/Piedra/Piedra.png" id="1_kfxh1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_asutb"]
+radius = 2.0
+
+[node name="StaticBody2D" type="StaticBody2D" unique_id=1306162557]
+
+[node name="Piedra" type="Sprite2D" parent="." unique_id=634928417]
+position = Vector2(0, -1)
+texture = ExtResource("1_kfxh1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1377102518]
+shape = SubResource("CircleShape2D_asutb")
