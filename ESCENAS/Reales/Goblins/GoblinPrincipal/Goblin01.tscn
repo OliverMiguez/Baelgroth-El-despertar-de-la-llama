@@ -1,7 +1,11 @@
 [gd_scene format=3 uid="uid://dyw8875pb8bj2"]
 
+[ext_resource type="Script" uid="uid://d1gs53e70xd18" path="res://SCRIPTS/Reales/GoblinPrincipal/Estados/PersonajePrincipal.gd" id="1_xqqjy"]
 [ext_resource type="Texture2D" uid="uid://5ce0nm8rbmmd" path="res://ARTE/Goblins/Goblin Principal/Goblin02-Sheet-export.png" id="2_1t84a"]
 [ext_resource type="Texture2D" uid="uid://b1bx584kpl04b" path="res://ARTE/Goblins/Goblin Principal/Gobluin01-Sheet.png" id="2_240jn"]
+[ext_resource type="Script" uid="uid://bdsi0yj3wk0bn" path="res://SCRIPTS/Reales/GoblinPrincipal/Estados/Fsm.gd" id="4_w2rh8"]
+[ext_resource type="Script" uid="uid://c7ll4qokyn5kk" path="res://SCRIPTS/Reales/GoblinPrincipal/Estados/Idle.gd" id="5_ul7nk"]
+[ext_resource type="Script" uid="uid://bd1y1r6a18gqs" path="res://SCRIPTS/Reales/GoblinPrincipal/Estados/Walk.gd" id="6_n031j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jnj25"]
 atlas = ExtResource("2_240jn")
@@ -375,13 +379,29 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j0npl"]
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=988583641]
+[node name="GoblinPrincipal" type="CharacterBody2D" unique_id=988583641]
+script = ExtResource("1_xqqjy")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=583185534]
+[node name="AnimacionesGoblin" type="AnimatedSprite2D" parent="." unique_id=583185534]
 sprite_frames = SubResource("SpriteFrames_5xw4v")
-animation = &"correr_izquierda"
+animation = &"correr_diagonal_wd"
 autoplay = "Idle"
-frame_progress = 0.5475615
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1023046994]
+[node name="Colision" type="CollisionShape2D" parent="." unique_id=1023046994]
 shape = SubResource("CapsuleShape2D_j0npl")
+
+[node name="FSM" type="Node" parent="." unique_id=559475433 node_paths=PackedStringArray("current_state")]
+script = ExtResource("4_w2rh8")
+current_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="FSM" unique_id=1027029353]
+script = ExtResource("5_ul7nk")
+
+[node name="Walk" type="Node" parent="FSM" unique_id=2105181496 node_paths=PackedStringArray("idle_state")]
+script = ExtResource("6_n031j")
+idle_state = NodePath("../Idle")
+
+[node name="Rock" type="Node" parent="FSM" unique_id=435125357]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=561511987]
+zoom = Vector2(4, 4)
