@@ -13,6 +13,10 @@ func _ready():
 			child.father= father
 			child.animation_player = animation_player
 			array_states.append(child)
+	
+	# Posible solucion al error de que no activa el print del estado idle
+	if current_state:
+		current_state.on_enter()
 
 func _physics_process(_delta):
 	current_state.state_process(_delta)
