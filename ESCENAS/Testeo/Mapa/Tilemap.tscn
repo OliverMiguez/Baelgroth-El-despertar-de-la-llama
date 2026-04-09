@@ -1,8 +1,7 @@
 [gd_scene format=4 uid="uid://b71ebqox2kbwo"]
 
 [ext_resource type="Texture2D" uid="uid://bb1r0n748jcis" path="res://ARTE/Bosque/Bosque.png" id="1_18kgo"]
-
-[ext_resource type="PackedScene" uid="uid://dyw8875pb8bj2" path="res://ESCENAS/Testeo/TesteoGoblin/Goblin/Goblin01.tscn" id="2_d70fq"]
+[ext_resource type="PackedScene" uid="uid://dyw8875pb8bj2" path="res://ESCENAS/Testeo/TesteoGoblin/GoblinPrincipal/Goblin01.tscn" id="2_d70fq"]
 
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d70fq"]
