@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://80uqehgiip6o"]
+
+[ext_resource type="Script" uid="uid://d1gs53e70xd18" path="res://SCRIPTS/Reales/GoblinPrincipal/Estados/PersonajePrincipal.gd" id="1_6n4q8"]
+[ext_resource type="Texture2D" uid="uid://cmfmomf1p6np6" path="res://ARTE/Goblins/Goblin Principal/Goblin Principal.png" id="2_wqegw"]
+[ext_resource type="Script" uid="uid://bdsi0yj3wk0bn" path="res://SCRIPTS/Reales/GoblinPrincipal/Estados/Fsm.gd" id="3_fgqu5"]
+[ext_resource type="Script" uid="uid://c7ll4qokyn5kk" path="res://SCRIPTS/Reales/GoblinPrincipal/Estados/Idle.gd" id="4_6tcpx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bneu6"]
+atlas = ExtResource("2_wqegw")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7giei"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bneu6")
+}],
+"loop": true,
+"name": &"test",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nuxfi"]
+
+[node name="PruebaEstados" type="CharacterBody2D" unique_id=1152364123]
+scale = Vector2(0.75, 0.75)
+script = ExtResource("1_6n4q8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2056134583]
+sprite_frames = SubResource("SpriteFrames_7giei")
+animation = &"test"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1612188408]
+shape = SubResource("CircleShape2D_nuxfi")
+
+[node name="FSM" type="Node" parent="." unique_id=2012161705 node_paths=PackedStringArray("father", "animation_player", "current_state")]
+script = ExtResource("3_fgqu5")
+father = NodePath("..")
+animation_player = NodePath("../AnimatedSprite2D")
+current_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="FSM" unique_id=1147241185]
+script = ExtResource("4_6tcpx")
+
+[node name="Walk" type="Node" parent="FSM" unique_id=600367072]
+
+[node name="Rock" type="Node" parent="FSM" unique_id=2146318011]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1204514240]
+zoom = Vector2(4, 4)
