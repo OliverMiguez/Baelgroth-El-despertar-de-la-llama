@@ -1,4 +1,4 @@
-#extends "res://SCRIPTS/Reales/GoblinPrincipal/Estados/State.gd"
+extends "res://SCRIPTS/Reales/GoblinPrincipal/Estados/State.gd"
 #
 ## PROCEDIMIENTO DE ESTADO: LANZAR
 ## Este estado se encarga de sincronizar la animación del personaje 
