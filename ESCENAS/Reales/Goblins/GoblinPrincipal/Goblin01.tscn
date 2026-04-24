@@ -380,6 +380,7 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j0npl"]
 
 [node name="GoblinPrincipal" type="CharacterBody2D" unique_id=988583641]
+collision_mask = 10
 script = ExtResource("1_xqqjy")
 
 [node name="AnimacionesGoblin" type="AnimatedSprite2D" parent="." unique_id=583185534]

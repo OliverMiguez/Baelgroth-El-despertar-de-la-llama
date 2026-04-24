@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bb1r0n748jcis" path="res://ARTE/Bosque/Bosque.png" id="1_s600u"]
 [ext_resource type="PackedScene" uid="uid://dyw8875pb8bj2" path="res://ESCENAS/Reales/Goblins/GoblinPrincipal/Goblin01.tscn" id="2_5tcps"]
+[ext_resource type="PackedScene" uid="uid://cnam07d5cw1u" path="res://ESCENAS/Testeo/Esconderse/arbusto_v_2.tscn" id="3_5tcps"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d70fq"]
 texture = ExtResource("1_s600u")
@@ -56,3 +57,6 @@ tile_map_data = PackedByteArray("AAAGAAEAAAAAAAMAAAAGAAIAAAAAAAYAAAAGAAMAAAAAAAY
 tile_set = SubResource("TileSet_52o3s")
 
 [node name="GoblinPrincipal" parent="." unique_id=988583641 instance=ExtResource("2_5tcps")]
+
+[node name="ArbustoV2" parent="." unique_id=2020210010 instance=ExtResource("3_5tcps")]
+position = Vector2(229, 75)

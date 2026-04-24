@@ -6,12 +6,17 @@ const WALKING_SPEED = 100
 
 # Referencia de la maquina de estados del goblin
 @onready var state_machine: Node = $FSM
-
+# Animaciones del goblin
 @onready var animaciones_goblin = $AnimacionesGoblin
+
+# Verificaciones para saber si se puede o no esconder
+var goblin_cerca_arbusto = false
+var escondido = false
 
 # Se ejecuta al inicio del progroma
 func _ready():
 	print("[Test]: El personaje cargo inicialmente")
+
 	
 # Se ejecuta en cada frame del juego
 func _physics_process(delta):
@@ -22,6 +27,8 @@ func _physics_process(delta):
 	# Activa el movimiento del player a traves de los inputs
 	handle_directions()
 	handle_animations()
+	# Activa el sistema de esconderse
+	handle_hide()
 	# Permite que el personaje se mueva
 	move_and_slide()
 
@@ -73,3 +80,19 @@ func handle_animations():
 	else:
 		# Aquí podrías poner una lógica para mantener la última dirección mirada
 		animaciones_goblin.play("Idle")
+
+# Revisa si se puede esconder o no el goblin principal
+func handle_hide():
+	if goblin_cerca_arbusto and Input.is_action_just_pressed("hide"):
+		if not escondido:
+			enter_a_brush()
+		else:
+			exit_a_brush()
+
+# Se ejecuta cuando el goblin principal QUIERE entrar en el arbusto
+func enter_a_brush():
+	print(" [Enter a brush()]:El jugador esta escondido")
+
+# Se ejecuta cuando el goblin principal sale QUIERE salir del arbusto
+func exit_a_brush():
+	print("[Exit a brush ()]: El jugado salió de su escondite ")
