@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://dwu6d60vgw7vg"]
+
+[ext_resource type="Script" uid="uid://chvoosovkocw3" path="res://SCRIPTS/TESTEO/Enemigo/enemigo_test.gd" id="1_2g3ou"]
+[ext_resource type="Texture2D" uid="uid://bkjj4i2bdfn10" path="res://ARTE/Goblins/Goblin Principal/Goblin02-Sheet_Modificaciones-expor Variantest.png" id="1_fs4xo"]
+[ext_resource type="Script" uid="uid://diy6q0dpurne4" path="res://SCRIPTS/TESTEO/Enemigo/fsm.gd" id="3_4dsuy"]
+[ext_resource type="Script" uid="uid://clcko3yfkwfas" path="res://SCRIPTS/TESTEO/Enemigo/estado_patrulla.gd" id="4_hqjbl"]
+[ext_resource type="Script" uid="uid://5hbtn1a5okcg" path="res://SCRIPTS/TESTEO/Enemigo/estado_alerta.gd" id="5_p5h47"]
+[ext_resource type="Script" uid="uid://diofky1jjghjl" path="res://ESCENAS/Testeo/Enemigo/estado_investigar.gd" id="6_su5wh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2g3ou"]
+radius = 14.035668
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hqjbl"]
+size = Vector2(100, 125)
+
+[node name="EnemigoTest" type="CharacterBody2D" unique_id=2057307827]
+script = ExtResource("1_2g3ou")
+
+[node name="SpriteEnemigo" type="Sprite2D" parent="." unique_id=1470325805]
+texture = ExtResource("1_fs4xo")
+hframes = 9
+vframes = 8
+
+[node name="ColisionEnemigo" type="CollisionShape2D" parent="." unique_id=577286090]
+shape = SubResource("CircleShape2D_2g3ou")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1890032165]
+
+[node name="AreaDeteccion" type="Area2D" parent="." unique_id=6291702]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDeteccion" unique_id=1065688013]
+position = Vector2(1, -1)
+shape = SubResource("RectangleShape2D_hqjbl")
+
+[node name="FSM" type="Node" parent="." unique_id=1828577291]
+script = ExtResource("3_4dsuy")
+
+[node name="EstadoPatrulla" type="Node" parent="FSM" unique_id=266447665]
+script = ExtResource("4_hqjbl")
+
+[node name="EstadoAlerta" type="Node" parent="FSM" unique_id=494355209]
+script = ExtResource("5_p5h47")
+
+[node name="EstadoInvestigar" type="Node" parent="FSM" unique_id=1414055127]
+script = ExtResource("6_su5wh")
+
+[connection signal="body_entered" from="AreaDeteccion" to="." method="_on_area_deteccion_body_entered"]
+[connection signal="body_exited" from="AreaDeteccion" to="." method="_on_area_deteccion_body_exited"]

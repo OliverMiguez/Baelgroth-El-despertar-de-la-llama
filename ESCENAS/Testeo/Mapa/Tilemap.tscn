@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bb1r0n748jcis" path="res://ARTE/Bosque/Bosque.png" id="1_s600u"]
 [ext_resource type="PackedScene" uid="uid://dyw8875pb8bj2" path="res://ESCENAS/Reales/Goblins/GoblinPrincipal/Goblin01.tscn" id="2_5tcps"]
 [ext_resource type="PackedScene" uid="uid://cnam07d5cw1u" path="res://ESCENAS/Reales/Arbusto/Arbusto.tscn" id="3_5tcps"]
+[ext_resource type="PackedScene" uid="uid://dwu6d60vgw7vg" path="res://ESCENAS/Testeo/Enemigo/Enemigo_Test.tscn" id="4_6tgta"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d70fq"]
 texture = ExtResource("1_s600u")
@@ -49,6 +50,11 @@ texture = ExtResource("1_s600u")
 [sub_resource type="TileSet" id="TileSet_52o3s"]
 sources/0 = SubResource("TileSetAtlasSource_d70fq")
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_6tgta"]
+vertices = PackedVector2Array(342.8672, 164.1875, 107.11719, 168.78906, 108.86719, 24.960938, 341.1172, 24.03125)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(99, 15, 97, 179, 353, 174, 351, 14)])
+
 [node name="TestTileMap" type="Node2D" unique_id=1929271054]
 
 [node name="TileMap1" type="TileMapLayer" parent="." unique_id=1553118873]
@@ -60,3 +66,22 @@ tile_set = SubResource("TileSet_52o3s")
 
 [node name="ArbustoV2" parent="." unique_id=2020210010 instance=ExtResource("3_5tcps")]
 position = Vector2(229, 75)
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=846636741]
+position = Vector2(102, 168)
+
+[node name="Marker2D2" type="Marker2D" parent="." unique_id=1916086231]
+position = Vector2(339, 166)
+
+[node name="Marker2D3" type="Marker2D" parent="." unique_id=738688798]
+position = Vector2(336, 25)
+
+[node name="Marker2D4" type="Marker2D" parent="." unique_id=779460820]
+position = Vector2(106, 26)
+
+[node name="EnemigoTest" parent="." unique_id=2057307827 instance=ExtResource("4_6tgta")]
+position = Vector2(178, 133)
+puntos_patrulla = Array[NodePath]([NodePath("../Marker2D"), NodePath("../Marker2D2"), NodePath("../Marker2D3"), NodePath("../Marker2D4")])
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1902338090]
+navigation_polygon = SubResource("NavigationPolygon_6tgta")
