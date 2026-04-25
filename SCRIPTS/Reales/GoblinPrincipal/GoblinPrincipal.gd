@@ -109,8 +109,3 @@ func exit_a_brush():
 	colision_goblin.visible = true
 	animaciones_goblin.visible = true
 	print("[Exit a brush ()]: El jugado salió de su escondite ")
-
-
-func _on_test_body_entered(body: Node2D) -> void:
-	if body.name ==  "Test_Arbusto":
-		print("SI")
