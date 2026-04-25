@@ -380,6 +380,7 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j0npl"]
 
 [node name="GoblinPrincipal" type="CharacterBody2D" unique_id=988583641]
+scale = Vector2(0.8, 0.8)
 collision_mask = 14
 script = ExtResource("1_xqqjy")
 
