@@ -1,59 +1,62 @@
-# ============================================================
-# estado_alerta.gd
-# El enemigo persigue al goblin mientras lo vea.
-# Si el goblin se esconde, guarda su última posición
-# y manda a la FSM al estado Investigar.
-# ============================================================
 extends Node
 
 var enemigo: Enemigo
 var agente:  NavigationAgent2D
 
-# Velocidad de persecución (más rápido que la patrulla)
-const VELOCIDAD := 110.0
+const VELOCIDAD            := 110.0
+const INTERVALO_RECALCULO  := 0.15
+const TIEMPO_PAUSA_PERDIDA := 1.8
 
-# Cada cuántos segundos recalculamos el destino hacia el goblin.
-# Recalcular cada frame es innecesario y algo costoso.
-const INTERVALO_RECALCULO := 0.15
-
-var _timer_recalculo := 0.0
-
-# ── Configuración ───────────────────────────────────────────
+var _timer_recalculo    := 0.0
+var _pausando_perdida   := false
+var _timer_perdida      := 0.0
+var _ultimo_punto_visto := Vector2.ZERO
 
 func configurar(nodo_enemigo: Enemigo):
 	enemigo = nodo_enemigo
 	agente  = enemigo.agente
 
 func al_entrar():
-	_timer_recalculo = 0.0
-	print("[Alerta]: ¡Goblin detectado! Persiguiendo.")
+	_pausando_perdida = false
+	_timer_perdida    = 0.0
+	_timer_recalculo  = 0.0
 
-# ── Tick ────────────────────────────────────────────────────
+func al_salir():
+	_pausando_perdida = false
+	_timer_perdida    = 0.0
 
 func tick(delta: float):
+	if _pausando_perdida:
+		enemigo.velocity = Vector2.ZERO
+		_timer_perdida -= delta
+		if _timer_perdida <= 0.0:
+			enemigo.fsm.estado_investigar.ultimo_punto_visto = _ultimo_punto_visto
+			enemigo.fsm.cambiar_estado("investigar")
+		return
+
 	var goblin = enemigo.goblin_detectado
 
-	# Si no tenemos referencia al goblin algo fue mal; volvemos a patrullar
 	if not goblin:
-		enemigo.fsm.cambiar_estado("patrulla")
+		_iniciar_pausa_perdida(enemigo.global_position)
 		return
 
-	# Si el goblin se escondió estando dentro del área de detección
 	if goblin.escondido:
-		# Guardamos dónde lo vimos por última vez antes de perderlo
-		enemigo.fsm.estado_investigar.ultimo_punto_visto = goblin.global_position
+		_iniciar_pausa_perdida(goblin.global_position)
 		enemigo.goblin_detectado = null
-		enemigo.fsm.cambiar_estado("investigar")
 		return
 
-	# Recalculamos el destino periódicamente (no cada frame)
 	_timer_recalculo -= delta
 	if _timer_recalculo <= 0.0:
 		agente.target_position = goblin.global_position
 		_timer_recalculo = INTERVALO_RECALCULO
 
-	# Nos movemos hacia el siguiente paso de la ruta
 	if not agente.is_navigation_finished():
 		var siguiente_pos = agente.get_next_path_position()
 		var dir = (siguiente_pos - enemigo.global_position).normalized()
 		enemigo.velocity = dir * VELOCIDAD
+
+func _iniciar_pausa_perdida(punto: Vector2):
+	_pausando_perdida   = true
+	_timer_perdida      = TIEMPO_PAUSA_PERDIDA
+	_ultimo_punto_visto = punto
+	enemigo.velocity    = Vector2.ZERO

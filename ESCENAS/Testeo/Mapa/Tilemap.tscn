@@ -51,9 +51,9 @@ texture = ExtResource("1_s600u")
 sources/0 = SubResource("TileSetAtlasSource_d70fq")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_6tgta"]
-vertices = PackedVector2Array(342.8672, 164.1875, 107.11719, 168.78906, 108.86719, 24.960938, 341.1172, 24.03125)
+vertices = PackedVector2Array(350.5625, 172, 96.171875, 172, 98.828125, 16, 359.42188, 16)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(99, 15, 97, 179, 353, 174, 351, 14)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(89, 6, 86, 182, 360, 182, 370, 6)])
 
 [node name="TestTileMap" type="Node2D" unique_id=1929271054]
 
@@ -79,9 +79,9 @@ position = Vector2(336, 25)
 [node name="Marker2D4" type="Marker2D" parent="." unique_id=779460820]
 position = Vector2(106, 26)
 
-[node name="EnemigoTest" parent="." unique_id=2057307827 instance=ExtResource("4_6tgta")]
-position = Vector2(178, 133)
-puntos_patrulla = Array[NodePath]([NodePath("../Marker2D"), NodePath("../Marker2D2"), NodePath("../Marker2D3"), NodePath("../Marker2D4")])
-
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1902338090]
 navigation_polygon = SubResource("NavigationPolygon_6tgta")
+
+[node name="EnemigoTest" parent="." unique_id=2057307827 instance=ExtResource("4_6tgta")]
+position = Vector2(213, 119)
+puntos_patrulla = Array[NodePath]([NodePath("../Marker2D"), NodePath("../Marker2D2"), NodePath("../Marker2D3"), NodePath("../Marker2D4")])
