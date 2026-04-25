@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://80uqehgiip6o"]
 
-[ext_resource type="Script" uid="uid://d1gs53e70xd18" path="res://SCRIPTS/Reales/GoblinPrincipal/Estados/PersonajePrincipal.gd" id="1_6n4q8"]
+[ext_resource type="Script" uid="uid://d1gs53e70xd18" path="res://SCRIPTS/Reales/GoblinPrincipal/GoblinPrincipal.gd" id="1_6n4q8"]
 [ext_resource type="Texture2D" uid="uid://cmfmomf1p6np6" path="res://ARTE/Goblins/Goblin Principal/Goblin Principal.png" id="2_wqegw"]
 [ext_resource type="Script" uid="uid://bdsi0yj3wk0bn" path="res://SCRIPTS/Reales/GoblinPrincipal/Estados/Fsm.gd" id="3_fgqu5"]
 [ext_resource type="Script" uid="uid://c7ll4qokyn5kk" path="res://SCRIPTS/Reales/GoblinPrincipal/Estados/Idle.gd" id="4_6tcpx"]

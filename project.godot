@@ -13,6 +13,10 @@ config_version=5
 config/name="Futuro Nombre"
 config/features=PackedStringArray("4.6", "Forward Plus")
 
+[autoload]
+
+ControlEscondite="*uid://dkq5bvrb1gnk4"
+
 [file_customization]
 
 folder_colors={

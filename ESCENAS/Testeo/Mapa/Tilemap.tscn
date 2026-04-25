@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bb1r0n748jcis" path="res://ARTE/Bosque/Bosque.png" id="1_s600u"]
 [ext_resource type="PackedScene" uid="uid://dyw8875pb8bj2" path="res://ESCENAS/Reales/Goblins/GoblinPrincipal/Goblin01.tscn" id="2_5tcps"]
-[ext_resource type="PackedScene" uid="uid://cnam07d5cw1u" path="res://ESCENAS/Testeo/Esconderse/arbusto_v_2.tscn" id="3_5tcps"]
+[ext_resource type="PackedScene" uid="uid://cnam07d5cw1u" path="res://ESCENAS/Reales/Arbusto/Arbusto.tscn" id="3_5tcps"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d70fq"]
 texture = ExtResource("1_s600u")
