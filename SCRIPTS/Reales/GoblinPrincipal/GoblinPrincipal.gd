@@ -2,16 +2,23 @@ extends CharacterBody2D
 class_name goblin_principal
 
 # Velocidad del goblin
-const WALKING_SPEED = 100
+@export var walking_speed = 100
 
 # Referencia de la maquina de estados del goblin
 @onready var state_machine: Node = $FSM
-
+# Animaciones del goblin
 @onready var animaciones_goblin = $AnimacionesGoblin
+# Colision del goblin
+@onready var colision_goblin: CollisionShape2D = $Colision
+
+
+# Verificaciones para saber si se puede o no esconder
+var escondido = false
 
 # Se ejecuta al inicio del progroma
 func _ready():
 	print("[Test]: El personaje cargo inicialmente")
+
 	
 # Se ejecuta en cada frame del juego
 func _physics_process(delta):
@@ -22,8 +29,13 @@ func _physics_process(delta):
 	# Activa el movimiento del player a traves de los inputs
 	handle_directions()
 	handle_animations()
+	# Activa el sistema de esconderse
+	handle_hide()
 	# Permite que el personaje se mueva
 	move_and_slide()
+	
+func goblin():
+	pass
 
 # Administra los inputs de moviento del jugador y aplica velocidades
 func handle_directions():
@@ -39,7 +51,7 @@ func handle_directions():
 		direction = direction.normalized() 
 	
 	# Aplicamos la velocidad al goblin
-	velocity = direction * WALKING_SPEED
+	velocity = direction * walking_speed
 
 # Administra las animaciones que realiza el goblin
 func handle_animations():
@@ -73,3 +85,27 @@ func handle_animations():
 	else:
 		# Aquí podrías poner una lógica para mantener la última dirección mirada
 		animaciones_goblin.play("Idle")
+
+# Revisa si se puede esconder o no el goblin principal
+func handle_hide():
+	if ControlEscondite.goblin_en_arbusto == true and Input.is_action_just_pressed("hide"):
+		if not escondido:
+			enter_a_brush()
+		else:
+			exit_a_brush()
+
+# Se ejecuta cuando el goblin principal QUIERE entrar en el arbusto
+func enter_a_brush():
+	walking_speed = 0
+	escondido = true
+	colision_goblin.visible = false
+	animaciones_goblin.visible = false
+	print(" [Enter a brush()]:El jugador esta escondido")
+
+# Se ejecuta cuando el goblin principal sale QUIERE salir del arbusto
+func exit_a_brush():
+	walking_speed = 100
+	escondido = false
+	colision_goblin.visible = true
+	animaciones_goblin.visible = true
+	print("[Exit a brush ()]: El jugado salió de su escondite ")
