@@ -22,6 +22,7 @@ ControlEscondite="*uid://dkq5bvrb1gnk4"
 folder_colors={
 "res://ARTE/": "red",
 "res://ESCENAS/": "yellow",
+"res://Musica/": "purple",
 "res://SCRIPTS/": "teal"
 }
 

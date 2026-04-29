@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bsi8v3bqgctr" path="res://ARTE/Testeo/Sand.png" id="2_wr0rg"]
 [ext_resource type="PackedScene" uid="uid://cnam07d5cw1u" path="res://ESCENAS/Reales/Arbusto/Arbusto.tscn" id="3_5tcps"]
 [ext_resource type="PackedScene" uid="uid://dwu6d60vgw7vg" path="res://ESCENAS/Testeo/Enemigo/Enemigo_Test.tscn" id="4_6tgta"]
+[ext_resource type="AudioStream" uid="uid://ciho1ibyatjlt" path="res://Musica/Test/dungeonAgua.wav" id="6_rcnnt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d70fq"]
 texture = ExtResource("1_s600u")
@@ -248,3 +249,8 @@ navigation_polygon = SubResource("NavigationPolygon_6tgta")
 [node name="EnemigoTest" parent="." unique_id=2057307827 instance=ExtResource("4_6tgta")]
 position = Vector2(213, 119)
 puntos_patrulla = Array[NodePath]([NodePath("../Marker2D"), NodePath("../Marker2D2"), NodePath("../Marker2D3"), NodePath("../Marker2D4")])
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1292928769]
+stream = ExtResource("6_rcnnt")
+volume_db = -8.069
+autoplay = true
