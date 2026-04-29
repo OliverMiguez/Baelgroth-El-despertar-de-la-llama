@@ -15,6 +15,9 @@ class_name goblin_principal
 # Verificaciones para saber si se puede o no esconder
 var escondido = false
 
+# Variable para rastrear la dirección de entrada actual y manejar prioridades (Primer input introducido)
+var input_direction = Vector2.ZERO
+
 # Se ejecuta al inicio del progroma
 func _ready():
 	print("[Test]: El personaje cargo inicialmente")
@@ -27,7 +30,7 @@ func _physics_process(delta):
 	state_machine._physics_process(delta)
 	
 	# Activa el movimiento del player a traves de los inputs
-	handle_directions()
+	handle_movement()
 	handle_animations()
 	# Activa el sistema de esconderse
 	handle_hide()
@@ -37,54 +40,67 @@ func _physics_process(delta):
 func goblin():
 	pass
 
-# Administra los inputs de moviento del jugador y aplica velocidades
-func handle_directions():
-	# Administra los inputs horizontales y verticales (direcciones)
-	var h_direction  = Input.get_axis("Izquierda","Derecha")
-	var v_direction  = Input .get_axis("Arriba","Abajo")
-	
-	# Combina las "direcciones" en una sola
-	var direction = Vector2(h_direction, v_direction)
-	
-	# Normalizamos para que no corra más en diagonal
-	if direction.length() > 1:
-		direction = direction.normalized() 
-	
-	# Aplicamos la velocidad al goblin
-	velocity = direction * walking_speed
-
-# Administra las animaciones que realiza el goblin
-func handle_animations():
-	# Los Inputs que se detectan
-	var up = Input.is_action_pressed("Arriba")
-	var down = Input.is_action_pressed("Abajo")
-	var left = Input.is_action_pressed("Izquierda")
-	var right = Input.is_action_pressed("Derecha")
-	
-	# Diagonales
-	if up and right:
-		animaciones_goblin.play("correr_diagonal_wd")
-	elif up and left:
-		animaciones_goblin.play("correr_diagonal_aw")
-	elif down and right:
-		animaciones_goblin.play("correr_diagonal_sd")
-	elif down and left:
-		animaciones_goblin.play("correr_diagonal_as")
-	
-	# Normales
-	elif up:
-		animaciones_goblin.play("correr_arriba")
-	elif down:
-		animaciones_goblin.play("correr_abajo")
-	elif left:
-		animaciones_goblin.play("correr_izquierda")
-	elif right:
-		animaciones_goblin.play("correr_derecha")
-	
-	# Idle
+# Administra los inputs de moviento del jugador y aplica velocidades con prioridad al primer input
+func handle_movement():
+	# Manejo del eje horizontal con prioridad al primer input
+	if input_direction.x == 0:
+		if Input.is_action_pressed("Izquierda"): 
+			input_direction.x = -1
+		elif Input.is_action_pressed("Derecha"): 
+			input_direction.x = 1
 	else:
-		# Aquí podrías poner una lógica para mantener la última dirección mirada
-		animaciones_goblin.play("Idle")
+		# Si ya hay una dirección activa, verificamos si se soltó la tecla
+		var current_h_action = "Izquierda" if input_direction.x == -1 else "Derecha"
+		if not Input.is_action_pressed(current_h_action):
+			input_direction.x = 0
+			# Al soltar, verificamos si la otra tecla está presionada para cambiar inmediatamente
+			if Input.is_action_pressed("Izquierda"): input_direction.x = -1
+			elif Input.is_action_pressed("Derecha"): input_direction.x = 1
+
+	# Manejo del eje vertical con prioridad al primer input
+	if input_direction.y == 0:
+		if Input.is_action_pressed("Arriba"): 
+			input_direction.y = -1
+		elif Input.is_action_pressed("Abajo"): 
+			input_direction.y = 1
+	else:
+		# Si ya hay una dirección activa, verificamos si se soltó la tecla
+		var current_v_action = "Arriba" if input_direction.y == -1 else "Abajo"
+		if not Input.is_action_pressed(current_v_action):
+			input_direction.y = 0
+			# Al soltar, verificamos si la otra tecla está presionada
+			if Input.is_action_pressed("Arriba"): input_direction.y = -1
+			elif Input.is_action_pressed("Abajo"): input_direction.y = 1
+	
+	# Normalizamos el vector para que la velocidad diagonal sea consistente
+	var velocity_direction = input_direction.normalized() if input_direction != Vector2.ZERO else Vector2.ZERO
+	velocity = velocity_direction * walking_speed
+
+# Administra las animaciones basándose en la dirección priorizada
+func handle_animations():
+	# Si está escondido o no hay intención de movimiento, no procesamos animaciones de correr
+	if escondido or input_direction == Vector2.ZERO:
+		# Aquí podrías reproducir una animación de Idle si fuera necesario
+		return
+	
+	# Determinar animación según input_direction (soporta 8 direcciones)
+	if input_direction.x != 0 and input_direction.y != 0:
+		# Diagonales
+		if input_direction.y == -1: # Arriba
+			if input_direction.x == 1: animaciones_goblin.play("correr_diagonal_wd")
+			else: animaciones_goblin.play("correr_diagonal_aw")
+		else: # Abajo
+			if input_direction.x == 1: animaciones_goblin.play("correr_diagonal_sd")
+			else: animaciones_goblin.play("correr_diagonal_as")
+	
+	elif input_direction.y == -1:
+		animaciones_goblin.play("correr_arriba")
+	elif input_direction.y == 1:
+		animaciones_goblin.play("correr_abajo")
+	elif input_direction.x == -1:
+		animaciones_goblin.play("correr_izquierda")
+	elif input_direction.x == 1:
+		animaciones_goblin.play("correr_derecha")
 
 # Revisa si se puede esconder o no el goblin principal
 func handle_hide():

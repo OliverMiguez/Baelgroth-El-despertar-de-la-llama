@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://bdsi0yj3wk0bn" path="res://SCRIPTS/Reales/GoblinPrincipal/Estados/Fsm.gd" id="4_w2rh8"]
 [ext_resource type="Script" uid="uid://c7ll4qokyn5kk" path="res://SCRIPTS/Reales/GoblinPrincipal/Estados/Idle.gd" id="5_ul7nk"]
 [ext_resource type="Script" uid="uid://bd1y1r6a18gqs" path="res://SCRIPTS/Reales/GoblinPrincipal/Estados/Walk.gd" id="6_n031j"]
-[ext_resource type="Script" uid="uid://0wkmkxrlm2j4" path="res://SCRIPTS/Reales/GoblinPrincipal/Estados/Rock.gd" id="7_oybqk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jnj25"]
 atlas = ExtResource("2_240jn")
@@ -239,7 +238,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ktnfn")
 }],
-"loop": false,
+"loop": true,
 "name": &"Lanzar",
 "speed": 5.0
 }, {
@@ -413,10 +412,9 @@ script = ExtResource("1_xqqjy")
 
 [node name="AnimacionesGoblin" type="AnimatedSprite2D" parent="." unique_id=583185534]
 sprite_frames = SubResource("SpriteFrames_5xw4v")
-animation = &"Lanzar"
+animation = &"Idle"
 autoplay = "Idle"
-frame = 2
-frame_progress = 1.0
+frame_progress = 0.54801446
 
 [node name="Colision" type="CollisionShape2D" parent="." unique_id=1023046994]
 shape = SubResource("CapsuleShape2D_j0npl")
@@ -427,20 +425,15 @@ father = NodePath("..")
 animation_player = NodePath("../AnimacionesGoblin")
 current_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="FSM" unique_id=1027029353 node_paths=PackedStringArray("walk_state", "rock_state")]
+[node name="Idle" type="Node" parent="FSM" unique_id=1027029353 node_paths=PackedStringArray("walk_state")]
 script = ExtResource("5_ul7nk")
 walk_state = NodePath("../Walk")
-rock_state = NodePath("../Rock")
 
-[node name="Walk" type="Node" parent="FSM" unique_id=2105181496 node_paths=PackedStringArray("idle_state", "rock_state")]
+[node name="Walk" type="Node" parent="FSM" unique_id=2105181496 node_paths=PackedStringArray("idle_state")]
 script = ExtResource("6_n031j")
 idle_state = NodePath("../Idle")
-rock_state = NodePath("../Rock")
 
-[node name="Rock" type="Node" parent="FSM" unique_id=435125357 node_paths=PackedStringArray("walk_state", "idle_state")]
-script = ExtResource("7_oybqk")
-walk_state = NodePath("../Walk")
-idle_state = NodePath("../Idle")
+[node name="Rock" type="Node" parent="FSM" unique_id=435125357]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=561511987]
 zoom = Vector2(4, 4)
