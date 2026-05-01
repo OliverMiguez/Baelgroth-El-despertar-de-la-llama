@@ -1,8 +1,12 @@
 extends Node
+class_name EstadoPatrulla
 
+# Referencia al nodo padre del enemigo
 var enemigo: Enemigo
+# Referencia al nodo con el que hace el patron de movimiento
 var agente:  NavigationAgent2D
 
+# Constantes de movimiento
 const VELOCIDAD         := 60.0
 const DISTANCIA_LLEGADA := 10.0
 const TIEMPO_PAUSA      := 1.2
@@ -11,12 +15,16 @@ var _indice   := 0
 var _pausando := false
 var _timer    := 0.0
 
+# Configura las variables iniciales con los valores correspondientes
 func configurar(nodo_enemigo: Enemigo):
-	enemigo = nodo_enemigo
-	agente  = enemigo.agente
+	enemigo = nodo_enemigo # Asigna el nodo padre a la variable
+	agente  = enemigo.agente # Asigna el nodo de NavigationAgent2D a la variable
 
+# Cuando se inicia el estado
 func al_entrar():
+	# Si no se registro ningun marker2D al enemigo
 	if enemigo.puntos_resueltos.is_empty():
+		# Envia una advertencia por terminal
 		push_warning("[Patrulla]: no hay puntos asignados.")
 		return
 	_pausando = false

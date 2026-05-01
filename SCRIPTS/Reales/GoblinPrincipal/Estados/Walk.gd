@@ -7,6 +7,7 @@ extends "res://SCRIPTS/Reales/GoblinPrincipal/Estados/State.gd"
 # Ejecuta este código cuando cambia a este estado
 func on_enter():
 	print("[Test]: Iniciando estado walk ")
+	# Por tema de tener muchas animaciones, estas se integraron dentro del script principall
 	## Iniciar a continuación la animación del personaje
 	## Los Inputs que se detectan
 	#var up = Input.is_action_pressed("Arriba")
