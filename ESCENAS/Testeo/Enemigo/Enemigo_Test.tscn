@@ -135,9 +135,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xp0tc")
 }],
-"loop": false,
+"loop": true,
 "name": &"Idle",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -160,7 +160,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Lateral",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2g3ou"]
@@ -175,8 +175,8 @@ script = ExtResource("1_2g3ou")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=602771091]
 sprite_frames = SubResource("SpriteFrames_bt1iw")
-animation = &"Lateral"
-frame_progress = 0.013673584
+animation = &"Idle"
+frame_progress = 0.025073554
 
 [node name="ColisionEnemigo" type="CollisionShape2D" parent="." unique_id=577286090]
 shape = SubResource("CircleShape2D_2g3ou")

@@ -235,7 +235,7 @@ position = Vector2(229, 75)
 position = Vector2(102, 168)
 
 [node name="Marker2D2" type="Marker2D" parent="." unique_id=1916086231]
-position = Vector2(339, 166)
+position = Vector2(341, 164)
 
 [node name="Marker2D3" type="Marker2D" parent="." unique_id=738688798]
 position = Vector2(336, 25)
@@ -247,7 +247,7 @@ position = Vector2(106, 26)
 navigation_polygon = SubResource("NavigationPolygon_6tgta")
 
 [node name="EnemigoTest" parent="." unique_id=2057307827 instance=ExtResource("4_6tgta")]
-position = Vector2(213, 119)
+position = Vector2(106, 26)
 puntos_patrulla = Array[NodePath]([NodePath("../Marker2D"), NodePath("../Marker2D2"), NodePath("../Marker2D3"), NodePath("../Marker2D4")])
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1292928769]
