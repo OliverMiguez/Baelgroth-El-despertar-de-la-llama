@@ -11,7 +11,7 @@ class_name goblin_principal
 # Colision del goblin
 @onready var colision_goblin: CollisionShape2D = $Colision
 
-
+var last_input
 # Verificaciones para saber si se puede o no esconder
 var escondido = false
 
@@ -31,7 +31,6 @@ func _physics_process(delta):
 	
 	# Activa el movimiento del player a traves de los inputs
 	handle_movement()
-	handle_animations()
 	# Activa el sistema de esconderse
 	handle_hide()
 	# Permite que el personaje se mueva
@@ -75,32 +74,6 @@ func handle_movement():
 	# Normalizamos el vector para que la velocidad diagonal sea consistente
 	var velocity_direction = input_direction.normalized() if input_direction != Vector2.ZERO else Vector2.ZERO
 	velocity = velocity_direction * walking_speed
-
-# Administra las animaciones basándose en la dirección priorizada
-func handle_animations():
-	# Si está escondido o no hay intención de movimiento, no procesamos animaciones de correr
-	if escondido or input_direction == Vector2.ZERO:
-		# Aquí podrías reproducir una animación de Idle si fuera necesario
-		return
-	
-	# Determinar animación según input_direction (soporta 8 direcciones)
-	if input_direction.x != 0 and input_direction.y != 0:
-		# Diagonales
-		if input_direction.y == -1: # Arriba
-			if input_direction.x == 1: animaciones_goblin.play("correr_diagonal_wd")
-			else: animaciones_goblin.play("correr_diagonal_aw")
-		else: # Abajo
-			if input_direction.x == 1: animaciones_goblin.play("correr_diagonal_sd")
-			else: animaciones_goblin.play("correr_diagonal_as")
-	
-	elif input_direction.y == -1:
-		animaciones_goblin.play("correr_arriba")
-	elif input_direction.y == 1:
-		animaciones_goblin.play("correr_abajo")
-	elif input_direction.x == -1:
-		animaciones_goblin.play("correr_izquierda")
-	elif input_direction.x == 1:
-		animaciones_goblin.play("correr_derecha")
 
 # Revisa si se puede esconder o no el goblin principal
 func handle_hide():

@@ -7,41 +7,56 @@ extends "res://SCRIPTS/Reales/GoblinPrincipal/Estados/State.gd"
 # Ejecuta este código cuando cambia a este estado
 func on_enter():
 	print("[Test]: Iniciando estado walk ")
-	# Por tema de tener muchas animaciones, estas se integraron dentro del script principall
-	## Iniciar a continuación la animación del personaje
-	## Los Inputs que se detectan
-	#var up = Input.is_action_pressed("Arriba")
-	#var down = Input.is_action_pressed("Abajo")
-	#var left = Input.is_action_pressed("Izquierda")
-	#var right = Input.is_action_pressed("Derecha")
-	#
-		## Diagonales
-	#if up and right:
-		#animation_player.play("correr_diagonal_wd")
-	#elif up and left:
-		#animation_player.play("correr_diagonal_aw")
-	#elif down and right:
-		#animation_player.play("correr_diagonal_sd")
-	#elif down and left:
-		#animation_player.play("correr_diagonal_as")
-	#
-	## Normales
-	#elif up:
-		#animation_player.play("correr_arriba")
-	#elif down:
-		#animation_player.play("correr_abajo")
-	#elif left:
-		#animation_player.play("correr_izquierda")
-	#elif right:
-		#animation_player.play("correr_derecha")
 
 # Permite el cambio entre estados
 func state_process(_delta:float) -> void:
-	# Permite el cambio al estado de andar (walk)
-		# Cambia al estado rock
+	# Manejo de animaciones de movimiento (antes en GoblinPrincipal.gd)
+	actualizar_animacion_movimiento()
+
+	# Cambia al estado rock
 	if Input.is_action_just_pressed("Lanzar") and father.velocity == Vector2.ZERO:
 		next_state = rock_state
 	
 	elif father.velocity == Vector2.ZERO:
 		next_state = idle_state
+
+func actualizar_animacion_movimiento():
+	var input_direction = father.input_direction
+	
+	if input_direction.x != 0 and input_direction.y != 0:
+		if input_direction.y == -1: # Arriba
+			if input_direction.x == 1:
+				animation_player.play("correr_diagonal_wd")
+				animation_player.flip_h = false
+				father.last_input = "diagonal_derecha_arrbia"
+			else:
+				animation_player.play("correr_diagonal_aw")
+				animation_player.flip_h = false
+				father.last_input = "diagonal_izquierda_arriba"
+		else: # Abajo
+			if input_direction.x == 1:
+				animation_player.play("correr_diagonal_sd")
+				animation_player.flip_h = false
+				father.last_input = "diagonal_derecha_abajo"
+			else:
+				animation_player.play("correr_diagonal_as")
+				animation_player.flip_h = false
+				father.last_input = "diagonal_izquierda_abajo"
+	
+	elif input_direction.y == -1:
+		animation_player.play("correr_arriba")
+		animation_player.flip_h = false
+		father.last_input = "arriba"
+	elif input_direction.y == 1:
+		animation_player.play("correr_abajo")
+		animation_player.flip_h = false
+		father.last_input = "abajo"
+	elif input_direction.x == -1:
+		animation_player.play("correr_izquierda")
+		animation_player.flip_h = false
+		father.last_input = "izquierda"
+	elif input_direction.x == 1:
+		animation_player.play("correr_derecha")
+		animation_player.flip_h = false
+		father.last_input = "derecha"
 	

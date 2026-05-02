@@ -7,8 +7,35 @@ extends "res://SCRIPTS/Reales/GoblinPrincipal/Estados/State.gd"
 # Ejecuta este código cuando cambia a este estado
 func on_enter():
 	print("[Test]: Iniciando estado idle ")
-	# Iniciar a continuación la animación del personaje
-	animation_player.play("Idle")
+	
+	# Seleccionamos la animación de Idle correcta según la última dirección
+	match father.last_input:
+		"arriba":
+			animation_player.flip_h = false
+			animation_player.play("Idle_arriba")
+		"abajo":
+			animation_player.flip_h = false
+			animation_player.play("Idle_abajo")
+		"izquierda":
+			animation_player.flip_h = true
+			animation_player.play("Idle")
+		"derecha":
+			animation_player.flip_h = false
+			animation_player.play("Idle")
+		"diagonal_derecha_arrbia":
+			animation_player.flip_h = false
+			animation_player.play("Idle")
+		"diagonal_izquierda_arriba":
+			animation_player.flip_h = true
+			animation_player.play("Idle")
+		"diagonal_derecha_abajo":
+			animation_player.flip_h = false
+			animation_player.play("Idle")
+		"diagonal_izquierda_abajo":
+			animation_player.flip_h = true
+			animation_player.play("Idle")
+		_:
+			animation_player.play("Idle")
 
 # Permite el cambio entre estados
 func state_process(_delta:float) -> void:
