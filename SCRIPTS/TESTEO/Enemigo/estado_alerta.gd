@@ -4,7 +4,7 @@ extends Node
 var enemigo: Enemigo
 var agente:  NavigationAgent2D
 
-const VELOCIDAD            := 110.0
+const VELOCIDAD            := 90.0
 const INTERVALO_RECALCULO  := 0.15
 const TIEMPO_PAUSA_PERDIDA := 1.8
 

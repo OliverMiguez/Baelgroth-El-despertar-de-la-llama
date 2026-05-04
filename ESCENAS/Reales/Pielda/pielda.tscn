@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cpoyl3sfprqit"]
+
+[ext_resource type="Texture2D" uid="uid://blqe6w0d7qml2" path="res://ARTE/Pielda/Pielda.png" id="1_v7q6g"]
+[ext_resource type="Script" uid="uid://fwwiwopfant2" path="res://SCRIPTS/Reales/Pielda/PieldaArea.gd" id="2_ojo83"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n45v2"]
+radius = 3.1622777
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2ds7g"]
+radius = 11.0
+
+[node name="Pielda" type="Area2D" unique_id=2117151902]
+script = ExtResource("2_ojo83")
+
+[node name="PieldaSprite" type="Sprite2D" parent="." unique_id=2141551571]
+texture = ExtResource("1_v7q6g")
+
+[node name="ColisionPielda" type="CollisionShape2D" parent="." unique_id=1244017055]
+shape = SubResource("CircleShape2D_n45v2")
+debug_color = Color(0.9999381, 0, 0.11174735, 0.41960785)
+
+[node name="DeteccionPielda" type="Area2D" parent="." unique_id=2139668087]
+
+[node name="ColisionAreaPielda" type="CollisionShape2D" parent="DeteccionPielda" unique_id=1121997330]
+shape = SubResource("CircleShape2D_2ds7g")
+debug_color = Color(0.7796924, 0.13120025, 0.99999994, 0.41960785)

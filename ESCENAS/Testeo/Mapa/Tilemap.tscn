@@ -5,7 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://bsi8v3bqgctr" path="res://ARTE/Testeo/Sand.png" id="2_wr0rg"]
 [ext_resource type="PackedScene" uid="uid://cnam07d5cw1u" path="res://ESCENAS/Reales/Arbusto/Arbusto.tscn" id="3_5tcps"]
 [ext_resource type="PackedScene" uid="uid://dwu6d60vgw7vg" path="res://ESCENAS/Testeo/Enemigo/Enemigo_Test.tscn" id="4_6tgta"]
-[ext_resource type="AudioStream" uid="uid://ciho1ibyatjlt" path="res://Musica/Test/dungeonAgua.wav" id="6_rcnnt"]
+[ext_resource type="AudioStream" uid="uid://dlrl4c522h63w" path="res://Musica/Test/forestV2.wav" id="6_rcnnt"]
+[ext_resource type="Texture2D" uid="uid://lrc78lj0qmu8" path="res://ARTE/Vallas/Vaya01.png" id="7_vev52"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d70fq"]
 texture = ExtResource("1_s600u")
@@ -210,10 +211,33 @@ texture = ExtResource("2_wr0rg")
 [sub_resource type="TileSet" id="TileSet_r6scr"]
 sources/0 = SubResource("TileSetAtlasSource_vev52")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r6scr"]
+texture = ExtResource("7_vev52")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0.08705139, -0.60936165, 8, -0.26115417, 8, 8, 0.43525887, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -0.43525696, 8, -0.26115417, 8, 4.2655296, -8, 4.613737)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0.08705139, -0.43525696, 0.9575672, 8, -8, 8, -8, -0.08705139)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(5.8324604, 8, -2.3503933, 8, -2.524498, -8, 4.2655277, -8)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(1.3057728, 8, -4.091427, 8, -4.4396324, -8, 1.4798794, -8)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, 8, 3.0468082, -0.78346443, 1.3057747, -0.78346443, -8)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -4.4396324, 8, -3.5691166, 8, 1.4798775, -8, 0.9575691)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(0.43525887, -8, 1.3057728, 1.1316719, -8, 1.3057747, -8, -8)
+
+[sub_resource type="TileSet" id="TileSet_s46ii"]
+physics_layer_0/collision_layer = 8
+sources/0 = SubResource("TileSetAtlasSource_r6scr")
+
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_6tgta"]
-vertices = PackedVector2Array(350.5625, 172, 96.171875, 172, 98.828125, 16, 359.42188, 16)
+vertices = PackedVector2Array(367.6172, -15.0625, 382.3125, 210.84375, -215.20313, 202.14063, -219.78125, -18.929688)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(89, 6, 86, 182, 360, 182, 370, 6)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-230, -29, -225, 212, 393, 221, 377, -25)])
 
 [node name="TestTileMap" type="Node2D" unique_id=1929271054]
 
@@ -226,31 +250,34 @@ tile_set = SubResource("TileSet_52o3s")
 tile_map_data = PackedByteArray("AAD9/wIAAAAGAAEAAAA=")
 tile_set = SubResource("TileSet_r6scr")
 
+[node name="Vayas" type="TileMapLayer" parent="." unique_id=1713799876]
+tile_map_data = PackedByteArray("AAALAAEAAAABAAAAAAAMAAEAAAABAAAAAAANAAEAAAABAAAAAAAOAAEAAAABAAAAAAAPAAEAAAABAAAAAAAQAAEAAAABAAAAAAARAAEAAAABAAAAAAASAAEAAAABAAAAAAATAAEAAAABAAAAAAAUAAEAAAABAAAAAAAVAAEAAAACAAAAAAAVAAIAAAACAAEAAAAVAAMAAAACAAEAAAAVAAQAAAACAAEAAAAKAAEAAAABAAAAAAAJAAEAAAABAAAAAAAIAAEAAAABAAAAAAAHAAEAAAABAAAAAAAGAAEAAAAAAAAAAAAGAAQAAAAAAAEAAAAGAAUAAAAAAAEAAAAGAAYAAAAAAAEAAAAGAAcAAAAAAAEAAAAGAAgAAAAAAAEAAAAGAAkAAAAAAAEAAAAGAAoAAAAAAAIAAAAHAAoAAAABAAIAAAAIAAoAAAABAAIAAAAJAAoAAAABAAIAAAAKAAoAAAABAAIAAAALAAoAAAABAAIAAAAMAAoAAAABAAIAAAANAAoAAAABAAIAAAAOAAoAAAABAAIAAAAPAAoAAAABAAIAAAAQAAoAAAABAAIAAAARAAoAAAABAAIAAAASAAoAAAABAAIAAAATAAoAAAABAAIAAAAUAAoAAAABAAIAAAAVAAoAAAACAAIAAAAVAAkAAAACAAEAAAAVAAgAAAACAAEAAAAVAAcAAAACAAEAAAA=")
+tile_set = SubResource("TileSet_s46ii")
+
 [node name="GoblinPrincipal" parent="." unique_id=988583641 instance=ExtResource("2_5tcps")]
 
 [node name="ArbustoV2" parent="." unique_id=2020210010 instance=ExtResource("3_5tcps")]
 position = Vector2(229, 75)
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=846636741]
-position = Vector2(102, 168)
+position = Vector2(-161, 153)
 
 [node name="Marker2D2" type="Marker2D" parent="." unique_id=1916086231]
-position = Vector2(341, 164)
+position = Vector2(78, 149)
 
 [node name="Marker2D3" type="Marker2D" parent="." unique_id=738688798]
-position = Vector2(336, 25)
+position = Vector2(73, 10)
 
 [node name="Marker2D4" type="Marker2D" parent="." unique_id=779460820]
-position = Vector2(106, 26)
+position = Vector2(-157, 11)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1902338090]
 navigation_polygon = SubResource("NavigationPolygon_6tgta")
 
 [node name="EnemigoTest" parent="." unique_id=2057307827 instance=ExtResource("4_6tgta")]
-position = Vector2(106, 26)
+position = Vector2(-162, 154)
 puntos_patrulla = Array[NodePath]([NodePath("../Marker2D"), NodePath("../Marker2D2"), NodePath("../Marker2D3"), NodePath("../Marker2D4")])
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1292928769]
 stream = ExtResource("6_rcnnt")
-volume_db = -8.069
 autoplay = true

@@ -7,7 +7,7 @@ extends "res://SCRIPTS/Reales/GoblinPrincipal/Estados/State.gd"
 # Ejecuta este código cuando cambia a este estado
 func on_enter():
 	print("[Test]: Iniciando estado Rock ")
-	
+	father.lanzar_piedra()
 	# Conectamos la señal para saber cuando termina de lanzar
 	if not animation_player.animation_finished.is_connected(_on_animation_finished):
 		animation_player.animation_finished.connect(_on_animation_finished)

@@ -170,13 +170,15 @@ radius = 14.035668
 size = Vector2(100, 125)
 
 [node name="EnemigoTest" type="CharacterBody2D" unique_id=2057307827]
+collision_layer = 2
+collision_mask = 15
 motion_mode = 1
 script = ExtResource("1_2g3ou")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=602771091]
 sprite_frames = SubResource("SpriteFrames_bt1iw")
-animation = &"Idle"
-frame_progress = 0.025073554
+animation = &"Lateral"
+frame_progress = 0.069325574
 
 [node name="ColisionEnemigo" type="CollisionShape2D" parent="." unique_id=577286090]
 shape = SubResource("CircleShape2D_2g3ou")

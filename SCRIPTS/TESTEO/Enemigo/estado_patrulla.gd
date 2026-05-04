@@ -8,7 +8,7 @@ var enemigo: Enemigo
 var agente:  NavigationAgent2D
 
 # Constantes de movimiento
-const VELOCIDAD         := 60.0
+const VELOCIDAD         := 55.0
 const DISTANCIA_LLEGADA := 10.0
 const TIEMPO_PAUSA      := 1.2
 

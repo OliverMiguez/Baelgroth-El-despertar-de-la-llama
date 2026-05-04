@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name goblin_principal
 
 # Velocidad del goblin
-@export var walking_speed = 100
+@export var walking_speed:float = 100.0
 
 # Referencia de la maquina de estados del goblin
 @onready var state_machine: Node = $FSM
@@ -11,12 +11,19 @@ class_name goblin_principal
 # Colision del goblin
 @onready var colision_goblin: CollisionShape2D = $Colision
 
+@onready var piedra_spawn_point: Marker2D = $PiedraSpawnPoint
+
+# Packed Scene de la piedra
+var instancia_piedra_packed = preload("res://ESCENAS/Reales/Pielda/pielda.tscn")
+
+
 var last_input
 # Verificaciones para saber si se puede o no esconder
 var escondido = false
 
 # Variable para rastrear la dirección de entrada actual y manejar prioridades (Primer input introducido)
 var input_direction = Vector2.ZERO
+var direccion_actual:Vector2 = Vector2.RIGHT
 
 # Se ejecuta al inicio del progroma
 func _ready():
@@ -33,6 +40,8 @@ func _physics_process(delta):
 	handle_movement()
 	# Activa el sistema de esconderse
 	handle_hide()
+	#lanzar_piedra()
+	
 	# Permite que el personaje se mueva
 	move_and_slide()
 	
@@ -41,7 +50,7 @@ func goblin():
 
 # Administra los inputs de moviento del jugador y aplica velocidades con prioridad al primer input
 func handle_movement():
-	# Manejo del eje horizontal con prioridad al primer input
+# Manejo del eje horizontal con prioridad al primer input
 	if input_direction.x == 0:
 		if Input.is_action_pressed("Izquierda"): 
 			input_direction.x = -1
@@ -73,6 +82,10 @@ func handle_movement():
 	
 	# Normalizamos el vector para que la velocidad diagonal sea consistente
 	var velocity_direction = input_direction.normalized() if input_direction != Vector2.ZERO else Vector2.ZERO
+	
+	if velocity_direction != Vector2.ZERO: # formato desado por mi, actualiza la direccion solo si hay movimiento para no perder el ultimo input al estar quieto
+		direccion_actual = velocity_direction # formato desado por mi, guarda la direccion normalizada para el proyectil
+		
 	velocity = velocity_direction * walking_speed
 
 # Revisa si se puede esconder o no el goblin principal
@@ -98,3 +111,12 @@ func exit_a_brush():
 	colision_goblin.visible = true
 	animaciones_goblin.visible = true
 	print("[Exit a brush ()]: El jugado salió de su escondite ")
+
+# Instancia la piedra y la mueve a la direccion correspondiente
+func lanzar_piedra():
+	if Input.is_action_just_pressed("Lanzar"):
+		var piedra_scene = instancia_piedra_packed.instantiate() # Instancia la escena de la piedra
+		get_parent().add_child(piedra_scene) # La añade al arbol de nodos
+		piedra_scene.global_position = piedra_spawn_point.global_position # La coloca en la posicion del marker 2d
+		piedra_scene.direction = direccion_actual
+		
