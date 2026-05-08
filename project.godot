@@ -16,6 +16,7 @@ config/features=PackedStringArray("4.6", "Forward Plus")
 [autoload]
 
 ControlEscondite="*uid://dkq5bvrb1gnk4"
+ManejadorDeDeteccion="*uid://cdb5e5denbw1w"
 
 [file_customization]
 
@@ -65,6 +66,8 @@ Lanzar={
 2d_physics/layer_2="Enemigos"
 2d_physics/layer_3="Arbustos"
 2d_physics/layer_4="Mapa"
+2d_physics/layer_5="Piedra"
+2d_physics/layer_6="AreaEnemigo"
 
 [physics]
 

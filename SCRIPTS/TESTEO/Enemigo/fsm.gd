@@ -7,6 +7,7 @@ var enemigo: Enemigo
 @onready var estado_patrulla:   Node = $EstadoPatrulla
 @onready var estado_alerta:     Node = $EstadoAlerta
 @onready var estado_investigar: Node = $EstadoInvestigar
+@onready var estado_investigar_piedra: Node = $EstadoInvestigarPiedra
 
 # El estado que esta activo en el momento
 var estado_activo: Node = null
@@ -18,6 +19,7 @@ func inicializar(nodo_enemigo: Enemigo):
 	estado_patrulla.configurar(enemigo)
 	estado_alerta.configurar(enemigo)
 	estado_investigar.configurar(enemigo)
+	estado_investigar_piedra.configurar(enemigo)
 	# El primer estado que detecta
 	cambiar_estado("patrulla")
 
@@ -36,6 +38,7 @@ func cambiar_estado(nombre: String):
 		"patrulla":   estado_activo = estado_patrulla
 		"alerta":     estado_activo = estado_alerta
 		"investigar": estado_activo = estado_investigar
+		"investigar_piedra": estado_activo = estado_investigar_piedra
 		# Lo que ejecutan los estados al entrar en ellos al inicio
 	if estado_activo.has_method("al_entrar"):
 		estado_activo.al_entrar()

@@ -1,12 +1,28 @@
 extends Area2D
+class_name pielda
+
+signal piedra_detenida  # avisamos cuando la piedra termino su recorrido
 
 @export var velocidad: float = 150.0 
-@export var dist_max: float = 100.0
+@export var dist_max: float = 140.0
+@onready var colision_area_pielda: CollisionShape2D = $DeteccionPielda/ColisionAreaPielda
 
 var direction: Vector2 = Vector2.ZERO # Aseguramos tipo Vector2
 var distancia_viajada: float = 0.0
 
+# Test con el enemmigo
+var deteccion_enemigo:bool = false
+
+# Permite quitar la colision a la piedra
+var quitar_colision:bool = false
+
 func _physics_process(delta: float) -> void:
+	# Si pasaron 3 segundos(lo que dura el timer) y el enemigo no detecto la piedra, o ya salio de su area , quita la colision a la piedra
+	if quitar_colision == true:
+		if deteccion_enemigo == false:
+			manage_colision()
+			quitar_colision = false
+	
 	# Doble comprobación: si por algún motivo externo velocidad es nula, le damos valor
 	if velocidad == null: velocidad = 150.0
 	
@@ -23,4 +39,23 @@ func _physics_process(delta: float) -> void:
 		tratar_piedra()
 
 func tratar_piedra():
-	queue_free()
+	direction = Vector2.ZERO
+	piedra_detenida.emit()  # avisamos al mundo que ya paramos
+	
+func _on_body_entered(body: Node2D) -> void:
+	if body is Enemigo:
+		deteccion_enemigo = true # Detecta al enemigo y envia una señal al global para indicarle al enemigo
+		ManejadorDeDeteccion.deteccion_enemigo = deteccion_enemigo
+
+func _on_body_exited(body: Node2D) -> void:
+	if body is Enemigo:
+		deteccion_enemigo = false # Deja de detectar al enemigo
+		ManejadorDeDeteccion.deteccion_enemigo = deteccion_enemigo # Envia señal al global para indicarle al enemigo
+
+# Permite apagar la colision de la piedra para que no se detecte más
+func _on_eliminar_area_timeout() -> void:
+	quitar_colision = true
+
+# Elimina el area si esta piedra no se detecto al cabo de un tiempo
+func manage_colision():
+	colision_area_pielda.queue_free()

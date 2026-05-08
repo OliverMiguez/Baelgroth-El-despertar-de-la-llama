@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://5hbtn1a5okcg" path="res://SCRIPTS/TESTEO/Enemigo/estado_alerta.gd" id="5_p5h47"]
 [ext_resource type="Texture2D" uid="uid://2x55ed8hxaad" path="res://ARTE/Pajaro/PajaroAnimaciones.png" id="6_7wa8m"]
 [ext_resource type="Script" uid="uid://diofky1jjghjl" path="res://ESCENAS/Testeo/Enemigo/estado_investigar.gd" id="6_su5wh"]
-[ext_resource type="Script" uid="uid://07mospkqjene" path="res://SCRIPTS/TESTEO/Enemigo/estado_investigar_piedra.gd" id="7_7wa8m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_syt4u"]
 atlas = ExtResource("6_7wa8m")
@@ -168,11 +167,11 @@ animations = [{
 radius = 9.055386
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqjbl"]
-size = Vector2(130.5, 82)
+size = Vector2(100, 125)
 
 [node name="EnemigoTest" type="CharacterBody2D" unique_id=2057307827]
 collision_layer = 2
-collision_mask = 9
+collision_mask = 25
 motion_mode = 1
 script = ExtResource("1_2g3ou")
 
@@ -191,7 +190,7 @@ collision_layer = 32
 collision_mask = 25
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDeteccion" unique_id=1065688013]
-position = Vector2(-2.75, -1)
+position = Vector2(1, -1)
 shape = SubResource("RectangleShape2D_hqjbl")
 
 [node name="FSM" type="Node" parent="." unique_id=1828577291]
@@ -205,9 +204,6 @@ script = ExtResource("5_p5h47")
 
 [node name="EstadoInvestigar" type="Node" parent="FSM" unique_id=1414055127]
 script = ExtResource("6_su5wh")
-
-[node name="EstadoInvestigarPiedra" type="Node" parent="FSM" unique_id=790574653]
-script = ExtResource("7_7wa8m")
 
 [connection signal="body_entered" from="AreaDeteccion" to="." method="_on_area_deteccion_body_entered"]
 [connection signal="body_exited" from="AreaDeteccion" to="." method="_on_area_deteccion_body_exited"]

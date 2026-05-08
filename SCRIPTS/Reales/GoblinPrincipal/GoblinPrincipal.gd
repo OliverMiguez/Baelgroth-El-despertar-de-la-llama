@@ -1,6 +1,9 @@
 extends CharacterBody2D
 class_name goblin_principal
 
+
+signal escondido_cambiado
+
 # Velocidad del goblin
 @export var walking_speed:float = 100.0
 
@@ -16,10 +19,14 @@ class_name goblin_principal
 # Packed Scene de la piedra
 var instancia_piedra_packed = preload("res://ESCENAS/Reales/Pielda/pielda.tscn")
 
-
+# Recoge el ultimo input introducido
 var last_input
+
 # Verificaciones para saber si se puede o no esconder
-var escondido = false
+var escondido: bool = false:
+	set(valor):
+		escondido = valor
+		escondido_cambiado.emit()
 
 # Variable para rastrear la dirección de entrada actual y manejar prioridades (Primer input introducido)
 var input_direction = Vector2.ZERO

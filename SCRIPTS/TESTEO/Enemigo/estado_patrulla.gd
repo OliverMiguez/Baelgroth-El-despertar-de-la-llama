@@ -69,6 +69,7 @@ func tick(delta: float):
 	enemigo.velocity = dir * VELOCIDAD
 	
 	_actualizar_animacion(dir)
+	enemigo.actualizar_area_deteccion(dir)  # añadir esta linea
 	
 # Modifica las animaciones
 func _actualizar_animacion(dir: Vector2):
