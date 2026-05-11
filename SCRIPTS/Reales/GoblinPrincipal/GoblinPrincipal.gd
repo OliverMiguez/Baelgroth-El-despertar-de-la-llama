@@ -16,6 +16,8 @@ signal escondido_cambiado
 
 @onready var piedra_spawn_point: Marker2D = $PiedraSpawnPoint
 
+@onready var pasos_audio: AudioStreamPlayer2D = $PasosAudio
+
 # Packed Scene de la piedra
 var instancia_piedra_packed = preload("res://ESCENAS/Reales/Pielda/pielda.tscn")
 
@@ -31,6 +33,8 @@ var escondido: bool = false:
 # Variable para rastrear la dirección de entrada actual y manejar prioridades (Primer input introducido)
 var input_direction = Vector2.ZERO
 var direccion_actual:Vector2 = Vector2.RIGHT
+
+var paso_alternado: bool = false
 
 # Se ejecuta al inicio del progroma
 func _ready():
@@ -127,3 +131,10 @@ func lanzar_piedra():
 		piedra_scene.global_position = piedra_spawn_point.global_position # La coloca en la posicion del marker 2d
 		piedra_scene.direction = direccion_actual
 		
+
+# Administrar el sonido de los pasos
+func _on_animaciones_goblin_frame_changed() -> void:
+	if animaciones_goblin.frame in [1, 3]:
+		if velocity != Vector2.ZERO:
+			pasos_audio.pitch_scale = randf_range(0.75, 1.25)
+			pasos_audio.play()

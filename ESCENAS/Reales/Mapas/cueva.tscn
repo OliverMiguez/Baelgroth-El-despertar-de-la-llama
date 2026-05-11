@@ -3,13 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://ca1ostsdmwhad" path="res://ARTE/Testeo/beta cueva.png" id="1_tgmhi"]
 [ext_resource type="PackedScene" uid="uid://dyw8875pb8bj2" path="res://ESCENAS/Reales/Goblins/GoblinPrincipal/Goblin01.tscn" id="2_4sbgq"]
 
-[node name="Cueva" type="Node2D" unique_id=714703056]
+[node name="Node2D" type="Node2D" unique_id=1388482921]
+
+[node name="BetaCueva" type="Sprite2D" parent="." unique_id=1064992960]
+position = Vector2(5, 8)
+texture = ExtResource("1_tgmhi")
 
 [node name="GoblinPrincipal" parent="." unique_id=988583641 instance=ExtResource("2_4sbgq")]
-position = Vector2(533, 369)
-scale = Vector2(3, 3)
-
-[node name="BetaCueva" type="Sprite2D" parent="." unique_id=993429742]
-position = Vector2(541, 417)
-scale = Vector2(5, 5)
-texture = ExtResource("1_tgmhi")

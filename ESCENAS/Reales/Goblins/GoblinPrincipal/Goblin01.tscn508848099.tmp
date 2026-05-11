@@ -527,8 +527,6 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j0npl"]
-radius = 5.0
-height = 23.333332
 
 [node name="GoblinPrincipal" type="CharacterBody2D" unique_id=988583641]
 scale = Vector2(0.6, 0.6)
@@ -542,7 +540,6 @@ animation = &"correr_diagonal_as"
 autoplay = "Idle"
 
 [node name="Colision" type="CollisionShape2D" parent="." unique_id=1023046994]
-position = Vector2(1.6666666, 3.3333333)
 shape = SubResource("CapsuleShape2D_j0npl")
 
 [node name="FSM" type="Node" parent="." unique_id=559475433 node_paths=PackedStringArray("father", "animation_player", "current_state")]
@@ -574,6 +571,5 @@ position = Vector2(1.1920929e-07, -2.3841858e-07)
 
 [node name="PasosAudio" type="AudioStreamPlayer2D" parent="." unique_id=1218933246]
 stream = ExtResource("11_pdu6u")
-volume_db = -16.28
 
 [connection signal="frame_changed" from="AnimacionesGoblin" to="." method="_on_animaciones_goblin_frame_changed"]
