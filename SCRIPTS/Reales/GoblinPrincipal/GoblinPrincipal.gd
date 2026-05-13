@@ -39,7 +39,6 @@ var paso_alternado: bool = false
 # Se ejecuta al inicio del progroma
 func _ready():
 	print("[Test]: El personaje cargo inicialmente")
-
 	
 # Se ejecuta en cada frame del juego
 func _physics_process(delta):
@@ -138,3 +137,14 @@ func _on_animaciones_goblin_frame_changed() -> void:
 		if velocity != Vector2.ZERO:
 			pasos_audio.pitch_scale = randf_range(0.75, 1.25)
 			pasos_audio.play()
+
+
+func _on_dialogo_terminado():
+	walking_speed = 100.0
+	
+## Dialogo de pruebas
+#func _on_dialog_prueba_body_entered(body: Node2D) -> void:
+	#if body is goblin_principal and Input.is_action_just_pressed("Hablar"):
+		#body.walking_speed = 0
+		#
+		#Dialogic.start("res://DIALOGIC/DIALOGOS/ConversacionTest.dtl")

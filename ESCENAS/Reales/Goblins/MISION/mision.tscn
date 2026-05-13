@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://dou7v0r68af8v"]
+
+[ext_resource type="Texture2D" uid="uid://l7muo7yaph5t" path="res://ARTE/Goblins/MISION/MISION.png" id="1_ogvva"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wehsy"]
+atlas = ExtResource("1_ogvva")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4wy4t"]
+atlas = ExtResource("1_ogvva")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihdon"]
+atlas = ExtResource("1_ogvva")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yf670"]
+atlas = ExtResource("1_ogvva")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_17grc"]
+atlas = ExtResource("1_ogvva")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1adgr"]
+atlas = ExtResource("1_ogvva")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jfhew"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wehsy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4wy4t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ihdon")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yf670")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_17grc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1adgr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 9.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3ald1"]
+radius = 7.777778
+
+[node name="MISION" type="CharacterBody2D" unique_id=69943062]
+scale = Vector2(0.9, 0.9)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1829497578]
+sprite_frames = SubResource("SpriteFrames_jfhew")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=859490685]
+position = Vector2(-2.2222223, 8.888889)
+shape = SubResource("CircleShape2D_3ald1")

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d1gs53e70xd18" path="res://SCRIPTS/Reales/GoblinPrincipal/GoblinPrincipal.gd" id="1_xqqjy"]
 [ext_resource type="Texture2D" uid="uid://5ce0nm8rbmmd" path="res://ARTE/Goblins/Goblin Principal/Goblin02-Sheet-export.png" id="2_1t84a"]
-[ext_resource type="Texture2D" uid="uid://b1bx584kpl04b" path="res://ARTE/Goblins/Goblin Principal/Gobluin01-Sheet.png" id="2_240jn"]
+[ext_resource type="Texture2D" uid="uid://b837db1cijm7y" path="res://ARTE/Goblins/Goblin Principal/Idle.png" id="2_pdu6u"]
 [ext_resource type="Texture2D" uid="uid://bfhpqkadhdmxq" path="res://ARTE/Goblins/Goblin Principal/fin.png" id="3_787x7"]
 [ext_resource type="Texture2D" uid="uid://dvv5mar3knfl8" path="res://ARTE/Goblins/Goblin Principal/GoblinLanzamientoArreglado.png" id="3_ktnfn"]
 [ext_resource type="Texture2D" uid="uid://bomi5rxd51vda" path="res://ARTE/Goblins/Goblin Principal/fin2.png" id="4_sbdcu"]
@@ -12,28 +12,28 @@
 [ext_resource type="Script" uid="uid://0wkmkxrlm2j4" path="res://SCRIPTS/Reales/GoblinPrincipal/Estados/Rock.gd" id="7_oybqk"]
 [ext_resource type="AudioStream" uid="uid://djgpfm4hejuwq" path="res://EfectosSonido/Pasos.mp3" id="11_pdu6u"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jnj25"]
-atlas = ExtResource("2_240jn")
+[sub_resource type="AtlasTexture" id="AtlasTexture_fxtv5"]
+atlas = ExtResource("2_pdu6u")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_a2jcx"]
-atlas = ExtResource("2_240jn")
+[sub_resource type="AtlasTexture" id="AtlasTexture_0y3x2"]
+atlas = ExtResource("2_pdu6u")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dxnce"]
-atlas = ExtResource("2_240jn")
+[sub_resource type="AtlasTexture" id="AtlasTexture_sw1ja"]
+atlas = ExtResource("2_pdu6u")
 region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7mui7"]
-atlas = ExtResource("2_240jn")
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5mtt"]
+atlas = ExtResource("2_pdu6u")
 region = Rect2(96, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_htaxc"]
-atlas = ExtResource("2_240jn")
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3806"]
+atlas = ExtResource("2_pdu6u")
 region = Rect2(128, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_02i2w"]
-atlas = ExtResource("2_240jn")
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0fvn"]
+atlas = ExtResource("2_pdu6u")
 region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sbdcu"]
@@ -268,22 +268,22 @@ region = Rect2(96, 128, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jnj25")
+"texture": SubResource("AtlasTexture_fxtv5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_a2jcx")
+"texture": SubResource("AtlasTexture_0y3x2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dxnce")
+"texture": SubResource("AtlasTexture_sw1ja")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7mui7")
+"texture": SubResource("AtlasTexture_i5mtt")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_htaxc")
+"texture": SubResource("AtlasTexture_k3806")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_02i2w")
+"texture": SubResource("AtlasTexture_w0fvn")
 }],
 "loop": true,
 "name": &"Idle",
@@ -532,14 +532,15 @@ height = 23.333332
 
 [node name="GoblinPrincipal" type="CharacterBody2D" unique_id=988583641]
 scale = Vector2(0.6, 0.6)
-collision_mask = 63
+collision_mask = 255
 script = ExtResource("1_xqqjy")
 walking_speed = 50.0
 
 [node name="AnimacionesGoblin" type="AnimatedSprite2D" parent="." unique_id=583185534]
 sprite_frames = SubResource("SpriteFrames_5xw4v")
-animation = &"correr_diagonal_as"
+animation = &"Idle"
 autoplay = "Idle"
+frame_progress = 0.70538354
 
 [node name="Colision" type="CollisionShape2D" parent="." unique_id=1023046994]
 position = Vector2(1.6666666, 3.3333333)
@@ -565,9 +566,6 @@ rock_state = NodePath("../Rock")
 script = ExtResource("7_oybqk")
 walk_state = NodePath("../Walk")
 idle_state = NodePath("../Idle")
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=561511987]
-zoom = Vector2(4, 4)
 
 [node name="PiedraSpawnPoint" type="Marker2D" parent="." unique_id=1623606182]
 position = Vector2(1.1920929e-07, -2.3841858e-07)

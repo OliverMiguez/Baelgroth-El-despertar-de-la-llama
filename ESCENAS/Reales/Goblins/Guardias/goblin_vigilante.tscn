@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://bxcubn1u1p0sj"]
+
+[ext_resource type="Script" uid="uid://c5yv5ne683ae0" path="res://SCRIPTS/Reales/GuardiasGoblin/goblin_vigilante.gd" id="1_d8fwy"]
+[ext_resource type="Texture2D" uid="uid://bjr68i60ps5nc" path="res://ARTE/Goblins/Guardias/guardias.png" id="1_mc3iv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d8fwy"]
+atlas = ExtResource("1_mc3iv")
+region = Rect2(0, 0, 32, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n62oi"]
+atlas = ExtResource("1_mc3iv")
+region = Rect2(32, 0, 32, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kyxal"]
+atlas = ExtResource("1_mc3iv")
+region = Rect2(64, 0, 32, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8gtbw"]
+atlas = ExtResource("1_mc3iv")
+region = Rect2(96, 0, 32, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dahde"]
+atlas = ExtResource("1_mc3iv")
+region = Rect2(128, 0, 32, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8n881"]
+atlas = ExtResource("1_mc3iv")
+region = Rect2(160, 0, 32, 33)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_id02s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d8fwy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n62oi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kyxal")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8gtbw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dahde")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8n881")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 9.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mc3iv"]
+radius = 7.1428566
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d8fwy"]
+radius = 38.59787
+
+[node name="GoblinVigilante" type="CharacterBody2D" unique_id=1736408681]
+scale = Vector2(0.7, 0.7)
+collision_layer = 64
+collision_mask = 255
+script = ExtResource("1_d8fwy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1421785287]
+sprite_frames = SubResource("SpriteFrames_id02s")
+animation = &"Idle"
+autoplay = "Idle"
+frame = 2
+frame_progress = 0.60811865
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1064397177]
+position = Vector2(-1.4285715, 10)
+shape = SubResource("CircleShape2D_mc3iv")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1232754942]
+collision_layer = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=334440262]
+position = Vector2(4.7683716e-07, 7.142857)
+shape = SubResource("CircleShape2D_d8fwy")
+debug_color = Color(0.42895013, 0.6021327, 0, 0.41960785)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
