@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://bd1y1r6a18gqs" path="res://SCRIPTS/Reales/GoblinPrincipal/Estados/Walk.gd" id="6_n031j"]
 [ext_resource type="Script" uid="uid://0wkmkxrlm2j4" path="res://SCRIPTS/Reales/GoblinPrincipal/Estados/Rock.gd" id="7_oybqk"]
 [ext_resource type="AudioStream" uid="uid://djgpfm4hejuwq" path="res://EfectosSonido/Pasos.mp3" id="11_pdu6u"]
+[ext_resource type="AudioStream" uid="uid://bt6sl8u445gcu" path="res://EfectosSonido/mollyroselee-walking-on-gravel-468536.wav" id="12_dvsra"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fxtv5"]
 atlas = ExtResource("2_pdu6u")
@@ -573,5 +574,9 @@ position = Vector2(8.333333, 0)
 [node name="PasosAudio" type="AudioStreamPlayer2D" parent="." unique_id=1218933246]
 stream = ExtResource("11_pdu6u")
 volume_db = -16.28
+
+[node name="PasosCueva" type="AudioStreamPlayer2D" parent="." unique_id=1018895057]
+stream = ExtResource("12_dvsra")
+volume_db = -18.129
 
 [connection signal="frame_changed" from="AnimacionesGoblin" to="." method="_on_animaciones_goblin_frame_changed"]

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dou7v0r68af8v"]
 
 [ext_resource type="Texture2D" uid="uid://l7muo7yaph5t" path="res://ARTE/Goblins/MISION/MISION.png" id="1_ogvva"]
+[ext_resource type="Script" uid="uid://ckrx1pw2nxt4w" path="res://SCRIPTS/Reales/MisionPrincipal/mision.gd" id="1_wehsy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wehsy"]
 atlas = ExtResource("1_ogvva")
@@ -55,8 +56,12 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_3ald1"]
 radius = 7.777778
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_wehsy"]
+radius = 22.222223
+
 [node name="MISION" type="CharacterBody2D" unique_id=69943062]
 scale = Vector2(0.9, 0.9)
+script = ExtResource("1_wehsy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1829497578]
 sprite_frames = SubResource("SpriteFrames_jfhew")
@@ -65,3 +70,15 @@ autoplay = "default"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=859490685]
 position = Vector2(-2.2222223, 8.888889)
 shape = SubResource("CircleShape2D_3ald1")
+
+[node name="Deteccion" type="Area2D" parent="." unique_id=2058667391]
+collision_layer = 255
+collision_mask = 255
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Deteccion" unique_id=594644875]
+position = Vector2(-2.2222223, 4.4444447)
+shape = SubResource("CircleShape2D_wehsy")
+debug_color = Color(0.49534935, 0.58422554, 0, 0.41960785)
+
+[connection signal="body_entered" from="Deteccion" to="." method="_on_deteccion_body_entered"]
+[connection signal="body_exited" from="Deteccion" to="." method="_on_deteccion_body_exited"]

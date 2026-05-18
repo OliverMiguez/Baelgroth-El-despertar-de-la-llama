@@ -6,6 +6,7 @@ signal escondido_cambiado
 
 # Velocidad del goblin
 @export var walking_speed:float = 100.0
+@export var walking_sound:AudioStreamPlayer2D
 
 # Referencia de la maquina de estados del goblin
 @onready var state_machine: Node = $FSM
@@ -145,5 +146,5 @@ func lanzar_piedra():
 func _on_animaciones_goblin_frame_changed() -> void:
 	if animaciones_goblin.frame in [1, 3]:
 		if velocity != Vector2.ZERO:
-			pasos_audio.pitch_scale = randf_range(0.75, 1.25)
-			pasos_audio.play()
+			walking_sound.pitch_scale = randf_range(0.75, 1.25)
+			walking_sound.play()
