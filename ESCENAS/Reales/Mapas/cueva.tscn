@@ -171,7 +171,7 @@ size = Vector2(173, 20)
 size = Vector2(28.5, 149.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4d3p6"]
-size = Vector2(96.25, 14.5)
+size = Vector2(89.5625, 5.625)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6v0dv"]
 size = Vector2(13, 44)
@@ -183,19 +183,19 @@ size = Vector2(23, 47)
 script = ExtResource("1_q7o4g")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=2050910672]
-color = Color(0.5603671, 0.39729092, 0.56088954, 1)
+color = Color(0.33023036, 0.21708387, 0.33059007, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=417849965]
 libraries/ = SubResource("AnimationLibrary_4sbgq")
 autoplay = &"PointLight"
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=500434198]
-position = Vector2(25, -79)
+position = Vector2(26, -96)
 color = Color(0.55453277, 0.54709184, 5.7756904e-07, 1)
 texture = SubResource("GradientTexture2D_4sbgq")
 
 [node name="PointLight2D2" type="PointLight2D" parent="." unique_id=1688098191]
-position = Vector2(121, -80)
+position = Vector2(122, -95)
 color = Color(0.5539114, 0.54784447, 3.5207364e-07, 0.83770716)
 texture = SubResource("GradientTexture2D_4sbgq")
 
@@ -335,12 +335,12 @@ shape = SubResource("RectangleShape2D_4d3p6")
 debug_color = Color(0.98767287, 0.1102451, 0, 0.41960785)
 
 [node name="CollisionShape2D29" type="CollisionShape2D" parent="StaticBody2D" unique_id=537220542]
-position = Vector2(8, -140)
+position = Vector2(5.21875, -142)
 shape = SubResource("RectangleShape2D_4d3p6")
 debug_color = Color(0.98767287, 0.1102451, 0, 0.41960785)
 
 [node name="CollisionShape2D30" type="CollisionShape2D" parent="StaticBody2D" unique_id=675401866]
-position = Vector2(-48, -140)
+position = Vector2(-48, -141.8125)
 shape = SubResource("RectangleShape2D_4d3p6")
 debug_color = Color(0.98767287, 0.1102451, 0, 0.41960785)
 
@@ -395,7 +395,7 @@ shape = SubResource("RectangleShape2D_6v0dv")
 debug_color = Color(0.9999998, 0.008937159, 0.0674557, 0.41960785)
 
 [node name="MISION" parent="." unique_id=69943062 instance=ExtResource("6_0bno8")]
-position = Vector2(74, -162)
+position = Vector2(-44.999992, -140.00002)
 
 [node name="GoblinPrincipal" parent="." unique_id=988583641 node_paths=PackedStringArray("walking_sound") instance=ExtResource("2_4sbgq")]
 scale = Vector2(1, 1)
@@ -417,10 +417,10 @@ volume_db = -12.552
 position = Vector2(-119, 16)
 
 [node name="Vela2" parent="." unique_id=1153917954 instance=ExtResource("7_4d3p6")]
-position = Vector2(26, -61)
+position = Vector2(31, -76)
 
 [node name="Vela3" parent="." unique_id=1182546239 instance=ExtResource("7_4d3p6")]
-position = Vector2(123, -62)
+position = Vector2(124, -76)
 
 [node name="Vela4" parent="." unique_id=209089524 instance=ExtResource("7_4d3p6")]
 position = Vector2(153, 34)
