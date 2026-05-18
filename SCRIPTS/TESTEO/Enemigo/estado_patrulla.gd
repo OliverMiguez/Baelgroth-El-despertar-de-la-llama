@@ -1,9 +1,14 @@
 extends Node
+class_name EstadoPatrulla
+@onready var animaciones: AnimatedSprite2D = $"../../AnimatedSprite2D"
 
+# Referencia al nodo padre del enemigo
 var enemigo: Enemigo
+# Referencia al nodo con el que hace el patron de movimiento
 var agente:  NavigationAgent2D
 
-const VELOCIDAD         := 60.0
+# Constantes de movimiento
+const VELOCIDAD         := 55.0
 const DISTANCIA_LLEGADA := 10.0
 const TIEMPO_PAUSA      := 1.2
 
@@ -11,19 +16,33 @@ var _indice   := 0
 var _pausando := false
 var _timer    := 0.0
 
-func configurar(nodo_enemigo: Enemigo):
-	enemigo = nodo_enemigo
-	agente  = enemigo.agente
+var posicion_inicial_x:float
+var posicion_inicial_y:float
+var posicion_inicial:Vector2
 
+
+# Configura las variables iniciales con los valores correspondientes
+func configurar(nodo_enemigo: Enemigo):
+	enemigo = nodo_enemigo # Asigna el nodo padre a la variable
+	agente  = enemigo.agente # Asigna el nodo de NavigationAgent2D a la variable
+
+# Cuando se inicia el estado
 func al_entrar():
+	posicion_inicial_x = enemigo.position.x
+	posicion_inicial_y = enemigo.position.y
+	posicion_inicial = Vector2(enemigo.position)
+	# Si no se registro ningun marker2D al enemigo
 	if enemigo.puntos_resueltos.is_empty():
+		# Envia una advertencia por terminal
 		push_warning("[Patrulla]: no hay puntos asignados.")
 		return
+		# Reinicia las variables 
 	_pausando = false
 	_timer    = 0.0
 	_indice   = _punto_mas_cercano()
 	_ir_al_punto(_indice)
 
+# Revos si hay marker2d asignados
 func tick(delta: float):
 	if enemigo.puntos_resueltos.is_empty():
 		return
@@ -48,8 +67,31 @@ func tick(delta: float):
 	var siguiente_pos = agente.get_next_path_position()
 	var dir = (siguiente_pos - enemigo.global_position).normalized()
 	enemigo.velocity = dir * VELOCIDAD
+	
+	_actualizar_animacion(dir)
+	enemigo.actualizar_area_deteccion(dir)  # añadir esta linea
+	
+# Modifica las animaciones
+func _actualizar_animacion(dir: Vector2):
+	# Si la velocidad es casi 0, aseguramos que esté en Idle
+	if dir.length() < 0.1:
+		animaciones.play("Idle")
+		return
+
+	# Determinamos la dirección principal (Horizontal o Vertical)
+	if abs(dir.x) > abs(dir.y):
+		# Movimiento Horizontal
+		animaciones.play("Lateral")
+		animaciones.flip_h = dir.x < 0 # True si va a la izquierda
+	else:
+		# Movimiento Vertical
+		if dir.y > 0:
+			animaciones.play("Abajo")
+		else:
+			animaciones.play("Arriba")
 
 func _iniciar_pausa():
+	animaciones.play("Idle")
 	_pausando = true
 	_timer    = TIEMPO_PAUSA
 	enemigo.velocity = Vector2.ZERO
