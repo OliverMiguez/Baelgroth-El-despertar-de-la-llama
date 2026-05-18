@@ -14,7 +14,7 @@ func state_process(_delta:float) -> void:
 	actualizar_animacion_movimiento()
 
 	# Cambia al estado rock
-	if Input.is_action_just_pressed("Lanzar") and father.velocity == Vector2.ZERO:
+	if Input.is_action_just_pressed("Lanzar") and father.velocity == Vector2.ZERO and father.activar_lanzar_piedra == true:
 		next_state = rock_state
 	
 	elif father.velocity == Vector2.ZERO:

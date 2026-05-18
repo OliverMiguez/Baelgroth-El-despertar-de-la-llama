@@ -37,6 +37,9 @@ var direccion_actual:Vector2 = Vector2.RIGHT
 
 var paso_alternado: bool = false
 
+# Permite que el jugador lance piedras solo cuando este sepa
+@export var activar_lanzar_piedra:bool = false
+
 # Se ejecuta al inicio del progroma
 func _ready():
 	print("[Test]: El personaje cargo inicialmente")
@@ -131,12 +134,12 @@ func exit_a_brush():
 
 # Instancia la piedra y la mueve a la direccion correspondiente
 func lanzar_piedra():
-	if Input.is_action_just_pressed("Lanzar"):
-		var piedra_scene = instancia_piedra_packed.instantiate() # Instancia la escena de la piedra
-		get_parent().add_child(piedra_scene) # La añade al arbol de nodos
-		piedra_scene.global_position = piedra_spawn_point.global_position # La coloca en la posicion del marker 2d
-		piedra_scene.direction = direccion_actual
-		
+	if activar_lanzar_piedra == true:
+		if Input.is_action_just_pressed("Lanzar"):
+			var piedra_scene = instancia_piedra_packed.instantiate() # Instancia la escena de la piedra
+			get_parent().add_child(piedra_scene) # La añade al arbol de nodos
+			piedra_scene.global_position = piedra_spawn_point.global_position # La coloca en la posicion del marker 2d
+			piedra_scene.direction = direccion_actual
 
 # Administrar el sonido de los pasos
 func _on_animaciones_goblin_frame_changed() -> void:

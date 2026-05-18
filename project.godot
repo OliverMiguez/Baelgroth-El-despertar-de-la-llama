@@ -63,6 +63,10 @@ audio/channel_defaults={
 }
 }
 
+[display]
+
+window/size/mode=3
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/dialogic/plugin.cfg")
