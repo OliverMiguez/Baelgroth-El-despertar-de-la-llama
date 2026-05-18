@@ -1,4 +1,4 @@
-extends Area2D
+extends RigidBody2D
 class_name pielda
 
 signal piedra_detenida  # avisamos cuando la piedra termino su recorrido
@@ -15,6 +15,9 @@ var deteccion_enemigo:bool = false
 
 # Permite quitar la colision a la piedra
 var quitar_colision:bool = false
+# Para evitar mov raros
+func _ready() -> void:
+	freeze = true
 
 func _physics_process(delta: float) -> void:
 	# Si pasaron 3 segundos(lo que dura el timer) y el enemigo no detecto la piedra, o ya salio de su area , quita la colision a la piedra
@@ -32,25 +35,20 @@ func _physics_process(delta: float) -> void:
 	var distancia_a_moverse = velocidad * delta
 	var movimiento_real = direction * distancia_a_moverse
 	
-	position += movimiento_real
-	distancia_viajada += distancia_a_moverse
-	
-	if distancia_viajada >= dist_max:
+	var colision = move_and_collide(movimiento_real)
+	if colision:
 		tratar_piedra()
+		return
+	
+	#position += movimiento_real
+	#distancia_viajada += distancia_a_moverse
+	#
+	#if distancia_viajada >= dist_max:
+		#tratar_piedra()
 
 func tratar_piedra():
 	direction = Vector2.ZERO
 	piedra_detenida.emit()  # avisamos al mundo que ya paramos
-	
-func _on_body_entered(body: Node2D) -> void:
-	if body is Enemigo:
-		deteccion_enemigo = true # Detecta al enemigo y envia una señal al global para indicarle al enemigo
-		ManejadorDeDeteccion.deteccion_enemigo = deteccion_enemigo
-
-func _on_body_exited(body: Node2D) -> void:
-	if body is Enemigo:
-		deteccion_enemigo = false # Deja de detectar al enemigo
-		ManejadorDeDeteccion.deteccion_enemigo = deteccion_enemigo # Envia señal al global para indicarle al enemigo
 
 # Permite apagar la colision de la piedra para que no se detecte más
 func _on_eliminar_area_timeout() -> void:
@@ -59,3 +57,15 @@ func _on_eliminar_area_timeout() -> void:
 # Elimina el area si esta piedra no se detecto al cabo de un tiempo
 func manage_colision():
 	colision_area_pielda.queue_free()
+
+
+func _on_deteccion_pielda_body_entered(body: Node2D) -> void:
+	if body is Enemigo:
+		deteccion_enemigo = true # Detecta al enemigo y envia una señal al global para indicarle al enemigo
+		ManejadorDeDeteccion.deteccion_enemigo = deteccion_enemigo
+
+
+func _on_deteccion_pielda_body_exited(body: Node2D) -> void:
+	if body is Enemigo:
+		deteccion_enemigo = false # Deja de detectar al enemigo
+		ManejadorDeDeteccion.deteccion_enemigo = deteccion_enemigo # Envia señal al global para indicarle al enemigo

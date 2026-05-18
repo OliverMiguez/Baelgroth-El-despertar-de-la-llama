@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://divxa4xiqj2xg"]
+
+[ext_resource type="Texture2D" uid="uid://d3pj4kkgdeqx0" path="res://ARTE/vela.png" id="1_odf0n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_odf0n"]
+size = Vector2(18, 51)
+
+[node name="Vela" type="Node2D" unique_id=612514714]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=941287165]
+scale = Vector2(2, 2)
+texture = ExtResource("1_odf0n")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=233779698]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1508022199]
+position = Vector2(-1, 0.5)
+shape = SubResource("RectangleShape2D_odf0n")

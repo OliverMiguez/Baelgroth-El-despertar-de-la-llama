@@ -532,7 +532,7 @@ height = 23.333332
 
 [node name="GoblinPrincipal" type="CharacterBody2D" unique_id=988583641]
 scale = Vector2(0.6, 0.6)
-collision_mask = 255
+collision_mask = 239
 script = ExtResource("1_xqqjy")
 walking_speed = 50.0
 
@@ -568,7 +568,7 @@ walk_state = NodePath("../Walk")
 idle_state = NodePath("../Idle")
 
 [node name="PiedraSpawnPoint" type="Marker2D" parent="." unique_id=1623606182]
-position = Vector2(1.1920929e-07, -2.3841858e-07)
+position = Vector2(8.333333, 0)
 
 [node name="PasosAudio" type="AudioStreamPlayer2D" parent="." unique_id=1218933246]
 stream = ExtResource("11_pdu6u")

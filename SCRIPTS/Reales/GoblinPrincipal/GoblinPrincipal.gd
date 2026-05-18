@@ -18,6 +18,7 @@ signal escondido_cambiado
 
 @onready var pasos_audio: AudioStreamPlayer2D = $PasosAudio
 
+
 # Packed Scene de la piedra
 var instancia_piedra_packed = preload("res://ESCENAS/Reales/Pielda/pielda.tscn")
 
@@ -50,7 +51,7 @@ func _physics_process(delta):
 	handle_movement()
 	# Activa el sistema de esconderse
 	handle_hide()
-	#lanzar_piedra()
+	lanzar_piedra()
 	
 	# Permite que el personaje se mueva
 	move_and_slide()
@@ -97,6 +98,12 @@ func handle_movement():
 		direccion_actual = velocity_direction # formato desado por mi, guarda la direccion normalizada para el proyectil
 		
 	velocity = velocity_direction * walking_speed
+	
+#ajusta el spawn point de la piedra segun la direccion horizontal
+	if direccion_actual.x > 0:
+		piedra_spawn_point.position.x = abs(piedra_spawn_point.position.x)  # lado derecho
+	elif direccion_actual.x < 0:
+		piedra_spawn_point.position.x = -abs(piedra_spawn_point.position.x)  # lado izquierdo
 
 # Revisa si se puede esconder o no el goblin principal
 func handle_hide():
@@ -137,14 +144,3 @@ func _on_animaciones_goblin_frame_changed() -> void:
 		if velocity != Vector2.ZERO:
 			pasos_audio.pitch_scale = randf_range(0.75, 1.25)
 			pasos_audio.play()
-
-
-func _on_dialogo_terminado():
-	walking_speed = 100.0
-	
-## Dialogo de pruebas
-#func _on_dialog_prueba_body_entered(body: Node2D) -> void:
-	#if body is goblin_principal and Input.is_action_just_pressed("Hablar"):
-		#body.walking_speed = 0
-		#
-		#Dialogic.start("res://DIALOGIC/DIALOGOS/ConversacionTest.dtl")
