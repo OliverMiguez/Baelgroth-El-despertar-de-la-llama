@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqcdlftumwo73"
-path="res://.godot/imported/Cesped-export.png-adcdb9eb808255db5cc2039ec9f6f350.ctex"
+uid="uid://djwvbfju8retg"
+path="res://.godot/imported/Cesped.png-0c0f143d9dbfb9b93a92c096462e41ee.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ARTE/Bosque/Cesped-export.png"
-dest_files=["res://.godot/imported/Cesped-export.png-adcdb9eb808255db5cc2039ec9f6f350.ctex"]
+source_file="res://ARTE/Testeo/Cesped.png"
+dest_files=["res://.godot/imported/Cesped.png-0c0f143d9dbfb9b93a92c096462e41ee.ctex"]
 
 [params]
 

@@ -1,9 +1,10 @@
 [gd_scene format=4 uid="uid://hn5i0audq11a"]
 
 [ext_resource type="Script" uid="uid://b8bcidv1gcp2h" path="res://SCRIPTS/Reales/Cueva/cueva.gd" id="1_q7o4g"]
-[ext_resource type="Texture2D" uid="uid://do706prf1sy3w" path="res://ARTE/tile relleno.png" id="2_4d3p6"]
+[ext_resource type="Texture2D" uid="uid://do706prf1sy3w" path="res://ARTE/cuevaGrande/tile relleno.png" id="2_4d3p6"]
 [ext_resource type="PackedScene" uid="uid://dyw8875pb8bj2" path="res://ESCENAS/Reales/Goblins/GoblinPrincipal/Goblin01.tscn" id="2_4sbgq"]
-[ext_resource type="Texture2D" uid="uid://4tlxp5wyx3lc" path="res://ARTE/Cueva3.png" id="3_0bno8"]
+[ext_resource type="Shader" uid="uid://c45i5eiycvpee" path="res://Shaders/shader1.gdshader" id="2_qhpb0"]
+[ext_resource type="Texture2D" uid="uid://4tlxp5wyx3lc" path="res://ARTE/cuevaGrande/Cueva3.png" id="3_0bno8"]
 [ext_resource type="AudioStream" uid="uid://pmgtm5r40wad" path="res://Musica/Test/demo cueva 2.wav" id="4_yksd0"]
 [ext_resource type="PackedScene" uid="uid://dou7v0r68af8v" path="res://ESCENAS/Reales/Goblins/MISION/mision.tscn" id="6_0bno8"]
 [ext_resource type="AudioStream" uid="uid://bt6sl8u445gcu" path="res://EfectosSonido/mollyroselee-walking-on-gravel-468536.wav" id="6_6v0dv"]
@@ -135,11 +136,85 @@ tracks/4/keys = {
 "update": 0,
 "values": [Color(0.5539114, 0.54784447, 3.5207364e-07, 0.83770716)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Control/Transicion:material:shader_parameter/progress")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-12.552]
+}
+
+[sub_resource type="Animation" id="Animation_qhpb0"]
+resource_name = "Trans"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Transicion:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8333333, 1.2, 1.2666667, 1.3666667, 1.6, 2, 2.4666667, 3.0333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0]
+}
+
+[sub_resource type="Animation" id="Animation_nrupj"]
+resource_name = "audio_salida"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.36666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-12.552, -44.131]
+}
+
+[sub_resource type="Animation" id="Animation_11f2h"]
+resource_name = "trans2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Transicion:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23256797, 0.43333334, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [3.0, 2.0, 1.0, 0.0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4sbgq"]
 _data = {
 &"PointLight": SubResource("Animation_tgmhi"),
-&"RESET": SubResource("Animation_yksd0")
+&"RESET": SubResource("Animation_yksd0"),
+&"Trans": SubResource("Animation_qhpb0"),
+&"audio_salida": SubResource("Animation_nrupj"),
+&"trans2": SubResource("Animation_11f2h")
 }
 
 [sub_resource type="Gradient" id="Gradient_tgmhi"]
@@ -179,6 +254,34 @@ size = Vector2(13, 44)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhpb0"]
 size = Vector2(23, 47)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_11f2h"]
+shader = ExtResource("2_qhpb0")
+shader_parameter/use_sprite_alpha = true
+shader_parameter/use_transition_texture = false
+shader_parameter/transition_type = 0
+shader_parameter/position = Vector2(0, 0)
+shader_parameter/invert = false
+shader_parameter/grid_size = Vector2(1, 1)
+shader_parameter/rotation_angle = 45.0
+shader_parameter/global_x_mirror = false
+shader_parameter/global_y_mirror = false
+shader_parameter/local_x_mirror = false
+shader_parameter/local_y_mirror = false
+shader_parameter/stagger = Vector2(0, 0)
+shader_parameter/cumulative_stagger_flip = false
+shader_parameter/cumulative_stagger = Vector2(0, 0)
+shader_parameter/stagger_frequency = Vector2i(2, 2)
+shader_parameter/flip_frequency = Vector2i(1, 1)
+shader_parameter/basic_feather = 0.0
+shader_parameter/use_mask_size = false
+shader_parameter/mask_size = Vector2(100, 100)
+shader_parameter/edges = 6
+shader_parameter/shape_feather = 0.0
+shader_parameter/sectors = 1
+shader_parameter/clock_feather = 0.0
+shader_parameter/progress = 0.0
+shader_parameter/progress_bias = Vector2(0, 0)
+
 [node name="Cueva" type="Node2D" unique_id=1388482921]
 script = ExtResource("1_q7o4g")
 
@@ -187,7 +290,7 @@ color = Color(0.33023036, 0.21708387, 0.33059007, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=417849965]
 libraries/ = SubResource("AnimationLibrary_4sbgq")
-autoplay = &"PointLight"
+autoplay = &"Trans"
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=500434198]
 position = Vector2(26, -96)
@@ -435,6 +538,24 @@ position = Vector2(160, 80)
 position = Vector2(9.5, 2.5)
 shape = SubResource("RectangleShape2D_qhpb0")
 debug_color = Color(0.8063247, 0.0023412723, 0.9951524, 0.41960785)
+
+[node name="Control" type="Control" parent="." unique_id=283761973]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -655.0
+offset_top = -388.0
+offset_right = 494.0
+offset_bottom = 435.0
+
+[node name="Transicion" type="ColorRect" parent="Control" unique_id=1350210611]
+material = SubResource("ShaderMaterial_11f2h")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [connection signal="body_entered" from="Salida" to="." method="_on_salida_body_entered"]
 [connection signal="body_exited" from="Salida" to="." method="_on_salida_body_exited"]

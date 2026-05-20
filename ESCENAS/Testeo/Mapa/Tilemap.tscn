@@ -1,8 +1,8 @@
 [gd_scene format=4 uid="uid://b71ebqox2kbwo"]
 
-[ext_resource type="Texture2D" uid="uid://bb1r0n748jcis" path="res://ARTE/Bosque/Bosque.png" id="1_s600u"]
+[ext_resource type="Texture2D" uid="uid://bb1r0n748jcis" path="res://ARTE/Testeo/Bosque.png" id="1_s600u"]
 [ext_resource type="PackedScene" uid="uid://dyw8875pb8bj2" path="res://ESCENAS/Reales/Goblins/GoblinPrincipal/Goblin01.tscn" id="2_5tcps"]
-[ext_resource type="Texture2D" uid="uid://djwvbfju8retg" path="res://ARTE/Bosque/Cesped.png" id="2_r6scr"]
+[ext_resource type="Texture2D" uid="uid://djwvbfju8retg" path="res://ARTE/Testeo/Cesped.png" id="2_r6scr"]
 [ext_resource type="Texture2D" uid="uid://bsi8v3bqgctr" path="res://ARTE/Testeo/Sand.png" id="2_wr0rg"]
 [ext_resource type="PackedScene" uid="uid://cnam07d5cw1u" path="res://ESCENAS/Reales/Arbusto/Arbusto.tscn" id="3_5tcps"]
 [ext_resource type="PackedScene" uid="uid://dwu6d60vgw7vg" path="res://ESCENAS/Testeo/Enemigo/Enemigo_Test.tscn" id="4_6tgta"]

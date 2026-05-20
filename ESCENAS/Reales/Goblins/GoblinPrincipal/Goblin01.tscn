@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://bdsi0yj3wk0bn" path="res://SCRIPTS/Reales/GoblinPrincipal/Estados/Fsm.gd" id="4_w2rh8"]
 [ext_resource type="Script" uid="uid://c7ll4qokyn5kk" path="res://SCRIPTS/Reales/GoblinPrincipal/Estados/Idle.gd" id="5_ul7nk"]
 [ext_resource type="Script" uid="uid://bd1y1r6a18gqs" path="res://SCRIPTS/Reales/GoblinPrincipal/Estados/Walk.gd" id="6_n031j"]
+[ext_resource type="Texture2D" uid="uid://bj2mbl55irys7" path="res://ARTE/Goblins/Goblin Principal/Esconderse.png" id="7_0oa0b"]
 [ext_resource type="Script" uid="uid://0wkmkxrlm2j4" path="res://SCRIPTS/Reales/GoblinPrincipal/Estados/Rock.gd" id="7_oybqk"]
 [ext_resource type="AudioStream" uid="uid://djgpfm4hejuwq" path="res://EfectosSonido/Pasos.mp3" id="11_pdu6u"]
 [ext_resource type="AudioStream" uid="uid://bt6sl8u445gcu" path="res://EfectosSonido/mollyroselee-walking-on-gravel-468536.wav" id="12_dvsra"]
@@ -264,6 +265,54 @@ region = Rect2(0, 128, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_7e325"]
 atlas = ExtResource("2_1t84a")
 region = Rect2(96, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ley5"]
+atlas = ExtResource("7_0oa0b")
+region = Rect2(192, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4hwm1"]
+atlas = ExtResource("7_0oa0b")
+region = Rect2(224, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4lwd"]
+atlas = ExtResource("7_0oa0b")
+region = Rect2(256, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c7nk0"]
+atlas = ExtResource("7_0oa0b")
+region = Rect2(192, 256, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7q37b"]
+atlas = ExtResource("7_0oa0b")
+region = Rect2(224, 256, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ok02n"]
+atlas = ExtResource("7_0oa0b")
+region = Rect2(256, 256, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2gxye"]
+atlas = ExtResource("7_0oa0b")
+region = Rect2(256, 256, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ymyrc"]
+atlas = ExtResource("7_0oa0b")
+region = Rect2(224, 256, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6v6g"]
+atlas = ExtResource("7_0oa0b")
+region = Rect2(192, 256, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fj17k"]
+atlas = ExtResource("7_0oa0b")
+region = Rect2(256, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4l6wx"]
+atlas = ExtResource("7_0oa0b")
+region = Rect2(224, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixnfk"]
+atlas = ExtResource("7_0oa0b")
+region = Rect2(192, 224, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5xw4v"]
 animations = [{
@@ -525,6 +574,52 @@ animations = [{
 "loop": true,
 "name": &"correr_izquierda",
 "speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ley5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4hwm1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4lwd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7nk0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7q37b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ok02n")
+}],
+"loop": false,
+"name": &"esconderse",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2gxye")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ymyrc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e6v6g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fj17k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4l6wx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ixnfk")
+}],
+"loop": true,
+"name": &"salir_esconderse",
+"speed": 4.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j0npl"]
@@ -539,9 +634,8 @@ walking_speed = 50.0
 
 [node name="AnimacionesGoblin" type="AnimatedSprite2D" parent="." unique_id=583185534]
 sprite_frames = SubResource("SpriteFrames_5xw4v")
-animation = &"Idle"
+animation = &"salir_esconderse"
 autoplay = "Idle"
-frame_progress = 0.70538354
 
 [node name="Colision" type="CollisionShape2D" parent="." unique_id=1023046994]
 position = Vector2(1.6666666, 3.3333333)

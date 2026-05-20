@@ -1,87 +1,87 @@
-[gd_scene format=3 uid="uid://dwu6d60vgw7vg"]
+[gd_scene format=3 uid="uid://dwf7lm8q7ra35"]
 
-[ext_resource type="Script" uid="uid://chvoosovkocw3" path="res://SCRIPTS/TESTEO/Enemigo/enemigo_test.gd" id="1_2g3ou"]
-[ext_resource type="Script" uid="uid://diy6q0dpurne4" path="res://SCRIPTS/TESTEO/Enemigo/fsm.gd" id="3_4dsuy"]
-[ext_resource type="Script" uid="uid://clcko3yfkwfas" path="res://SCRIPTS/TESTEO/Enemigo/estado_patrulla.gd" id="4_hqjbl"]
-[ext_resource type="Script" uid="uid://5hbtn1a5okcg" path="res://SCRIPTS/TESTEO/Enemigo/estado_alerta.gd" id="5_p5h47"]
-[ext_resource type="Texture2D" uid="uid://2x55ed8hxaad" path="res://ARTE/Pajaro/PajaroAnimaciones.png" id="6_7wa8m"]
-[ext_resource type="Script" uid="uid://diofky1jjghjl" path="res://ESCENAS/Testeo/Enemigo/estado_investigar.gd" id="6_su5wh"]
-[ext_resource type="Script" uid="uid://07mospkqjene" path="res://SCRIPTS/TESTEO/Enemigo/estado_investigar_piedra.gd" id="7_7wa8m"]
+[ext_resource type="Script" uid="uid://chvoosovkocw3" path="res://SCRIPTS/TESTEO/Enemigo/enemigo_test.gd" id="1_qmxr3"]
+[ext_resource type="Texture2D" uid="uid://2x55ed8hxaad" path="res://ARTE/Pajaro/PajaroAnimaciones.png" id="2_1po6a"]
+[ext_resource type="Script" uid="uid://diy6q0dpurne4" path="res://SCRIPTS/TESTEO/Enemigo/fsm.gd" id="3_erjjh"]
+[ext_resource type="Script" uid="uid://clcko3yfkwfas" path="res://SCRIPTS/TESTEO/Enemigo/estado_patrulla.gd" id="4_ksae2"]
+[ext_resource type="Script" uid="uid://5hbtn1a5okcg" path="res://SCRIPTS/TESTEO/Enemigo/estado_alerta.gd" id="5_b28p4"]
+[ext_resource type="Script" uid="uid://diofky1jjghjl" path="res://ESCENAS/Testeo/Enemigo/estado_investigar.gd" id="6_vyjmp"]
+[ext_resource type="Script" uid="uid://07mospkqjene" path="res://SCRIPTS/TESTEO/Enemigo/estado_investigar_piedra.gd" id="7_u14mf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_syt4u"]
-atlas = ExtResource("6_7wa8m")
+atlas = ExtResource("2_1po6a")
 region = Rect2(0, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tffrc"]
-atlas = ExtResource("6_7wa8m")
+atlas = ExtResource("2_1po6a")
 region = Rect2(32, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n5yv2"]
-atlas = ExtResource("6_7wa8m")
+atlas = ExtResource("2_1po6a")
 region = Rect2(64, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ogqbh"]
-atlas = ExtResource("6_7wa8m")
+atlas = ExtResource("2_1po6a")
 region = Rect2(96, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_od33s"]
-atlas = ExtResource("6_7wa8m")
+atlas = ExtResource("2_1po6a")
 region = Rect2(0, 128, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4td12"]
-atlas = ExtResource("6_7wa8m")
+atlas = ExtResource("2_1po6a")
 region = Rect2(32, 128, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6qybk"]
-atlas = ExtResource("6_7wa8m")
+atlas = ExtResource("2_1po6a")
 region = Rect2(64, 128, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n24p5"]
-atlas = ExtResource("6_7wa8m")
+atlas = ExtResource("2_1po6a")
 region = Rect2(96, 128, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a2hgd"]
-atlas = ExtResource("6_7wa8m")
+atlas = ExtResource("2_1po6a")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gxtee"]
-atlas = ExtResource("6_7wa8m")
+atlas = ExtResource("2_1po6a")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5xuh1"]
-atlas = ExtResource("6_7wa8m")
+atlas = ExtResource("2_1po6a")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3msvr"]
-atlas = ExtResource("6_7wa8m")
+atlas = ExtResource("2_1po6a")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xp0tc"]
-atlas = ExtResource("6_7wa8m")
+atlas = ExtResource("2_1po6a")
 region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ilg85"]
-atlas = ExtResource("6_7wa8m")
+atlas = ExtResource("2_1po6a")
 region = Rect2(32, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mnnan"]
-atlas = ExtResource("6_7wa8m")
+atlas = ExtResource("2_1po6a")
 region = Rect2(64, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4kwlo"]
-atlas = ExtResource("6_7wa8m")
+atlas = ExtResource("2_1po6a")
 region = Rect2(96, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8f18o"]
-atlas = ExtResource("6_7wa8m")
+atlas = ExtResource("2_1po6a")
 region = Rect2(128, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5jkbh"]
-atlas = ExtResource("6_7wa8m")
+atlas = ExtResource("2_1po6a")
 region = Rect2(0, 96, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qks0o"]
-atlas = ExtResource("6_7wa8m")
+atlas = ExtResource("2_1po6a")
 region = Rect2(32, 96, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bt1iw"]
@@ -168,18 +168,18 @@ animations = [{
 radius = 9.055386
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqjbl"]
-size = Vector2(68.5, 49)
+size = Vector2(67.5, 46)
 
 [node name="EnemigoTest" type="CharacterBody2D" unique_id=2057307827]
 collision_layer = 2
 collision_mask = 9
 motion_mode = 1
-script = ExtResource("1_2g3ou")
+script = ExtResource("1_qmxr3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=602771091]
 sprite_frames = SubResource("SpriteFrames_bt1iw")
-animation = &"Lateral"
-frame_progress = 0.069325574
+animation = &"Idle"
+autoplay = "Idle"
 
 [node name="ColisionEnemigo" type="CollisionShape2D" parent="." unique_id=577286090]
 shape = SubResource("CircleShape2D_2g3ou")
@@ -191,22 +191,23 @@ collision_layer = 32
 collision_mask = 25
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDeteccion" unique_id=1065688013]
+position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_hqjbl")
 
 [node name="FSM" type="Node" parent="." unique_id=1828577291]
-script = ExtResource("3_4dsuy")
+script = ExtResource("3_erjjh")
 
 [node name="EstadoPatrulla" type="Node" parent="FSM" unique_id=266447665]
-script = ExtResource("4_hqjbl")
+script = ExtResource("4_ksae2")
 
 [node name="EstadoAlerta" type="Node" parent="FSM" unique_id=494355209]
-script = ExtResource("5_p5h47")
+script = ExtResource("5_b28p4")
 
 [node name="EstadoInvestigar" type="Node" parent="FSM" unique_id=1414055127]
-script = ExtResource("6_su5wh")
+script = ExtResource("6_vyjmp")
 
 [node name="EstadoInvestigarPiedra" type="Node" parent="FSM" unique_id=790574653]
-script = ExtResource("7_7wa8m")
+script = ExtResource("7_u14mf")
 
 [connection signal="body_entered" from="AreaDeteccion" to="." method="_on_area_deteccion_body_entered"]
 [connection signal="body_exited" from="AreaDeteccion" to="." method="_on_area_deteccion_body_exited"]

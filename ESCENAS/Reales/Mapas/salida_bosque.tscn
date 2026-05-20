@@ -1,14 +1,14 @@
 [gd_scene format=4 uid="uid://bics8uhp0hcpf"]
 
-[ext_resource type="Texture2D" uid="uid://dqcdlftumwo73" path="res://ARTE/Bosque/Cesped-export.png" id="1_g7bsg"]
+[ext_resource type="Texture2D" uid="uid://dqcdlftumwo73" path="res://ARTE/Testeo/Cesped-export.png" id="1_g7bsg"]
 [ext_resource type="Texture2D" uid="uid://lrc78lj0qmu8" path="res://ARTE/Vallas/Vaya01.png" id="2_3jx61"]
-[ext_resource type="Texture2D" uid="uid://dvgjt55igwxtn" path="res://ARTE/Bosque/Cesped-export v2.png" id="3_3jx61"]
+[ext_resource type="Texture2D" uid="uid://dvgjt55igwxtn" path="res://ARTE/Testeo/Cesped-export v2.png" id="3_3jx61"]
 [ext_resource type="PackedScene" uid="uid://dyw8875pb8bj2" path="res://ESCENAS/Reales/Goblins/GoblinPrincipal/Goblin01.tscn" id="3_aepfk"]
 [ext_resource type="AudioStream" uid="uid://djgpfm4hejuwq" path="res://EfectosSonido/Pasos.mp3" id="3_cihlx"]
-[ext_resource type="AudioStream" uid="uid://dlrl4c522h63w" path="res://Musica/Test/forestV2.wav" id="5_aepfk"]
 [ext_resource type="Texture2D" uid="uid://blni5o2d0ml60" path="res://ARTE/Bosque/Cesped-v3.png" id="5_h8loy"]
-[ext_resource type="Texture2D" uid="uid://b1l4mx3l6yvar" path="res://ARTE/tronco.png" id="6_1ksbu"]
+[ext_resource type="Texture2D" uid="uid://b1l4mx3l6yvar" path="res://ARTE/Bosque/tronco.png" id="6_1ksbu"]
 [ext_resource type="PackedScene" uid="uid://bxcubn1u1p0sj" path="res://ESCENAS/Reales/Goblins/Guardias/goblin_vigilante.tscn" id="8_x4uy3"]
+[ext_resource type="Shader" uid="uid://c45i5eiycvpee" path="res://Shaders/shader1.gdshader" id="10_tfig0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1ksbu"]
 texture = ExtResource("1_g7bsg")
@@ -151,6 +151,212 @@ sources/0 = SubResource("TileSetAtlasSource_cihlx")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cihlx"]
 size = Vector2(7, 258)
 
+[sub_resource type="Animation" id="Animation_tgmhi"]
+resource_name = "PointLight"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.06666666, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.5529412, 0.54901963, 0, 0.58431375), Color(0.5529412, 0.54901963, 0, 0.8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PointLight2D2:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.100000024, 0.6333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.5529412, 0.54901963, 0, 0.58431375), Color(0.55453277, 0.54709184, 5.7756904e-07, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PointLight2D3:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.13333334, 0.53333336),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.5529412, 0.54901963, 0, 0.8), Color(0.5529412, 0.54901963, 0, 0.58431375)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PointLight2D4:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.5529412, 0.54901963, 0, 0.8), Color(0.5529412, 0.54901963, 0, 0.58431375)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PointLight2D5:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.06666667, 0.96666664),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.5529412, 0.54901963, 0, 0.58431375), Color(0.5529412, 0.54901963, 0, 0.8)]
+}
+
+[sub_resource type="Animation" id="Animation_yksd0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.55453277, 0.54709184, 5.7756904e-07, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PointLight2D2:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.5539114, 0.54784447, 3.5207364e-07, 0.83770716)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PointLight2D3:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.5539114, 0.54784447, 3.5207364e-07, 0.83770716)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PointLight2D4:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.5539114, 0.54784447, 3.5207364e-07, 0.83770716)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PointLight2D5:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.5539114, 0.54784447, 3.5207364e-07, 0.83770716)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Control/Transicion:material:shader_parameter/progress")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_qhpb0"]
+resource_name = "Trans"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Transicion:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8333333, 1.2, 1.2666667, 1.3666667, 1.6, 2, 2.4666667, 3.0333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0]
+}
+
+[sub_resource type="Animation" id="Animation_11f2h"]
+resource_name = "trans2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Transicion:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23256797, 0.43333334, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [3.0, 2.0, 1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kty7h"]
+_data = {
+&"PointLight": SubResource("Animation_tgmhi"),
+&"RESET": SubResource("Animation_yksd0"),
+&"Trans": SubResource("Animation_qhpb0"),
+&"trans2": SubResource("Animation_11f2h")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o3q80"]
+shader = ExtResource("10_tfig0")
+shader_parameter/use_sprite_alpha = true
+shader_parameter/use_transition_texture = false
+shader_parameter/transition_type = 0
+shader_parameter/position = Vector2(0, 0)
+shader_parameter/invert = false
+shader_parameter/grid_size = Vector2(1, 1)
+shader_parameter/rotation_angle = 45.0
+shader_parameter/global_x_mirror = false
+shader_parameter/global_y_mirror = false
+shader_parameter/local_x_mirror = false
+shader_parameter/local_y_mirror = false
+shader_parameter/stagger = Vector2(0, 0)
+shader_parameter/cumulative_stagger_flip = false
+shader_parameter/cumulative_stagger = Vector2(0, 0)
+shader_parameter/stagger_frequency = Vector2i(2, 2)
+shader_parameter/flip_frequency = Vector2i(1, 1)
+shader_parameter/basic_feather = 0.0
+shader_parameter/use_mask_size = false
+shader_parameter/mask_size = Vector2(100, 100)
+shader_parameter/edges = 6
+shader_parameter/shape_feather = 0.0
+shader_parameter/sectors = 1
+shader_parameter/clock_feather = 0.0
+shader_parameter/progress = 0.0
+shader_parameter/progress_bias = Vector2(0, 0)
+
 [node name="SalidaBosque" type="Node2D" unique_id=570234520]
 
 [node name="Suelo" type="TileMapLayer" parent="." unique_id=1951231554]
@@ -183,44 +389,37 @@ tile_set = SubResource("TileSet_o3q80")
 tile_map_data = PackedByteArray("AAAwAAwAAAAFAAUAAAAxAAwAAAAFAAUAAAAyAAwAAAAFAAUAAAAzAAwAAAAFAAUAAAA0AAwAAAAFAAUAAAA1AAwAAAAFAAUAAAA2AAwAAAAFAAUAAAA3AAwAAAAFAAUAAAA4AAwAAAAFAAUAAAA5AAwAAAAFAAUAAAA5AA0AAAAFAAUAAAAwAA0AAAAFAAUAAAAxAA0AAAAFAAUAAAAyAA0AAAAFAAUAAAAzAA0AAAAFAAUAAAA0AA0AAAAFAAUAAAA1AA0AAAAFAAUAAAA2AA0AAAAFAAUAAAA3AA0AAAAFAAUAAAA4AA0AAAAFAAUAAAA6AA0AAAAFAAUAAAA6AAwAAAAFAAUAAAAwAA4AAAAFAAUAAAAxAA4AAAAFAAUAAAAyAA4AAAAFAAUAAAAzAA4AAAAFAAUAAAA0AA4AAAAFAAUAAAA1AA4AAAAFAAUAAAA2AA4AAAAFAAUAAAA5AA4AAAAFAAUAAAA6AA4AAAAFAAUAAAA6AA8AAAAFAAUAAAAwAA8AAAAFAAUAAAAxAA8AAAAFAAUAAAAyAA8AAAAFAAUAAAAzAA8AAAAFAAUAAAA0AA8AAAAFAAUAAAA1AA8AAAAFAAUAAAA2AA8AAAAFAAUAAAA5AA8AAAAFAAUAAAA7ABMAAAAFAAUAAAA7ABIAAAAFAAUAAAA7ABEAAAAFAAUAAAA7ABAAAAAFAAUAAAA7AA8AAAAFAAUAAAA7AA4AAAAFAAUAAAA7AA0AAAAFAAUAAAA7AAwAAAAFAAUAAAA7AAsAAAAFAAUAAAA7AAoAAAAFAAUAAAA7AAkAAAAFAAUAAAA8AAkAAAAFAAUAAAA8AAoAAAAFAAUAAAA8AAsAAAAFAAUAAAA8AAwAAAAFAAUAAAA8AA0AAAAFAAUAAAA8ABAAAAAFAAUAAAA8ABEAAAAFAAUAAAA8ABIAAAAFAAUAAAA8ABMAAAAFAAUAAAA9ABMAAAAFAAUAAAA+ABMAAAAFAAUAAAA+ABIAAAAFAAUAAAA+ABEAAAAFAAUAAAA9ABEAAAAFAAUAAAA9ABAAAAAFAAUAAAA9AA8AAAAFAAUAAAA9AA4AAAAFAAUAAAA9AA0AAAAFAAUAAAA9AAwAAAAFAAUAAAA9AAsAAAAFAAUAAAA9AAoAAAAFAAUAAAA+AAsAAAAFAAUAAAA+AAwAAAAFAAUAAAA+AA0AAAAFAAUAAAA+AA4AAAAFAAUAAAA+AA8AAAAFAAUAAAA+ABAAAAAFAAUAAAAwABAAAAAFAAUAAAAwABEAAAAFAAUAAAAwABQAAAAFAAUAAAAwABUAAAAFAAUAAAAxABAAAAAFAAUAAAAxABEAAAAFAAUAAAAxABQAAAAFAAUAAAAxABUAAAAFAAUAAAAyABAAAAAFAAUAAAAyABEAAAAFAAUAAAAyABIAAAAFAAUAAAAyABMAAAAFAAUAAAAyABQAAAAFAAUAAAAyABUAAAAFAAUAAAAzABAAAAAFAAUAAAAzABEAAAAFAAUAAAAzABIAAAAFAAUAAAAzABMAAAAFAAUAAAAzABQAAAAFAAUAAAAzABUAAAAFAAUAAAA0ABAAAAAFAAUAAAA0ABEAAAAFAAUAAAA0ABIAAAAFAAUAAAA0ABMAAAAFAAUAAAA0ABQAAAAFAAUAAAA0ABUAAAAFAAUAAAA1ABAAAAAFAAUAAAA1ABEAAAAFAAUAAAA1ABIAAAAFAAUAAAA1ABMAAAAFAAUAAAA1ABQAAAAFAAUAAAA1ABUAAAAFAAUAAAA2ABAAAAAFAAUAAAA2ABIAAAAFAAUAAAA2ABMAAAAFAAUAAAA2ABQAAAAFAAUAAAA2ABUAAAAFAAUAAAA3ABAAAAAFAAUAAAA3ABIAAAAFAAUAAAA3ABMAAAAFAAUAAAA3ABQAAAAFAAUAAAA3ABUAAAAFAAUAAAA4ABAAAAAFAAUAAAA4ABEAAAAFAAUAAAA4ABIAAAAFAAUAAAA4ABMAAAAFAAUAAAA4ABQAAAAFAAUAAAA4ABUAAAAFAAUAAAA5ABAAAAAFAAUAAAA5ABEAAAAFAAUAAAA5ABQAAAAFAAUAAAA5ABUAAAAFAAUAAAA6ABAAAAAFAAUAAAA6ABEAAAAFAAUAAAA6ABQAAAAFAAUAAAA6ABUAAAAFAAUAAAA7ABQAAAAFAAUAAAA7ABUAAAAFAAUAAAA8ABQAAAAFAAUAAAA8ABUAAAAFAAUAAAA9ABIAAAAFAAUAAAA9ABQAAAAFAAUAAAA9ABUAAAAFAAUAAAA+ABQAAAAFAAUAAAA+ABUAAAAFAAUAAAA/ABAAAAAFAAUAAAA/ABEAAAAFAAUAAAA/ABIAAAAFAAUAAAA/ABMAAAAFAAUAAAA/ABQAAAAFAAUAAAA/ABUAAAAFAAUAAAA0AAQAAAACAAYAAAApABEAAAACAAYAAAAhAAgAAAACAAYAAAA=")
 tile_set = SubResource("TileSet_tfig0")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1347035630]
-stream = ExtResource("5_aepfk")
-volume_db = -5.379
-autoplay = true
-
-[node name="Troncos" type="Node" parent="." unique_id=1080177754]
-
-[node name="Tronco" type="Sprite2D" parent="Troncos" unique_id=1707257535]
+[node name="Tronco" type="Sprite2D" parent="." unique_id=1707257535]
 position = Vector2(569, 146)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("6_1ksbu")
 
-[node name="Tronco2" type="Sprite2D" parent="Troncos" unique_id=1992681059]
+[node name="Tronco2" type="Sprite2D" parent="." unique_id=1992681059]
 position = Vector2(493, 106)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("6_1ksbu")
 
-[node name="Tronco3" type="Sprite2D" parent="Troncos" unique_id=317701201]
+[node name="Tronco3" type="Sprite2D" parent="." unique_id=317701201]
 position = Vector2(318, 106)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("6_1ksbu")
 
-[node name="Tronco4" type="Sprite2D" parent="Troncos" unique_id=190441433]
+[node name="Tronco4" type="Sprite2D" parent="." unique_id=190441433]
 position = Vector2(282, 182)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("6_1ksbu")
 
-[node name="Tronco5" type="Sprite2D" parent="Troncos" unique_id=1946986827]
+[node name="Tronco5" type="Sprite2D" parent="." unique_id=1946986827]
 position = Vector2(327, 279)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("6_1ksbu")
 
-[node name="Tronco6" type="Sprite2D" parent="Troncos" unique_id=585339519]
+[node name="Tronco6" type="Sprite2D" parent="." unique_id=585339519]
 position = Vector2(433, 304)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("6_1ksbu")
 
-[node name="Tronco7" type="Sprite2D" parent="Troncos" unique_id=337302869]
+[node name="Tronco7" type="Sprite2D" parent="." unique_id=337302869]
 position = Vector2(552, 261)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("6_1ksbu")
@@ -259,3 +458,29 @@ shape = SubResource("RectangleShape2D_cihlx")
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="ColisionesExtra" unique_id=1282539533]
 position = Vector2(378, 191)
 shape = SubResource("RectangleShape2D_cihlx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1376247989]
+libraries/ = SubResource("AnimationLibrary_kty7h")
+autoplay = &"Trans"
+
+[node name="Control" type="Control" parent="." unique_id=906830015]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -655.0
+offset_top = -388.0
+offset_right = 494.0
+offset_bottom = 435.0
+
+[node name="Transicion" type="ColorRect" parent="Control" unique_id=1450898350]
+material = SubResource("ShaderMaterial_o3q80")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 504.0
+offset_top = 107.0
+offset_right = 504.0
+offset_bottom = 107.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)

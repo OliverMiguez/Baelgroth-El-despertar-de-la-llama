@@ -120,14 +120,19 @@ func handle_hide():
 # Se ejecuta cuando el goblin principal QUIERE entrar en el arbusto
 func enter_a_brush():
 	walking_speed = 0
+	animaciones_goblin.play("esconderse")
+	await  animaciones_goblin.animation_finished
 	escondido = true
 	colision_goblin.visible = false
 	animaciones_goblin.visible = false
 	print(" [Enter a brush()]:El jugador esta escondido")
 
+
 # Se ejecuta cuando el goblin principal sale QUIERE salir del arbusto
 func exit_a_brush():
-	walking_speed = 100
+	#animaciones_goblin.play("salir_esconderse")
+	#await  animaciones_goblin.animation_finished
+	walking_speed = 50
 	escondido = false
 	colision_goblin.visible = true
 	animaciones_goblin.visible = true

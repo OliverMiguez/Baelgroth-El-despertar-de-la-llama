@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4tlxp5wyx3lc"
-path="res://.godot/imported/Cueva3.png-25d948c67568a02db4f4945267f4f753.ctex"
+uid="uid://bj2mbl55irys7"
+path="res://.godot/imported/Esconderse.png-38983374f4c6100dcaa2507e07e38a04.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ARTE/Cueva3.png"
-dest_files=["res://.godot/imported/Cueva3.png-25d948c67568a02db4f4945267f4f753.ctex"]
+source_file="res://ARTE/Goblins/Goblin Principal/Esconderse.png"
+dest_files=["res://.godot/imported/Esconderse.png-38983374f4c6100dcaa2507e07e38a04.ctex"]
 
 [params]
 

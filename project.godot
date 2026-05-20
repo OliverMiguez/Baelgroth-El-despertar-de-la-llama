@@ -18,6 +18,7 @@ config/features=PackedStringArray("4.6", "Forward Plus")
 ControlEscondite="*uid://dkq5bvrb1gnk4"
 ManejadorDeDeteccion="*uid://cdb5e5denbw1w"
 Dialogic="*uid://ds2q0uclmolvu"
+Musica="*uid://c3edgq8fl748e"
 
 [dialogic]
 

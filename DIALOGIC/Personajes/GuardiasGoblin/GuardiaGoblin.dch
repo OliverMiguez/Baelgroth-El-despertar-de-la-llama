@@ -10,12 +10,12 @@
 "Mood 1": {
 "mode": 1,
 "name": "Mood 1",
-"pitch_base": 0.7,
-"pitch_variance": 0.0,
+"pitch_base": 0.9,
+"pitch_variance": 0.1,
 "skip_characters": 1.0,
-"sound_path": "res://EfectosSonido/Eh v1.wav",
-"volume_base": 1.0,
-"volume_variance": 0.0
+"sound_path": "res://EfectosSonido/dima voz suave.wav",
+"volume_base": -0.9,
+"volume_variance": -0.9
 }
 },
 "style": "",

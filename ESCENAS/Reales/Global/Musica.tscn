@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://c3edgq8fl748e"]
+
+[ext_resource type="AudioStream" uid="uid://dlrl4c522h63w" path="res://Musica/Test/forestV2.wav" id="1_coa58"]
+[ext_resource type="Script" uid="uid://cg4v0ok6c1g4t" path="res://SCRIPTS/Reales/Globales/MusicaBosque.gd" id="2_msran"]
+
+[node name="Musica" type="AudioStreamPlayer" unique_id=412734852]
+stream = ExtResource("1_coa58")
+volume_db = -5.379
+script = ExtResource("2_msran")
