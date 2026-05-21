@@ -1,4 +1,19 @@
-PJMision: Hola necesitas llevar esto paya
-GoblinPrincipal: De una cabron voy paya
-PJMision: venga adios crkak
-GoblinPrincipal: adios
+PJMision: Corre ven aqui, te estaba buscando
+GoblinPrincipal: Dime jefe que necesitas de mi
+PJMision: Necesito que lleves urgentemente esta carta al cuartel general del [wave][color = 'red']suroeste[/color][/wave]
+GoblinPrincipal: [shake]COMO ?!?!?[/shake]
+GoblinPrincipal: No puede ser, como que al [shake]SURESTE[/shake]
+PJMision: Es una carta de alta importancia, es un plan que llevo desarrollando meses con el que podriamos acabar con la tirania de los cuervos
+GoblinPrincipal: Pero dirección ahi, se encuentra su gran fortaleza, esto es una misión suicida
+PJMision: Puede que sea así, pero debemos intentarlo
+GoblinPrincipal: [shake]Y PORQUE TENGO QUE IR YO ?!?![/shake]
+GoblinPrincipal: [shake]PORQUE NO MANDAS A ROBERTO O A CUALQUIER OTRO, QUE SON MUCHO MÁS FUERTES QUE YO[/shake]
+PJMision: Porque necesitmos a gente con mente bruta para el contraataque planeado, pero solo tu  tienes la suficiente capacidad para mantenerte tranquilo en situaciones peliagudas
+PJMision: Eres el unico en el que de verdad confio para esta mision
+GoblinPrincipal: Bueno si tu confias a lo mejor...
+GoblinPrincipal: [shake]QUE NO !!![/shake]
+PJMision: Si no vas te quito tu ración de [wave]estofado a la cucarachet [/wave]
+GoblinPrincipal: Voy ahora mismo
+if {mis_activ} == false:
+	set {mis_activ} = true
+	set {mov_guard} = true

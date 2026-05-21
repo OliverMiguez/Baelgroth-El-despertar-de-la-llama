@@ -30,6 +30,7 @@ directories/dch_directory={
 directories/dtl_directory={
 "ConversacionTest": "res://DIALOGIC/DIALOGOS/ConversacionTest.dtl",
 "MisionPrincipal": "res://DIALOGIC/DIALOGOS/Reales/MisionPrincipal.dtl",
+"ProhibidoSalir": "res://DIALOGIC/DIALOGOS/Reales/ProhibidoSalir.dtl",
 "Prueba 1": "res://DIALOGIC/DIALOGOS/Prueba 1.dtl"
 }
 layout/style_directory={
@@ -68,7 +69,10 @@ audio/channel_defaults={
 "volume": 0.0
 }
 }
-variables={}
+variables={
+"mis_activ": false,
+"mov_guard": false
+}
 layout/style_list=["res://DIALOGIC/Styles/Style1.tres"]
 layout/default_style="res://DIALOGIC/Styles/Style1.tres"
 glossary/default_case_sensitive=true

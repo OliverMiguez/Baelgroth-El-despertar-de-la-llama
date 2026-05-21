@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dou7v0r68af8v" path="res://ESCENAS/Reales/Goblins/MISION/mision.tscn" id="6_0bno8"]
 [ext_resource type="AudioStream" uid="uid://bt6sl8u445gcu" path="res://EfectosSonido/mollyroselee-walking-on-gravel-468536.wav" id="6_6v0dv"]
 [ext_resource type="PackedScene" uid="uid://divxa4xiqj2xg" path="res://ESCENAS/Reales/Vela/vela.tscn" id="7_4d3p6"]
+[ext_resource type="PackedScene" uid="uid://bxcubn1u1p0sj" path="res://ESCENAS/Reales/Goblins/Guardias/goblin_vigilante.tscn" id="10_11f2h"]
 
 [sub_resource type="Animation" id="Animation_tgmhi"]
 resource_name = "PointLight"
@@ -179,7 +180,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_nrupj"]
 resource_name = "audio_salida"
-length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -187,7 +187,7 @@ tracks/0/path = NodePath("AudioStreamPlayer:volume_db")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.36666667),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [-12.552, -44.131]
@@ -281,6 +281,12 @@ shader_parameter/sectors = 1
 shader_parameter/clock_feather = 0.0
 shader_parameter/progress = 0.0
 shader_parameter/progress_bias = Vector2(0, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_11f2h"]
+size = Vector2(20, 54)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nrupj"]
+size = Vector2(26, 31)
 
 [node name="Cueva" type="Node2D" unique_id=1388482921]
 script = ExtResource("1_q7o4g")
@@ -539,6 +545,33 @@ position = Vector2(9.5, 2.5)
 shape = SubResource("RectangleShape2D_qhpb0")
 debug_color = Color(0.8063247, 0.0023412723, 0.9951524, 0.41960785)
 
+[node name="GoblinVigilante" parent="." unique_id=1736408681 instance=ExtResource("10_11f2h")]
+position = Vector2(146.00002, 78)
+scale = Vector2(1.2, 1.2)
+flip_vigilante = true
+numero_goblin = 0
+retraso_animacion = 0.3
+
+[node name="GoblinVigilante3" parent="." unique_id=1848332901 instance=ExtResource("10_11f2h")]
+position = Vector2(-71.999985, 117)
+scale = Vector2(1.2, 1.2)
+flip_vigilante = true
+numero_goblin = 0
+retraso_animacion = 0.612
+
+[node name="GoblinVigilante4" parent="." unique_id=778016074 instance=ExtResource("10_11f2h")]
+position = Vector2(127.999985, -35.999985)
+scale = Vector2(1.2, 1.2)
+flip_vigilante = false
+numero_goblin = 0
+
+[node name="GoblinVigilante2" parent="." unique_id=1686171050 instance=ExtResource("10_11f2h")]
+position = Vector2(-118.999985, -27.000004)
+scale = Vector2(1.2, 1.2)
+flip_vigilante = false
+numero_goblin = 0
+retraso_animacion = 0.92
+
 [node name="Control" type="Control" parent="." unique_id=283761973]
 layout_mode = 3
 anchors_preset = 0
@@ -557,5 +590,43 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
+[node name="Control2" type="Control" parent="." unique_id=910972500]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -504.0
+offset_top = -313.0
+offset_right = 645.0
+offset_bottom = 510.0
+
+[node name="Transicion" type="ColorRect" parent="Control2" unique_id=1807822480]
+visible = false
+material = SubResource("ShaderMaterial_11f2h")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ProhidoSalir" type="StaticBody2D" parent="." unique_id=1773478833]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ProhidoSalir" unique_id=1032794219]
+position = Vector2(159, 83)
+shape = SubResource("RectangleShape2D_11f2h")
+debug_color = Color(0.4481637, 0.59704685, 0, 0.41960785)
+
+[node name="ConverProhibidoSalir" type="Area2D" parent="ProhidoSalir" unique_id=505898776]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ProhidoSalir/ConverProhibidoSalir" unique_id=327256804]
+position = Vector2(145, 83.5)
+shape = SubResource("RectangleShape2D_nrupj")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=722236426]
+position = Vector2(35, 82)
+
 [connection signal="body_entered" from="Salida" to="." method="_on_salida_body_entered"]
 [connection signal="body_exited" from="Salida" to="." method="_on_salida_body_exited"]
+[connection signal="body_entered" from="ProhidoSalir/ConverProhibidoSalir" to="." method="_on_conver_prohibido_salir_body_entered"]
+[connection signal="body_exited" from="ProhidoSalir/ConverProhibidoSalir" to="." method="_on_conver_prohibido_salir_body_exited"]

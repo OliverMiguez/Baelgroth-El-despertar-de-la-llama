@@ -3,7 +3,9 @@
 [ext_resource type="AudioStream" uid="uid://dlrl4c522h63w" path="res://Musica/Test/forestV2.wav" id="1_coa58"]
 [ext_resource type="Script" uid="uid://cg4v0ok6c1g4t" path="res://SCRIPTS/Reales/Globales/MusicaBosque.gd" id="2_msran"]
 
-[node name="Musica" type="AudioStreamPlayer" unique_id=412734852]
-stream = ExtResource("1_coa58")
-volume_db = -5.379
+[node name="Musica" type="Node" unique_id=809773939]
 script = ExtResource("2_msran")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1024478167]
+stream = ExtResource("1_coa58")
+volume_db = -4.211
