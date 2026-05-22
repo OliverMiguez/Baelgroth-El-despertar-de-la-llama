@@ -37,6 +37,7 @@ var input_direction = Vector2.ZERO
 var direccion_actual:Vector2 = Vector2.RIGHT
 
 var paso_alternado: bool = false
+var esta_corriendo:bool = false
 
 # Permite que el jugador lance piedras solo cuando este sepa
 @export var activar_lanzar_piedra:bool = false
@@ -56,6 +57,7 @@ func _physics_process(delta):
 	# Activa el sistema de esconderse
 	handle_hide()
 	lanzar_piedra()
+	correr()
 	
 	# Permite que el personaje se mueva
 	move_and_slide()
@@ -153,3 +155,9 @@ func _on_animaciones_goblin_frame_changed() -> void:
 		if velocity != Vector2.ZERO:
 			walking_sound.pitch_scale = randf_range(0.75, 1.25)
 			walking_sound.play()
+
+func correr():
+	if esta_corriendo == true:
+		walking_speed = 120
+	else: 
+		walking_speed = 50

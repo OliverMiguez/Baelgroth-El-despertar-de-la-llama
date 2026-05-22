@@ -3,9 +3,12 @@ extends "res://SCRIPTS/Reales/GoblinPrincipal/Estados/State.gd"
 # Cambio de estados
 @export var walk_state:State
 @export var rock_state:State
+@export var run_state:State
 
 # Ejecuta este código cuando cambia a este estado
 func on_enter():
+	if father.esta_corriendo == true:
+		father.esta_corriendo = false
 	print("[Test]: Iniciando estado idle ")
 	
 	# Seleccionamos la animación de Idle correcta según la última dirección
@@ -45,6 +48,8 @@ func state_process(_delta:float) -> void:
 	# Cambia al estado rock
 	if Input.is_action_just_pressed("Lanzar") and father.velocity == Vector2.ZERO and father.activar_lanzar_piedra == true:
 		next_state = rock_state
+	elif father.velocity != Vector2.ZERO and Input.is_action_pressed("correr"):
+		next_state = run_state
 	# Permite el cambio al estado de andar (walk)
 	elif father.velocity != Vector2.ZERO:
 		next_state = walk_state

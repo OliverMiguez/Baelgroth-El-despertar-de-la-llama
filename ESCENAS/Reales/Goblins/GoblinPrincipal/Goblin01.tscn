@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bj2mbl55irys7" path="res://ARTE/Goblins/Goblin Principal/Esconderse.png" id="7_0oa0b"]
 [ext_resource type="Script" uid="uid://0wkmkxrlm2j4" path="res://SCRIPTS/Reales/GoblinPrincipal/Estados/Rock.gd" id="7_oybqk"]
 [ext_resource type="AudioStream" uid="uid://djgpfm4hejuwq" path="res://EfectosSonido/Pasos.mp3" id="11_pdu6u"]
+[ext_resource type="Script" uid="uid://c5vwng1iqbn55" path="res://SCRIPTS/Reales/GoblinPrincipal/Estados/Run.gd" id="12_1w6kn"]
 [ext_resource type="AudioStream" uid="uid://bt6sl8u445gcu" path="res://EfectosSonido/mollyroselee-walking-on-gravel-468536.wav" id="12_dvsra"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fxtv5"]
@@ -647,20 +648,27 @@ father = NodePath("..")
 animation_player = NodePath("../AnimacionesGoblin")
 current_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="FSM" unique_id=1027029353 node_paths=PackedStringArray("walk_state", "rock_state")]
+[node name="Idle" type="Node" parent="FSM" unique_id=1027029353 node_paths=PackedStringArray("walk_state", "rock_state", "run_state")]
 script = ExtResource("5_ul7nk")
 walk_state = NodePath("../Walk")
 rock_state = NodePath("../Rock")
+run_state = NodePath("../Run")
 
-[node name="Walk" type="Node" parent="FSM" unique_id=2105181496 node_paths=PackedStringArray("idle_state", "rock_state")]
+[node name="Walk" type="Node" parent="FSM" unique_id=2105181496 node_paths=PackedStringArray("idle_state", "rock_state", "run_state")]
 script = ExtResource("6_n031j")
 idle_state = NodePath("../Idle")
 rock_state = NodePath("../Rock")
+run_state = NodePath("../Run")
 
 [node name="Rock" type="Node" parent="FSM" unique_id=435125357 node_paths=PackedStringArray("walk_state", "idle_state")]
 script = ExtResource("7_oybqk")
 walk_state = NodePath("../Walk")
 idle_state = NodePath("../Idle")
+
+[node name="Run" type="Node" parent="FSM" unique_id=132797343 node_paths=PackedStringArray("idle_state", "walk_sate")]
+script = ExtResource("12_1w6kn")
+idle_state = NodePath("../Idle")
+walk_sate = NodePath("../Walk")
 
 [node name="PiedraSpawnPoint" type="Marker2D" parent="." unique_id=1623606182]
 position = Vector2(8.333333, 0)

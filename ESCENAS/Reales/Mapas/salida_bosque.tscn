@@ -368,7 +368,6 @@ tile_set = SubResource("TileSet_h8loy")
 
 [node name="GoblinPrincipal" parent="." unique_id=988583641 node_paths=PackedStringArray("walking_sound") instance=ExtResource("3_aepfk")]
 position = Vector2(410, 16)
-walking_speed = 30.0
 walking_sound = NodePath("PasosAudio2")
 
 [node name="Camera2D" type="Camera2D" parent="GoblinPrincipal" unique_id=1923292235]
@@ -474,6 +473,7 @@ offset_right = 494.0
 offset_bottom = 435.0
 
 [node name="Transicion" type="ColorRect" parent="Control" unique_id=1450898350]
+visible = false
 material = SubResource("ShaderMaterial_o3q80")
 layout_mode = 1
 anchors_preset = 15
