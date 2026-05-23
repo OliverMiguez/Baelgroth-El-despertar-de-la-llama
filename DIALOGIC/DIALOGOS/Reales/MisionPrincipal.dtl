@@ -9,8 +9,9 @@ PJMision: Puede que sea así, pero debemos intentarlo
 GoblinPrincipal: [shake]Y PORQUE TENGO QUE IR YO ?!?![/shake]
 GoblinPrincipal: [shake]PORQUE NO MANDAS A ROBERTO O A CUALQUIER OTRO, QUE SON MUCHO MÁS FUERTES QUE YO[/shake]
 PJMision: Porque necesitmos a gente con mente bruta para el contraataque planeado, pero solo tu  tienes la suficiente capacidad para mantenerte tranquilo en situaciones peliagudas
-PJMision: Eres el unico en el que de verdad confio para esta mision
+set {roberto_entra} = true
 GoblinPrincipal: Bueno si tu confias a lo mejor...
+PJMision: Eres el unico en el que de verdad confio para esta mision
 GoblinPrincipal: [shake]QUE NO !!![/shake]
 PJMision: Si no vas te quito tu ración de [wave]estofado a la cucarachet [/wave]
 GoblinPrincipal: Voy ahora mismo

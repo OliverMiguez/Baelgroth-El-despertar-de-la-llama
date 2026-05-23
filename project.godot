@@ -25,9 +25,11 @@ Musica="*uid://c3edgq8fl748e"
 directories/dch_directory={
 "GoblinPrincipal": "res://DIALOGIC/Personajes/GoblinPrincipal/GoblinPrincipal.dch",
 "GuardiaGoblin": "res://DIALOGIC/Personajes/GuardiasGoblin/GuardiaGoblin.dch",
-"PJMision": "res://DIALOGIC/Personajes/GuardiasGoblin/PJMision.dch"
+"PJMision": "res://DIALOGIC/Personajes/GuardiasGoblin/PJMision.dch",
+"Roberto": "res://DIALOGIC/Personajes/GuardiasGoblin/Roberto.dch"
 }
 directories/dtl_directory={
+"Conocer a Roberto": "res://DIALOGIC/DIALOGOS/Reales/Conocer a Roberto.dtl",
 "ConversacionTest": "res://DIALOGIC/DIALOGOS/ConversacionTest.dtl",
 "MisionPrincipal": "res://DIALOGIC/DIALOGOS/Reales/MisionPrincipal.dtl",
 "ProhibidoSalir": "res://DIALOGIC/DIALOGOS/Reales/ProhibidoSalir.dtl",
@@ -71,7 +73,8 @@ audio/channel_defaults={
 }
 variables={
 "mis_activ": false,
-"mov_guard": false
+"mov_guard": false,
+"roberto_entra": false
 }
 layout/style_list=["res://DIALOGIC/Styles/Style1.tres"]
 layout/default_style="res://DIALOGIC/Styles/Style1.tres"

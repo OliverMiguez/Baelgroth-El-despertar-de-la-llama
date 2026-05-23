@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://daq12104unw0k"]
 
 [ext_resource type="Texture2D" uid="uid://ji00s2wqjoaf" path="res://ARTE/Goblins/Roberto.png" id="1_qbytb"]
+[ext_resource type="Script" uid="uid://beey7li5ihp7t" path="res://SCRIPTS/Reales/Roberto/roberto_milos.gd" id="1_t167e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tmib6"]
 atlas = ExtResource("1_qbytb")
@@ -158,21 +159,27 @@ radius = 8.0
 radius = 50.0
 
 [node name="RobertoMilos" type="CharacterBody2D" unique_id=1668356236]
+scale = Vector2(1.2, 1.2)
 collision_layer = 256
 collision_mask = 255
+script = ExtResource("1_t167e")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1267684123]
 sprite_frames = SubResource("SpriteFrames_3nmjb")
 animation = &"Idle"
-frame_progress = 0.9750663
+frame_progress = 0.29138824
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1245992671]
 position = Vector2(0, 10)
 shape = SubResource("CircleShape2D_qbytb")
 
 [node name="Deteccion" type="Area2D" parent="." unique_id=749416554]
+collision_layer = 256
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Deteccion" unique_id=532487028]
 position = Vector2(0, 10)
 shape = SubResource("CircleShape2D_t167e")
 debug_color = Color(0.998869, 0, 0.14275041, 0.41960785)
+
+[connection signal="body_entered" from="Deteccion" to="." method="_on_deteccion_body_entered"]
+[connection signal="body_exited" from="Deteccion" to="." method="_on_deteccion_body_exited"]

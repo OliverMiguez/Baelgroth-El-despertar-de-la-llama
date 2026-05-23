@@ -8,19 +8,82 @@ class_name cueva
 @onready var posicion_final_vigilante: Marker2D = $PosicionFinalVigilante
 @onready var goblin_vigilante: Goblin_Vigilante = $GoblinVigilante
 @onready var colision_area_prohibido_salir: CollisionShape2D = $ProhidoSalir/ConverProhibidoSalir/ColisionAreaProhibidoSalir
+@onready var roberto_miloss: CharacterBody2D = $RobertoMilos
+@onready var primer_destino_roberto: Marker2D = $Mov1Roberto
+@onready var animaciones_roberto: AnimatedSprite2D = $RobertoMilos/AnimatedSprite2D
+@onready var segundo_destino_roberto: Marker2D = $Mov2Roberto
+@onready var tercer_destino_roberto: Marker2D = $Mov3_Roberto
 
 var goblin_dentro:bool = false
 var transicionando:bool = false
 var prohibido_salir:bool = false
 var dialogo_prohibido_iniciado: bool = false
+var roberto_mov_actual:int = 0
+var tween
+var roberto_moviendose:bool = false
+var primer_mov_completado:bool = false
+var segundo_mov_completado:bool = false
 
 func _ready() -> void:
+	tween = create_tween()
+	roberto_miloss.visible = false
 	musica_cueva.play()
 	Musica.stop() # Musica del bosque (autoload)
 
 func _physics_process(_delta: float) -> void:
 	comprobaciones_salida()
+	manejador_roberto()
+	
+# Encargada del movimiento de roberto
+func manejador_roberto():
+	if Dialogic.VAR.roberto_entra == true and not roberto_moviendose:
+		print("1 - roberto_entra es true, iniciando movimiento")
+		roberto_miloss.visible = true
+		roberto_moviendose = true
+		# Primer mov que realiza
+		roberto_mov_actual = 1
+		print("2 - destino primer mov: ", primer_destino_roberto.global_position)
+		movimientos_roberto(primer_destino_roberto.global_position,6.0)
 
+# Mueve a roberto por el mapa
+func movimientos_roberto(destino:Vector2, duracion:float):
+	print("3 - movimientos_roberto llamado, caso: ", roberto_mov_actual, " destino: ", destino)
+	match  roberto_mov_actual:
+		1:
+			print("4 - creando tween caso 1")
+			tween = create_tween()
+			tween.tween_property(roberto_miloss, "global_position", destino, duracion)
+			animaciones_roberto.play("Arriba")
+			tween.tween_callback(func(): # Cuando el tween acaba activa esta animacion
+				print("5 - primer tween terminado")
+				animaciones_roberto.play("Idle")  # cambia a la animacion que quieras
+				primer_mov_completado = true
+				roberto_mov_actual = 2
+				# Esperamos la señal de que roberto termino de hablar
+				roberto_miloss.dialogo_con_roberto_terminado.connect(func():
+					movimientos_roberto(segundo_destino_roberto.global_position, 4.0)
+				, CONNECT_ONE_SHOT)  # CONNECT_ONE_SHOT hace que se desconecte automaticamente tras ejecutarse
+			)
+
+		2:
+			print("4 - creando tween caso 2")
+			tween = create_tween()
+			tween.tween_property(roberto_miloss, "global_position", segundo_destino_roberto.global_position, duracion)
+			animaciones_roberto.play("Abajo")
+			tween.tween_callback(func(): # Cuando el tween acaba activa esta animacion
+				print("5 - segundo tween terminado")
+				segundo_mov_completado = true
+				roberto_mov_actual = 3
+				movimientos_roberto(tercer_destino_roberto.global_position,6.0)
+			)
+		3: 
+			print("5- creadno tween caso 3")
+			tween = create_tween()
+			tween.tween_property(roberto_miloss, "global_position", tercer_destino_roberto.global_position, 3.0)
+			animaciones_roberto.play("Lado")
+			tween.tween_callback(func(): # Cuando el tween acaba activa esta animacion
+				roberto_miloss.queue_free()
+			)
 # Revisa si se puede salir de la cueva
 func comprobaciones_salida():
 	if Dialogic.VAR.mis_activ == true and is_instance_valid(prohido_salir):

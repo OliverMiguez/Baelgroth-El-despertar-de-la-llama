@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://bt6sl8u445gcu" path="res://EfectosSonido/mollyroselee-walking-on-gravel-468536.wav" id="6_6v0dv"]
 [ext_resource type="PackedScene" uid="uid://divxa4xiqj2xg" path="res://ESCENAS/Reales/Vela/vela.tscn" id="7_4d3p6"]
 [ext_resource type="PackedScene" uid="uid://bxcubn1u1p0sj" path="res://ESCENAS/Reales/Goblins/Guardias/goblin_vigilante.tscn" id="10_11f2h"]
+[ext_resource type="PackedScene" uid="uid://daq12104unw0k" path="res://ESCENAS/Reales/Goblins/RobertoMilos/roberto_milos.tscn" id="11_nrupj"]
 
 [sub_resource type="Animation" id="Animation_tgmhi"]
 resource_name = "PointLight"
@@ -506,6 +507,10 @@ debug_color = Color(0.9999998, 0.008937159, 0.0674557, 0.41960785)
 [node name="MISION" parent="." unique_id=69943062 instance=ExtResource("6_0bno8")]
 position = Vector2(-44.999992, -140.00002)
 
+[node name="RobertoMilos" parent="." unique_id=1668356236 instance=ExtResource("11_nrupj")]
+position = Vector2(73, 131)
+dialogo_actual = 1
+
 [node name="GoblinPrincipal" parent="." unique_id=988583641 node_paths=PackedStringArray("sonido_pasos") instance=ExtResource("2_4sbgq")]
 scale = Vector2(1, 1)
 sonido_pasos = NodePath("Pasos")
@@ -581,6 +586,7 @@ offset_right = 494.0
 offset_bottom = 435.0
 
 [node name="EfectoEntrada" type="ColorRect" parent="TransicionEntrada" unique_id=1350210611]
+visible = false
 material = SubResource("ShaderMaterial_11f2h")
 layout_mode = 1
 anchors_preset = 15
@@ -626,6 +632,15 @@ shape = SubResource("RectangleShape2D_nrupj")
 [node name="PosicionFinalVigilante" type="Marker2D" parent="." unique_id=722236426]
 visible = false
 position = Vector2(35, 82)
+
+[node name="Mov1Roberto" type="Marker2D" parent="." unique_id=1571906767]
+position = Vector2(76, -162)
+
+[node name="Mov2Roberto" type="Marker2D" parent="." unique_id=390441087]
+position = Vector2(72, 80)
+
+[node name="Mov3_Roberto" type="Marker2D" parent="." unique_id=493019328]
+position = Vector2(165, 82)
 
 [connection signal="body_entered" from="Salida" to="." method="_on_salida_body_entered"]
 [connection signal="body_exited" from="Salida" to="." method="_on_salida_body_exited"]
