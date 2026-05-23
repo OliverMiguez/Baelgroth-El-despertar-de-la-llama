@@ -1,0 +1,178 @@
+[gd_scene format=3 uid="uid://daq12104unw0k"]
+
+[ext_resource type="Texture2D" uid="uid://ji00s2wqjoaf" path="res://ARTE/Goblins/Roberto.png" id="1_qbytb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmib6"]
+atlas = ExtResource("1_qbytb")
+region = Rect2(288, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vux0e"]
+atlas = ExtResource("1_qbytb")
+region = Rect2(320, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ac8b1"]
+atlas = ExtResource("1_qbytb")
+region = Rect2(352, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cevhc"]
+atlas = ExtResource("1_qbytb")
+region = Rect2(288, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jp7yy"]
+atlas = ExtResource("1_qbytb")
+region = Rect2(320, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pt7sk"]
+atlas = ExtResource("1_qbytb")
+region = Rect2(352, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qbytb"]
+atlas = ExtResource("1_qbytb")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3nmjb"]
+atlas = ExtResource("1_qbytb")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s1m6m"]
+atlas = ExtResource("1_qbytb")
+region = Rect2(352, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o8ajl"]
+atlas = ExtResource("1_qbytb")
+region = Rect2(288, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmb4o"]
+atlas = ExtResource("1_qbytb")
+region = Rect2(320, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t167e"]
+atlas = ExtResource("1_qbytb")
+region = Rect2(288, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v25r1"]
+atlas = ExtResource("1_qbytb")
+region = Rect2(320, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6ikp"]
+atlas = ExtResource("1_qbytb")
+region = Rect2(352, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_du54i"]
+atlas = ExtResource("1_qbytb")
+region = Rect2(288, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3l1it"]
+atlas = ExtResource("1_qbytb")
+region = Rect2(288, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j427m"]
+atlas = ExtResource("1_qbytb")
+region = Rect2(320, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uusv0"]
+atlas = ExtResource("1_qbytb")
+region = Rect2(352, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3nmjb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tmib6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vux0e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ac8b1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cevhc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jp7yy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pt7sk")
+}],
+"loop": true,
+"name": &"Abajo",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qbytb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3nmjb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s1m6m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o8ajl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hmb4o")
+}],
+"loop": true,
+"name": &"Arriba",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t167e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v25r1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x6ikp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_du54i")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 3.99
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3l1it")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j427m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uusv0")
+}],
+"loop": true,
+"name": &"Lado",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qbytb"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t167e"]
+radius = 50.0
+
+[node name="RobertoMilos" type="CharacterBody2D" unique_id=1668356236]
+collision_layer = 256
+collision_mask = 255
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1267684123]
+sprite_frames = SubResource("SpriteFrames_3nmjb")
+animation = &"Idle"
+frame_progress = 0.9750663
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1245992671]
+position = Vector2(0, 10)
+shape = SubResource("CircleShape2D_qbytb")
+
+[node name="Deteccion" type="Area2D" parent="." unique_id=749416554]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Deteccion" unique_id=532487028]
+position = Vector2(0, 10)
+shape = SubResource("CircleShape2D_t167e")
+debug_color = Color(0.998869, 0, 0.14275041, 0.41960785)

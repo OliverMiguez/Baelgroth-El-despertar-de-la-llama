@@ -156,6 +156,7 @@ correr={
 2d_physics/layer_4="Mapa"
 2d_physics/layer_5="Piedra"
 2d_physics/layer_6="AreaEnemigo"
+2d_physics/layer_9="roberto"
 
 [physics]
 
