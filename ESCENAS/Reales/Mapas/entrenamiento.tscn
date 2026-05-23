@@ -255,7 +255,7 @@ tile_set = SubResource("TileSet_soxpl")
 polygon = PackedVector2Array(5, 35, 13, 327, 809, 329, 793, 8, 6, 31, 23, 13, 880, -14, 851, 365, -10, 356, -27, 33)
 
 [node name="Tronco" type="Sprite2D" parent="." unique_id=544208336]
-position = Vector2(166, 51)
+position = Vector2(169.5, 50.5)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("4_2g7ht")
 
