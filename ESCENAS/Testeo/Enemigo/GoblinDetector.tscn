@@ -168,9 +168,10 @@ animations = [{
 radius = 9.055386
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqjbl"]
-size = Vector2(67.5, 46)
+size = Vector2(58.75, 42.5)
 
 [node name="EnemigoTest" type="CharacterBody2D" unique_id=2057307827]
+scale = Vector2(0.8, 0.8)
 collision_layer = 2
 collision_mask = 9
 motion_mode = 1
@@ -191,7 +192,8 @@ collision_layer = 32
 collision_mask = 25
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDeteccion" unique_id=1065688013]
-position = Vector2(0, -1)
+position = Vector2(-0.62500197, 1.2499987)
+scale = Vector2(0.9999998, 0.9999998)
 shape = SubResource("RectangleShape2D_hqjbl")
 
 [node name="FSM" type="Node" parent="." unique_id=1828577291]
