@@ -1,0 +1,5 @@
+if {mis_activ} == false:
+	GuardiaGoblin: Oye, el jefe tiene algo que decirte
+	GuardiaGoblin: Deberias ir a hablar con el
+else:
+	set {mis_activ} = true

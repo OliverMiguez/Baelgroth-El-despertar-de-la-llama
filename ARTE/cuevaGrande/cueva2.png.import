@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://do706prf1sy3w"
-path="res://.godot/imported/tile relleno.png-d744fe861fca1e0fbd4e99ab14b25420.ctex"
+uid="uid://bien8xtokig32"
+path="res://.godot/imported/cueva2.png-6d108eb816559072f268698b19e8b423.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ARTE/tile relleno.png"
-dest_files=["res://.godot/imported/tile relleno.png-d744fe861fca1e0fbd4e99ab14b25420.ctex"]
+source_file="res://ARTE/cuevaGrande/cueva2.png"
+dest_files=["res://.godot/imported/cueva2.png-6d108eb816559072f268698b19e8b423.ctex"]
 
 [params]
 

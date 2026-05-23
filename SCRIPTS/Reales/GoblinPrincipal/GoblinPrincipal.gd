@@ -1,70 +1,49 @@
 extends CharacterBody2D
 class_name goblin_principal
 
+signal escondido_cambiado # Permite que el player se esconada
 
-signal escondido_cambiado
-
-# Velocidad del goblin
-@export var walking_speed:float = 100.0
-@export var walking_sound:AudioStreamPlayer2D
-
-# Referencia de la maquina de estados del goblin
 @onready var state_machine: Node = $FSM
-# Animaciones del goblin
 @onready var animaciones_goblin = $AnimacionesGoblin
-# Colision del goblin
 @onready var colision_goblin: CollisionShape2D = $Colision
-
 @onready var piedra_spawn_point: Marker2D = $PiedraSpawnPoint
-
 @onready var pasos_audio: AudioStreamPlayer2D = $PasosAudio
 
+@export var velocidad_andar_base:float = 50.0
+@export var velocidad_carrera:float = 100
+@export var sonido_pasos:AudioStreamPlayer2D
+@export var activar_lanzar_piedra:bool = false# Permite que el jugador lance piedras solo cuando este sepa
+@export var pitch_min: float = 0.75
+@export var pitch_max: float = 1.25
+@export var frames_pasos: Array[int] = [1, 3]
 
-# Packed Scene de la piedra
 var instancia_piedra_packed = preload("res://ESCENAS/Reales/Pielda/pielda.tscn")
-
-# Recoge el ultimo input introducido
-var last_input
-
-# Verificaciones para saber si se puede o no esconder
-var escondido: bool = false:
+var last_input # Recoge el ultimo input introducido ( se usa en la máquina de estados)
+var escondido: bool = false: # Verificaciones para saber si se puede o no esconder
 	set(valor):
 		escondido = valor
 		escondido_cambiado.emit()
-
-# Variable para rastrear la dirección de entrada actual y manejar prioridades (Primer input introducido)
-var input_direction = Vector2.ZERO
+var input_direction = Vector2.ZERO # Variable para rastrear la dirección de entrada actual y manejar prioridades (Primer input introducido)
 var direccion_actual:Vector2 = Vector2.RIGHT
+var paso_alternado: bool = false # Para ajustar audio
+var esta_corriendo:bool = false # Verifica si esta corriendo 
+var velocidad_andar:float = 50.0
 
-var paso_alternado: bool = false
-
-# Permite que el jugador lance piedras solo cuando este sepa
-@export var activar_lanzar_piedra:bool = false
-
-# Se ejecuta al inicio del progroma
 func _ready():
-	print("[Test]: El personaje cargo inicialmente")
+	velocidad_andar = velocidad_andar_base
+	#print("[READY] velocidad_andar_base: ", velocidad_andar_base)
+	#print("[READY] velocidad_andar: ", velocidad_andar)
 	
-# Se ejecuta en cada frame del juego
 func _physics_process(delta):
-	
-	# Activa la máquina de estados
-	state_machine._physics_process(delta)
-	
-	# Activa el movimiento del player a traves de los inputs
-	handle_movement()
-	# Activa el sistema de esconderse
-	handle_hide()
-	lanzar_piedra()
-	
-	# Permite que el personaje se mueva
-	move_and_slide()
-	
-func goblin():
-	pass
+	state_machine._physics_process(delta)	# Activa la máquina de estados
+	manejar_movimiento()	# Activa el movimiento del player a traves de los inputs
+	manejar_esconderse()	# Activa el sistema de esconderse
+	lanzar_piedra() # Lanza una piedra
+	correr() # Permite que pueda moverse más rápido
+	move_and_slide() # Permite que el personaje se mueva(MUY IMPORTANTE!)
 
 # Administra los inputs de moviento del jugador y aplica velocidades con prioridad al primer input
-func handle_movement():
+func manejar_movimiento():
 # Manejo del eje horizontal con prioridad al primer input
 	if input_direction.x == 0:
 		if Input.is_action_pressed("Izquierda"): 
@@ -101,7 +80,7 @@ func handle_movement():
 	if velocity_direction != Vector2.ZERO: # formato desado por mi, actualiza la direccion solo si hay movimiento para no perder el ultimo input al estar quieto
 		direccion_actual = velocity_direction # formato desado por mi, guarda la direccion normalizada para el proyectil
 		
-	velocity = velocity_direction * walking_speed
+	velocity = velocity_direction * velocidad_andar
 	
 #ajusta el spawn point de la piedra segun la direccion horizontal
 	if direccion_actual.x > 0:
@@ -110,24 +89,29 @@ func handle_movement():
 		piedra_spawn_point.position.x = -abs(piedra_spawn_point.position.x)  # lado izquierdo
 
 # Revisa si se puede esconder o no el goblin principal
-func handle_hide():
+func manejar_esconderse():
 	if ControlEscondite.goblin_en_arbusto == true and Input.is_action_just_pressed("hide"):
 		if not escondido:
-			enter_a_brush()
+			entrar_en_arbusto()
 		else:
-			exit_a_brush()
+			salir_de_arbusto()
 
 # Se ejecuta cuando el goblin principal QUIERE entrar en el arbusto
-func enter_a_brush():
-	walking_speed = 0
+func entrar_en_arbusto():
+	velocidad_andar = 0
+	animaciones_goblin.play("esconderse")
+	await  animaciones_goblin.animation_finished
 	escondido = true
 	colision_goblin.visible = false
 	animaciones_goblin.visible = false
 	print(" [Enter a brush()]:El jugador esta escondido")
 
+
 # Se ejecuta cuando el goblin principal sale QUIERE salir del arbusto
-func exit_a_brush():
-	walking_speed = 100
+func salir_de_arbusto():
+	#animaciones_goblin.play("salir_esconderse")
+	#await  animaciones_goblin.animation_finished
+	velocidad_andar = velocidad_andar_base
 	escondido = false
 	colision_goblin.visible = true
 	animaciones_goblin.visible = true
@@ -144,7 +128,15 @@ func lanzar_piedra():
 
 # Administrar el sonido de los pasos
 func _on_animaciones_goblin_frame_changed() -> void:
-	if animaciones_goblin.frame in [1, 3]:
+	if animaciones_goblin.frame in frames_pasos:
 		if velocity != Vector2.ZERO:
-			walking_sound.pitch_scale = randf_range(0.75, 1.25)
-			walking_sound.play()
+			sonido_pasos.pitch_scale = randf_range(pitch_min,pitch_max)
+			sonido_pasos.play()
+
+# Aumenta la velocidad del goblin si este se encuentra en el estado correr
+func correr():
+	if esta_corriendo == true:
+		velocidad_andar = velocidad_carrera
+	else: 
+		velocidad_andar = velocidad_andar_base
+		#print("[CORRER] velocidad cambiada a: ", velocidad_andar)

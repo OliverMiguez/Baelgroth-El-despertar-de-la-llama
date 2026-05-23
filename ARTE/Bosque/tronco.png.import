@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djwvbfju8retg"
-path="res://.godot/imported/Cesped.png-483d0e200b2cb9aed2b4005b84047a59.ctex"
+uid="uid://b1l4mx3l6yvar"
+path="res://.godot/imported/tronco.png-07b423147e4d436347196baa8f1cc46c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ARTE/Bosque/Cesped.png"
-dest_files=["res://.godot/imported/Cesped.png-483d0e200b2cb9aed2b4005b84047a59.ctex"]
+source_file="res://ARTE/Bosque/tronco.png"
+dest_files=["res://.godot/imported/tronco.png-07b423147e4d436347196baa8f1cc46c.ctex"]
 
 [params]
 

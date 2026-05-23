@@ -1,23 +1,62 @@
 [gd_scene format=3 uid="uid://cnam07d5cw1u"]
 
 [ext_resource type="Script" uid="uid://bvbrlaq4bd84o" path="res://SCRIPTS/Reales/Arbusto/arbusto.gd" id="1_w88ng"]
-[ext_resource type="Texture2D" uid="uid://dnhb33or2rrym" path="res://ARTE/Testeo/ArbustoV21.png" id="2_w88ng"]
+[ext_resource type="Texture2D" uid="uid://bxvqa50y28l0q" path="res://ARTE/Bosque/arbusto-Sheet.png" id="2_djxh4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w88ng"]
 radius = 17.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_djxh4"]
+atlas = ExtResource("2_djxh4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2d6h"]
+atlas = ExtResource("2_djxh4")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o775i"]
+atlas = ExtResource("2_djxh4")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3plfk"]
+atlas = ExtResource("2_djxh4")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_01npy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_djxh4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2d6h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o775i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3plfk")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 4.0
+}]
+
 [node name="ArbustoV2" type="Node2D" unique_id=2020210010]
 script = ExtResource("1_w88ng")
-
-[node name="ArbustoV21" type="Sprite2D" parent="." unique_id=1926837664]
-position = Vector2(16, -20)
-texture = ExtResource("2_w88ng")
 
 [node name="DeteccionJugador" type="Area2D" parent="." unique_id=928158979]
 
 [node name="ColisionDeteccionJuegador" type="CollisionShape2D" parent="DeteccionJugador" unique_id=1286805408]
+position = Vector2(-1, 2)
 shape = SubResource("CircleShape2D_w88ng")
 debug_color = Color(0.682048, 0, 0.11905176, 0.41960785)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1121001120]
+sprite_frames = SubResource("SpriteFrames_01npy")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.06538803
 
 [connection signal="body_entered" from="DeteccionJugador" to="." method="_on_deteccion_jugador_body_entered"]
 [connection signal="body_exited" from="DeteccionJugador" to="." method="_on_deteccion_jugador_body_exited"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bien8xtokig32"
-path="res://.godot/imported/cueva2.png-27ca6b81c3ef69de00d7e8f034007098.ctex"
+uid="uid://bxvqa50y28l0q"
+path="res://.godot/imported/arbusto-Sheet.png-a4a01604a8b13e674756b224e3dbde1f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ARTE/cueva2.png"
-dest_files=["res://.godot/imported/cueva2.png-27ca6b81c3ef69de00d7e8f034007098.ctex"]
+source_file="res://ARTE/Bosque/arbusto-Sheet.png"
+dest_files=["res://.godot/imported/arbusto-Sheet.png-a4a01604a8b13e674756b224e3dbde1f.ctex"]
 
 [params]
 

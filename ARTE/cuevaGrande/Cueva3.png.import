@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bb1r0n748jcis"
-path="res://.godot/imported/Bosque.png-b5eb424fb7a114de5d78f821e2ef0614.ctex"
+uid="uid://4tlxp5wyx3lc"
+path="res://.godot/imported/Cueva3.png-92f1e96bb4eda40a9a01af954f0b9a21.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ARTE/Bosque/Bosque.png"
-dest_files=["res://.godot/imported/Bosque.png-b5eb424fb7a114de5d78f821e2ef0614.ctex"]
+source_file="res://ARTE/cuevaGrande/Cueva3.png"
+dest_files=["res://.godot/imported/Cueva3.png-92f1e96bb4eda40a9a01af954f0b9a21.ctex"]
 
 [params]
 

@@ -8,9 +8,16 @@ var dialogando:bool = false
 
 @export var flip_vigilante:bool = false
 @export var numero_goblin:int
+@export_range(0.0,3.0) var retraso_animacion: float = 0.0
 
 func _ready() -> void:
 	Dialogic.timeline_ended.connect(_on_dialogo_terminado)
+	if retraso_animacion > 0.0:
+		animated_sprite_2d.pause()  # la dejamos parada hasta que pase el tiempo
+		await get_tree().create_timer(retraso_animacion).timeout
+	
+	animated_sprite_2d.play("Idle") # arrancamos la animacion tras el retraso
+
 
 func _physics_process(_delta: float) -> void:
 	iniciar_dialogo()
