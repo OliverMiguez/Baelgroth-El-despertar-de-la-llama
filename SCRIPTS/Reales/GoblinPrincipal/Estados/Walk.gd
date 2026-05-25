@@ -9,7 +9,7 @@ extends "res://SCRIPTS/Reales/GoblinPrincipal/Estados/State.gd"
 func on_enter():
 	if father.esta_corriendo == true:
 		father.esta_corriendo = false
-	print("[Test]: Iniciando estado walk ")
+	#print("[Test]: Iniciando estado walk ")
 
 # Permite el cambio entre estados
 func state_process(_delta:float) -> void:

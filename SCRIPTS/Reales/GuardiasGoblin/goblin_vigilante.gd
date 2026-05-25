@@ -30,14 +30,19 @@ func _physics_process(_delta: float) -> void:
 func iniciar_dialogo():
 	if Input.is_action_just_pressed("Hablar") and goblin_detectado and not dialogando:
 		dialogando = true
+		ControlEscondite.dialogo_activo = true
 		match numero_goblin:
 			1:
 				Dialogic.start("res://DIALOGIC/DIALOGOS/Prueba 1.dtl")
+			2:  Dialogic.start("res://DIALOGIC/DIALOGOS/Reales/Cueva_Guardia1timeline.dtl")
+			3:  Dialogic.start("res://DIALOGIC/DIALOGOS/Reales/Cueva_guardia3.dtl")
+			4:  Dialogic.start("res://DIALOGIC/DIALOGOS/Reales/cueva_guardia4.dtl")
 			_:
 				print("No habla")
 
 func _on_dialogo_terminado():
 	dialogando = false
+	ControlEscondite.dialogo_activo = false  # AÑADIDO
 
 # Controlador de dialogos de los enemigos
 func _on_area_2d_body_entered(body: Node2D) -> void:

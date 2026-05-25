@@ -507,10 +507,6 @@ debug_color = Color(0.9999998, 0.008937159, 0.0674557, 0.41960785)
 [node name="MISION" parent="." unique_id=69943062 instance=ExtResource("6_0bno8")]
 position = Vector2(-44.999992, -140.00002)
 
-[node name="RobertoMilos" parent="." unique_id=1668356236 instance=ExtResource("11_nrupj")]
-position = Vector2(73, 131)
-dialogo_actual = 1
-
 [node name="GoblinPrincipal" parent="." unique_id=988583641 node_paths=PackedStringArray("sonido_pasos") instance=ExtResource("2_4sbgq")]
 scale = Vector2(1, 1)
 sonido_pasos = NodePath("Pasos")
@@ -522,6 +518,10 @@ zoom = Vector2(3, 3)
 [node name="Pasos" type="AudioStreamPlayer2D" parent="GoblinPrincipal" unique_id=1866432890]
 stream = ExtResource("6_6v0dv")
 volume_db = -19.083
+
+[node name="RobertoMilos" parent="." unique_id=1668356236 instance=ExtResource("11_nrupj")]
+position = Vector2(73, 131)
+dialogo_actual = 1
 
 [node name="MusicaCueva" type="AudioStreamPlayer" parent="." unique_id=1184109054]
 stream = ExtResource("4_yksd0")
@@ -554,27 +554,24 @@ debug_color = Color(0.8063247, 0.0023412723, 0.9951524, 0.41960785)
 position = Vector2(146.00002, 78)
 scale = Vector2(1.2, 1.2)
 flip_vigilante = true
-numero_goblin = 0
 retraso_animacion = 0.3
 
 [node name="GoblinVigilante3" parent="." unique_id=1848332901 instance=ExtResource("10_11f2h")]
 position = Vector2(-71.999985, 117)
 scale = Vector2(1.2, 1.2)
 flip_vigilante = true
-numero_goblin = 0
+numero_goblin = 3
 retraso_animacion = 0.612
 
 [node name="GoblinVigilante4" parent="." unique_id=778016074 instance=ExtResource("10_11f2h")]
 position = Vector2(127.999985, -35.999985)
 scale = Vector2(1.2, 1.2)
-flip_vigilante = false
-numero_goblin = 0
+numero_goblin = 4
 
 [node name="GoblinVigilante2" parent="." unique_id=1686171050 instance=ExtResource("10_11f2h")]
 position = Vector2(-118.999985, -27.000004)
 scale = Vector2(1.2, 1.2)
-flip_vigilante = false
-numero_goblin = 0
+numero_goblin = 2
 retraso_animacion = 0.92
 
 [node name="TransicionEntrada" type="Control" parent="." unique_id=283761973]
@@ -586,7 +583,6 @@ offset_right = 494.0
 offset_bottom = 435.0
 
 [node name="EfectoEntrada" type="ColorRect" parent="TransicionEntrada" unique_id=1350210611]
-visible = false
 material = SubResource("ShaderMaterial_11f2h")
 layout_mode = 1
 anchors_preset = 15
@@ -605,7 +601,6 @@ offset_right = 645.0
 offset_bottom = 510.0
 
 [node name="EfectoSalida" type="ColorRect" parent="Transicion Salida" unique_id=1807822480]
-visible = false
 material = SubResource("ShaderMaterial_11f2h")
 layout_mode = 1
 anchors_preset = 15

@@ -9,7 +9,7 @@ extends "res://SCRIPTS/Reales/GoblinPrincipal/Estados/State.gd"
 func on_enter():
 	if father.esta_corriendo == true:
 		father.esta_corriendo = false
-	print("[Test]: Iniciando estado idle ")
+	#print("[Test]: Iniciando estado idle ")
 	
 	# Seleccionamos la animación de Idle correcta según la última dirección
 	match father.last_input:

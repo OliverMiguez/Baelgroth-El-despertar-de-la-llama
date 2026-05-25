@@ -44,6 +44,10 @@ func _physics_process(delta):
 
 # Administra los inputs de moviento del jugador y aplica velocidades con prioridad al primer input
 func manejar_movimiento():
+	if ControlEscondite.dialogo_activo == true:
+		velocity = Vector2.ZERO
+		return
+	
 # Manejo del eje horizontal con prioridad al primer input
 	if input_direction.x == 0:
 		if Input.is_action_pressed("Izquierda"): 
@@ -90,11 +94,12 @@ func manejar_movimiento():
 
 # Revisa si se puede esconder o no el goblin principal
 func manejar_esconderse():
-	if ControlEscondite.goblin_en_arbusto == true and Input.is_action_just_pressed("hide"):
-		if not escondido:
-			entrar_en_arbusto()
-		else:
+	if Input.is_action_just_pressed("hide"):
+		if  escondido:
 			salir_de_arbusto()
+		elif ControlEscondite.goblin_en_arbusto:
+			#print("intentando esconderse, escondido vale: ", escondido)
+			entrar_en_arbusto()
 
 # Se ejecuta cuando el goblin principal QUIERE entrar en el arbusto
 func entrar_en_arbusto():
@@ -102,8 +107,8 @@ func entrar_en_arbusto():
 	animaciones_goblin.play("esconderse")
 	await  animaciones_goblin.animation_finished
 	escondido = true
-	colision_goblin.visible = false
 	animaciones_goblin.visible = false
+	colision_goblin.set_deferred("disabled", true)
 	print(" [Enter a brush()]:El jugador esta escondido")
 
 
@@ -113,8 +118,8 @@ func salir_de_arbusto():
 	#await  animaciones_goblin.animation_finished
 	velocidad_andar = velocidad_andar_base
 	escondido = false
-	colision_goblin.visible = true
 	animaciones_goblin.visible = true
+	colision_goblin.set_deferred("disabled", false)
 	print("[Exit a brush ()]: El jugado salió de su escondite ")
 
 # Instancia la piedra y la mueve a la direccion correspondiente
@@ -135,6 +140,9 @@ func _on_animaciones_goblin_frame_changed() -> void:
 
 # Aumenta la velocidad del goblin si este se encuentra en el estado correr
 func correr():
+	if escondido:
+		velocidad_andar = 0  # si esta escondido siempre velocidad 0
+		return
 	if esta_corriendo == true:
 		velocidad_andar = velocidad_carrera
 	else: 

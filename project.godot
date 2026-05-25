@@ -31,9 +31,15 @@ directories/dch_directory={
 directories/dtl_directory={
 "Conocer a Roberto": "res://DIALOGIC/DIALOGOS/Reales/Conocer a Roberto.dtl",
 "ConversacionTest": "res://DIALOGIC/DIALOGOS/ConversacionTest.dtl",
+"Cueva_Guardia1timeline": "res://DIALOGIC/DIALOGOS/Reales/Cueva_Guardia1timeline.dtl",
+"Cueva_Guardia2": "res://DIALOGIC/DIALOGOS/Reales/Cueva_Guardia2.dtl",
+"Cueva_guardia3": "res://DIALOGIC/DIALOGOS/Reales/Cueva_guardia3.dtl",
+"Entrenamiento1": "res://DIALOGIC/DIALOGOS/Reales/Entrenamiento1.dtl",
 "MisionPrincipal": "res://DIALOGIC/DIALOGOS/Reales/MisionPrincipal.dtl",
 "ProhibidoSalir": "res://DIALOGIC/DIALOGOS/Reales/ProhibidoSalir.dtl",
-"Prueba 1": "res://DIALOGIC/DIALOGOS/Prueba 1.dtl"
+"Prueba 1": "res://DIALOGIC/DIALOGOS/Prueba 1.dtl",
+"cueva_guardia4": "res://DIALOGIC/DIALOGOS/Reales/cueva_guardia4.dtl",
+"entrenamiento2": "res://DIALOGIC/DIALOGOS/Reales/entrenamiento2.dtl"
 }
 layout/style_directory={
 "": "res://DIALOGIC/Styles/Style1.tres",

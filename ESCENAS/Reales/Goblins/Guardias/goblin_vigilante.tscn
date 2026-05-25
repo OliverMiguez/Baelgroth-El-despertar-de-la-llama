@@ -64,9 +64,6 @@ scale = Vector2(0.7, 0.7)
 collision_layer = 64
 collision_mask = 255
 script = ExtResource("1_d8fwy")
-flip_vigilante = null
-numero_goblin = null
-retraso_animaciones = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1421785287]
 sprite_frames = SubResource("SpriteFrames_id02s")
@@ -83,7 +80,6 @@ collision_layer = 128
 collision_mask = 255
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=334440262]
-visible = false
 position = Vector2(4.7683716e-07, 7.142857)
 shape = SubResource("CircleShape2D_d8fwy")
 debug_color = Color(0.42895013, 0.6021327, 0, 0.41960785)

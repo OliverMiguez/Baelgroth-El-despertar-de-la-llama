@@ -1,0 +1,9 @@
+GuardiaGoblin: Hola, hoy me toca vigilar la comida
+GuardiaGoblin: Para evitar que las ratas de la cueva la coman
+GuardiaGoblin: Querias algo ?
+- Jefe
+	GuardiaGoblin: El jefe?
+	GuardiaGoblin: Esta ahi arriba con sus planos y sus papeleos
+	GuardiaGoblin: Pasa algo ?
+- No
+	GuardiaGoblin: Hasta la proxima

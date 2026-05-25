@@ -25,7 +25,7 @@ var primer_mov_completado:bool = false
 var segundo_mov_completado:bool = false
 
 func _ready() -> void:
-	tween = create_tween()
+	#tween = create_tween()
 	roberto_miloss.visible = false
 	musica_cueva.play()
 	Musica.stop() # Musica del bosque (autoload)
@@ -118,7 +118,7 @@ func _on_salida_body_exited(body: Node2D) -> void:
 		goblin_dentro = false
 
 func prohibido_salir_sin_mision():
-	if prohibido_salir == true and not dialogo_prohibido_iniciado:
+	if prohibido_salir == true and not dialogo_prohibido_iniciado and Input.is_action_just_pressed("Hablar"):
 		dialogo_prohibido_iniciado = true
 		#print("1 - iniciando dialogo")
 		colision_area_prohibido_salir.queue_free() # elimina colision de dialogo
@@ -132,7 +132,8 @@ func prohibido_salir_sin_mision():
 		
 		if Dialogic.VAR.mis_activ == true:
 			#print("6 - entrando al if, borrando y moviendo")
-			prohido_salir.queue_free()  # mision activa, quitamos el bloqueo
+			if is_instance_valid(prohido_salir):
+				prohido_salir.queue_free()  # mision activa, quitamos el bloqueo
 		else:
 			#print("6 - entrando al else, mision no activa")
 			# mision no activa, el bloqueo se queda

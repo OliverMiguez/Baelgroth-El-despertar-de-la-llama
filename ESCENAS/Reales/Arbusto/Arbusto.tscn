@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bxvqa50y28l0q" path="res://ARTE/Bosque/arbusto-Sheet.png" id="2_djxh4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w88ng"]
-radius = 17.0
+radius = 12.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_djxh4"]
 atlas = ExtResource("2_djxh4")
@@ -46,6 +46,7 @@ animations = [{
 script = ExtResource("1_w88ng")
 
 [node name="DeteccionJugador" type="Area2D" parent="." unique_id=928158979]
+collision_layer = 8
 
 [node name="ColisionDeteccionJuegador" type="CollisionShape2D" parent="DeteccionJugador" unique_id=1286805408]
 position = Vector2(-1, 2)
