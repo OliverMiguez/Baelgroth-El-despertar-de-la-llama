@@ -553,12 +553,14 @@ debug_color = Color(0.8063247, 0.0023412723, 0.9951524, 0.41960785)
 [node name="GoblinVigilante" parent="." unique_id=1736408681 instance=ExtResource("10_11f2h")]
 position = Vector2(146.00002, 78)
 scale = Vector2(1.2, 1.2)
+tiene_dialogo = true
 flip_vigilante = true
 retraso_animacion = 0.3
 
 [node name="GoblinVigilante3" parent="." unique_id=1848332901 instance=ExtResource("10_11f2h")]
 position = Vector2(-71.999985, 117)
 scale = Vector2(1.2, 1.2)
+tiene_dialogo = true
 flip_vigilante = true
 numero_goblin = 3
 retraso_animacion = 0.612
@@ -566,11 +568,13 @@ retraso_animacion = 0.612
 [node name="GoblinVigilante4" parent="." unique_id=778016074 instance=ExtResource("10_11f2h")]
 position = Vector2(127.999985, -35.999985)
 scale = Vector2(1.2, 1.2)
+tiene_dialogo = true
 numero_goblin = 4
 
 [node name="GoblinVigilante2" parent="." unique_id=1686171050 instance=ExtResource("10_11f2h")]
 position = Vector2(-118.999985, -27.000004)
 scale = Vector2(1.2, 1.2)
+tiene_dialogo = true
 numero_goblin = 2
 retraso_animacion = 0.92
 

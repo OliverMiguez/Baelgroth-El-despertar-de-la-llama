@@ -634,7 +634,7 @@ script = ExtResource("1_xqqjy")
 
 [node name="AnimacionesGoblin" type="AnimatedSprite2D" parent="." unique_id=583185534]
 sprite_frames = SubResource("SpriteFrames_5xw4v")
-animation = &"salir_esconderse"
+animation = &"esconderse"
 autoplay = "Idle"
 
 [node name="Colision" type="CollisionShape2D" parent="." unique_id=1023046994]
@@ -679,5 +679,7 @@ volume_db = -16.28
 [node name="PasosCueva" type="AudioStreamPlayer2D" parent="." unique_id=1018895057]
 stream = ExtResource("12_dvsra")
 volume_db = -18.129
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=2008047419]
 
 [connection signal="frame_changed" from="AnimacionesGoblin" to="." method="_on_animaciones_goblin_frame_changed"]

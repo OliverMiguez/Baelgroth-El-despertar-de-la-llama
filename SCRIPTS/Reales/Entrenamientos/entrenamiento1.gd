@@ -4,6 +4,9 @@ extends Node2D
 @onready var pos_1_roberto: Marker2D = $Pos1_roberto
 @onready var animaciones_roberto: AnimatedSprite2D = $RobertoMilos/AnimatedSprite2D
 @onready var pos_2_roberto: Marker2D = $Pos2_roberto
+@onready var animaciones: AnimationPlayer = $AnimationPlayer
+@onready var bocadillos: Sprite2D = $RobertoMilos/Bocadillos
+@onready var animation_player_2: AnimationPlayer = $AnimationPlayer2
 
 
 var roberto_mov_actual:int = 0
@@ -11,8 +14,11 @@ var tween
 var roberto_moviendose:bool = false
 var primer_mov_completado:bool = false
 var segundo_mov_completado:bool = false
+var transicionando:bool = false
 
 func _ready() -> void:
+	animation_player_2.play("dialogo")
+	bocadillos.visible = false
 	tween = create_tween()
 	roberto_miloss.visible = true
 	Dialogic.VAR.roberto_entra = true
@@ -42,21 +48,34 @@ func movimientos_roberto(destino:Vector2, duracion:float):
 			animaciones_roberto.play("Lado")
 			tween.tween_callback(func(): # Cuando el tween acaba activa esta animacion
 				#print("5 - primer tween terminado")
+				bocadillos.visible = true
 				animaciones_roberto.play("Idle")
 				primer_mov_completado = true
 				roberto_mov_actual = 2
+				
 				roberto_miloss.dialogo_con_roberto_terminado.connect(func():
 					movimientos_roberto(pos_2_roberto.global_position, 4.0)
+					bocadillos.visible = false
 				, CONNECT_ONE_SHOT)  # CONNECT_ONE_SHOT hace que se desconecte automaticamente tras ejecutarse
 			)
 
 		2:
 			#print("4 - creando tween caso 2")
 			tween = create_tween()
-			tween.tween_property(roberto_miloss, "global_position", pos_2_roberto.global_position, 4.0)
+			tween.tween_property(roberto_miloss, "global_position", pos_2_roberto.global_position, 8.0)
 			animaciones_roberto.play("Lado")
 			tween.tween_callback(func(): # Cuando el tween acaba activa esta animacion
 				#print("5 - segundo tween terminado")
 				segundo_mov_completado = true
 				roberto_miloss.queue_free()
 			)
+
+# Transiciones Area
+func _on_cambio_body_entered(body: Node2D) -> void:
+	transicionando = true
+	if body is goblin_principal:
+		transicionando = true
+		if transicionando == true:
+			animaciones.play("Transicion2")
+			await animaciones.animation_finished
+			get_tree().change_scene_to_file("res://ESCENAS/Reales/Mapas/entrenamiento_2.tscn")

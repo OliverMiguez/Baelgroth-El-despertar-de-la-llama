@@ -42,6 +42,14 @@ func dialogos():
 			hablo = false
 			dialogo_terminado = true
 			dialogo_con_roberto_terminado.emit()
+		4:
+			Dialogic.start("res://DIALOGIC/DIALOGOS/Reales/Entrenamiento3.dtl")
+			ControlEscondite.dialogo_activo = true
+			hablo = true
+			await  Dialogic.timeline_ended
+			hablo = false
+			dialogo_terminado = true
+			dialogo_con_roberto_terminado.emit()
 func _on_dialogo_terminado():
 	dialogando = false
 	ControlEscondite.dialogo_activo = false

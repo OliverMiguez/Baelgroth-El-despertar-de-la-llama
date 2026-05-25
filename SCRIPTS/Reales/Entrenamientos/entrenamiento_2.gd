@@ -5,6 +5,7 @@ extends Node2D
 @onready var animaciones_roberto: AnimatedSprite2D = $RobertoMilos/AnimatedSprite2D
 @onready var pos_1_roberto: Marker2D = $Pos1Roberto
 @onready var pos_2_roberto: Marker2D = $Pos2Roberto
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
 
@@ -15,6 +16,7 @@ var primer_mov_completado:bool = false
 var segundo_mov_completado:bool = false
 
 func _ready() -> void:
+	animation_player.play("Trans")
 	tween = create_tween()
 	roberto_miloss.visible = true
 	Dialogic.VAR.roberto_entra = true

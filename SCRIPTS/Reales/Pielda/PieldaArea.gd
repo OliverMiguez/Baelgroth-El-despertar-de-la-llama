@@ -4,7 +4,7 @@ class_name pielda
 signal piedra_detenida  # avisamos cuando la piedra termino su recorrido
 
 @export var velocidad: float = 150.0 
-@export var dist_max: float = 140.0
+@export var dist_max: float = 160.0
 @onready var colision_area_pielda: CollisionShape2D = $DeteccionPielda/ColisionAreaPielda
 
 var direction: Vector2 = Vector2.ZERO # Aseguramos tipo Vector2
@@ -31,24 +31,51 @@ func _physics_process(delta: float) -> void:
 	
 	if direction == Vector2.ZERO: return
 
-	# Si el error persiste en la línea de abajo, es que 'velocidad' sigue siendo nula desde el inspector
+
 	var distancia_a_moverse = velocidad * delta
 	var movimiento_real = direction * distancia_a_moverse
 	
+	# 1. Intentamos mover y ver si choca contra una pared
 	var colision = move_and_collide(movimiento_real)
 	if colision:
 		tratar_piedra()
 		return
 	
-	#position += movimiento_real
-	#distancia_viajada += distancia_a_moverse
+	# 2. ¡DESCOMENTADO! Si no choca, sumamos la distancia manualmente
+	distancia_viajada += distancia_a_moverse
+	
+	# 3. ¡DESCOMENTADO! Si ya superó la distancia máxima, la detenemos
+	if distancia_viajada >= dist_max:
+		tratar_piedra()
+#
+	## Si el error persiste en la línea de abajo, es que 'velocidad' sigue siendo nula desde el inspector
+	#var distancia_a_moverse = velocidad * delta
+	#var movimiento_real = direction * distancia_a_moverse
 	#
-	#if distancia_viajada >= dist_max:
+	#var colision = move_and_collide(movimiento_real)
+	#if colision:
 		#tratar_piedra()
+		#return
+	#
+	##position += movimiento_real
+	##distancia_viajada += distancia_a_moverse
+	##
+	##if distancia_viajada >= dist_max:
+		##tratar_piedra()
+
 
 func tratar_piedra():
 	direction = Vector2.ZERO
-	piedra_detenida.emit()  # avisamos al mundo que ya paramos
+	piedra_detenida.emit()  # Avisamos al enemigo/mundo
+	
+
+	
+	# Opción B (Si necesitas que la piedra se quede tirada en el suelo visible):
+	# freeze = true
+	# set_physics_process(false) # Apaga este script para que deje de calcular movimiento
+#func tratar_piedra():
+	#direction = Vector2.ZERO
+	#piedra_detenida.emit()  # avisamos al mundo que ya paramos
 
 # Permite apagar la colision de la piedra para que no se detecte más
 func _on_eliminar_area_timeout() -> void:

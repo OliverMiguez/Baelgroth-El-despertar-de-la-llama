@@ -1,0 +1,8 @@
+Roberto: Hola corazon, ahora aprenderas a distraerl al enemigo
+Roberto: Utilizando esto...
+GoblinPrincipal: Piedras?
+Roberto: Coge unas cuantas y prueba a lanzarlas ahi para ver tu punteria
+Roberto: Para lanzarlas utilizar la tecla [wave]E[/wave]
+Roberto: Si te sientes con confianza ve por el camino de arriba y distrae al guardia
+Roberto: Evita que te atrape o tendras que volver a empezar
+set {borrar_colision} = true

@@ -1,11 +1,14 @@
 extends CharacterBody2D
 class_name  Goblin_Vigilante
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var bocadillos: Sprite2D = $Bocadillos
+@onready var animation_player_2: AnimationPlayer = $AnimationPlayer2
 
 var goblin_p: goblin_principal
 var goblin_detectado: bool = false
 var dialogando:bool = false
 
+@export var tiene_dialogo:bool = false
 @export var flip_vigilante:bool = false
 @export var numero_goblin:int
 @export_range(0.0,3.0) var retraso_animacion: float = 0.0
@@ -30,6 +33,7 @@ func _physics_process(_delta: float) -> void:
 func iniciar_dialogo():
 	if Input.is_action_just_pressed("Hablar") and goblin_detectado and not dialogando:
 		dialogando = true
+
 		ControlEscondite.dialogo_activo = true
 		match numero_goblin:
 			1:

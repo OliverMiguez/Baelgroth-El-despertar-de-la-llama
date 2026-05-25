@@ -98,7 +98,7 @@ func manejar_esconderse():
 		if  escondido:
 			salir_de_arbusto()
 		elif ControlEscondite.goblin_en_arbusto:
-			#print("intentando esconderse, escondido vale: ", escondido)
+			print("intentando esconderse, escondido vale: ", escondido)
 			entrar_en_arbusto()
 
 # Se ejecuta cuando el goblin principal QUIERE entrar en el arbusto
