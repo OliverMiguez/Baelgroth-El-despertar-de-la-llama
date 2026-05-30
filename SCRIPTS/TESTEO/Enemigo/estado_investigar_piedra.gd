@@ -22,26 +22,24 @@ func configurar(nodo_enemigo: Enemigo):
 	agente  = enemigo.agente
 
 func al_entrar():
-	_fase           = Fase.VIAJANDO
+	_fase = Fase.ESPERANDO  # CORREGIDO: empezamos esperando siempre
 	_timer_reaccion = 0.0
-	enemigo.velocity = Vector2.ZERO  # el enemigo se queda quieto esperando
+	enemigo.velocity = Vector2.ZERO
 
-	# Recogemos la posicion de la piedra en el momento de entrar al estado
 	var piedra = enemigo.goblin_detectado
-	if not piedra:
+	if not piedra or not piedra is pielda:
 		enemigo.fsm.cambiar_estado("patrulla")
 		return
 
 	_piedra_ref = piedra
 
-  # Si la piedra ya está quieta no necesitamos esperar
 	if piedra.direction == Vector2.ZERO:
+		# Ya parada, viajamos directamente
 		_iniciar_viaje(piedra.global_position)
-		return
-
-	# Si aun se mueve, conectamos la señal y esperamos
-	if not piedra.piedra_detenida.is_connected(_on_piedra_detenida):
-		piedra.piedra_detenida.connect(_on_piedra_detenida)
+	else:
+		# Aun moviéndose, esperamos la señal
+		if not piedra.piedra_detenida.is_connected(_on_piedra_detenida):
+			piedra.piedra_detenida.connect(_on_piedra_detenida)
 		
 func al_salir():
 	_fase = Fase.ESPERANDO

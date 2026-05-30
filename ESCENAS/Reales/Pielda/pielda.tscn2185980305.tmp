@@ -31,5 +31,11 @@ collision_mask = 34
 shape = SubResource("CircleShape2D_2ds7g")
 debug_color = Color(0.7796924, 0.13120025, 0.99999994, 0.41960785)
 
+[node name="EliminarArea" type="Timer" parent="." unique_id=1443741650]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
 [connection signal="body_entered" from="DeteccionPielda" to="." method="_on_deteccion_pielda_body_entered"]
 [connection signal="body_exited" from="DeteccionPielda" to="." method="_on_deteccion_pielda_body_exited"]
+[connection signal="timeout" from="EliminarArea" to="." method="_on_eliminar_area_timeout"]

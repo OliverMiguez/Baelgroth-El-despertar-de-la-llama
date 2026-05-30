@@ -670,7 +670,7 @@ idle_state = NodePath("../Idle")
 walk_sate = NodePath("../Walk")
 
 [node name="PiedraSpawnPoint" type="Marker2D" parent="." unique_id=1623606182]
-position = Vector2(8.333333, 0)
+position = Vector2(-9.999999, 0)
 
 [node name="PasosAudio" type="AudioStreamPlayer2D" parent="." unique_id=1218933246]
 stream = ExtResource("11_pdu6u")

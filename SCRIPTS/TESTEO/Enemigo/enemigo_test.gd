@@ -62,14 +62,15 @@ func _on_area_deteccion_body_entered(body: Node2D) -> void:
 func _on_area_deteccion_body_exited(body: Node2D) -> void:
 	if body is goblin_principal:
 		goblin_en_area = null
-		# El personaje salio del area, borramos la memoria
-		# ya no tiene sentido recordarlo si se fue
 		goblin_fue_visto = false
-		# Desconectamos la señal para no dejar conexiones huerfanas
 		if body.escondido_cambiado.is_connected(_evaluar_objetivo):
 			body.escondido_cambiado.disconnect(_evaluar_objetivo)
 	elif body is pielda:
 		piedras_en_area.erase(body)
+		# MODIFICADO: misma proteccion
+		if fsm.estado_activo != fsm.estado_investigar_piedra:
+			_evaluar_objetivo()
+			return
 
 	_evaluar_objetivo()
 	
@@ -114,7 +115,10 @@ func _on_area_deteccion_area_exited(area: Area2D) -> void:
 	var padre = area.get_parent()
 	if padre is pielda:
 		piedras_en_area.erase(padre)
-		_evaluar_objetivo()
+		# MODIFICADO: solo evaluamos si NO estamos ya investigando esa piedra
+		# para no interrumpir al enemigo que ya va hacia ella
+		if fsm.estado_activo != fsm.estado_investigar_piedra:
+			_evaluar_objetivo()
 
 # En Enemigo.gd
 func actualizar_area_deteccion(direccion: Vector2):
