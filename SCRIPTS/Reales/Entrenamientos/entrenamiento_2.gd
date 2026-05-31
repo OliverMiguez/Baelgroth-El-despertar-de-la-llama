@@ -14,6 +14,7 @@ var tween
 var roberto_moviendose:bool = false
 var primer_mov_completado:bool = false
 var segundo_mov_completado:bool = false
+var cambio_detectado:bool = false
 
 func _ready() -> void:
 	animation_player.play("Trans")
@@ -64,3 +65,10 @@ func movimientos_roberto(destino:Vector2, duracion:float):
 				segundo_mov_completado = true
 				roberto_miloss.queue_free()
 			)
+func _on_cambio_escena_body_entered(body: Node2D) -> void:
+	if body is goblin_principal:
+		cambio_detectado = true
+		if cambio_detectado:
+			animation_player.play("Transicion2")
+			await  animation_player.animation_finished
+			get_tree().change_scene_to_file("res://ESCENAS/Reales/Mapas/entrenamiento_3.tscn")

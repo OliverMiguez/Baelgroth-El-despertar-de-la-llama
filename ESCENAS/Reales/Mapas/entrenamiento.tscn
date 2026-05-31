@@ -415,7 +415,6 @@ offset_right = 494.0
 offset_bottom = 435.0
 
 [node name="Transicion" type="ColorRect" parent="Control" unique_id=881216702]
-visible = false
 material = SubResource("ShaderMaterial_x5x8q")
 layout_mode = 1
 anchors_preset = 15

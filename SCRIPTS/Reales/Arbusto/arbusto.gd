@@ -7,7 +7,7 @@ class_name Test_Arbusto
 
 # Cuando se detecta un cuerpo en el area  del arbusto
 func _on_deteccion_jugador_body_entered(body: Node2D) -> void:
-	print("entro en arbusto: ", body.name)
+	#print("entro en arbusto: ", body.name)
 	if body is goblin_principal:
 		ControlEscondite.goblin_en_arbusto = true  # DIRECTO al autoload	
 			#print("goblin detectado en arbusto")

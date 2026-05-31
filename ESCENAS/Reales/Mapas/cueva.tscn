@@ -293,7 +293,7 @@ size = Vector2(26, 31)
 script = ExtResource("1_q7o4g")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=2050910672]
-color = Color(0.33023036, 0.21708387, 0.33059007, 1)
+color = Color(0.35699898, 0.23575473, 0.35697588, 1)
 
 [node name="Animaciones" type="AnimationPlayer" parent="." unique_id=417849965]
 libraries/ = SubResource("AnimationLibrary_4sbgq")

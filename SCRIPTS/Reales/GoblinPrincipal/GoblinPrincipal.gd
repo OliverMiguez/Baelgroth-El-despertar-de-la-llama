@@ -110,19 +110,20 @@ func entrar_en_arbusto():
 	escondido = true
 	animaciones_goblin.visible = false
 	colision_goblin.set_deferred("disabled", true)
-	print(" [Enter a brush()]:El jugador esta escondido")
+	#print(" [Enter a brush()]:El jugador esta escondido")
 
 
 # Se ejecuta cuando el goblin principal sale QUIERE salir del arbusto
 func salir_de_arbusto():
-	#animaciones_goblin.play("salir_esconderse")
-	#await  animaciones_goblin.animation_finished
+	anim()
 	velocidad_andar = velocidad_andar_base
 	escondido = false
 	animaciones_goblin.visible = true
 	colision_goblin.set_deferred("disabled", false)
-	print("[Exit a brush ()]: El jugado salió de su escondite ")
-
+	#print("[Exit a brush ()]: El jugado salió de su escondite ")
+func anim():
+	animaciones_goblin.play("salir_esconderse")
+	await  animaciones_goblin.animation_finished
 # Instancia la piedra y la mueve a la direccion correspondiente
 func lanzar_piedra():
 	if activar_lanzar_piedra == true:
