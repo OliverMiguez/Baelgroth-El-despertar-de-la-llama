@@ -28,6 +28,7 @@ func configurar(nodo_enemigo: Enemigo):
 
 # Cuando se inicia el estado
 func al_entrar():
+	print("Estado patrulla")
 	posicion_inicial_x = enemigo.position.x
 	posicion_inicial_y = enemigo.position.y
 	posicion_inicial = Vector2(enemigo.position)

@@ -56,14 +56,14 @@ func _on_dialogo_terminado():
 
 func manejar_dialogos():
 	if goblin_entro and Input.is_action_just_pressed("Hablar") and not dialogando:
-		print("iniciando dialogo, dialogo_actual vale: ", dialogo_actual)
+		#print("iniciando dialogo, dialogo_actual vale: ", dialogo_actual)
 		dialogando = true
 		dialogos()
 
 # Maneja el area de deteccion de roberto
 func _on_deteccion_body_entered(body: Node2D) -> void:
 	if body is goblin_principal:
-		print("goblin detectado")
+		#print("goblin detectado")
 		goblin_entro = true
 
 func _on_deteccion_body_exited(body: Node2D) -> void:

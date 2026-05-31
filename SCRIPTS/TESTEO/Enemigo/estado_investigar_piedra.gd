@@ -6,7 +6,7 @@ var enemigo: Enemigo
 var agente:  NavigationAgent2D
 
 const VELOCIDAD        := 70.0
-const MARGEN_LLEGADA   := 1.0  # pixeles de distancia minima a la piedra
+const MARGEN_LLEGADA   := 20.0  # pixeles de distancia minima a la piedra
 const TIEMPO_REACCION  := 2.5   # segundos esperando en el sitio
 
 # Fases internas del estado
@@ -22,7 +22,8 @@ func configurar(nodo_enemigo: Enemigo):
 	agente  = enemigo.agente
 
 func al_entrar():
-	_fase = Fase.ESPERANDO  # CORREGIDO: empezamos esperando siempre
+	print("Estado investigar piedra")
+	_fase = Fase.ESPERANDO  
 	_timer_reaccion = 0.0
 	enemigo.velocity = Vector2.ZERO
 
@@ -43,7 +44,6 @@ func al_entrar():
 		
 func al_salir():
 	_fase = Fase.ESPERANDO
-	enemigo.goblin_detectado = null
 	# Limpiamos la señal si quedó conectada
 	if _piedra_ref and _piedra_ref.piedra_detenida.is_connected(_on_piedra_detenida):
 		_piedra_ref.piedra_detenida.disconnect(_on_piedra_detenida)

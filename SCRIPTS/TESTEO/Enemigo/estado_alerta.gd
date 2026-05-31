@@ -31,6 +31,7 @@ func tick(delta: float):
 	if _pausando_perdida:
 		enemigo.velocity = Vector2.ZERO
 		_timer_perdida -= delta
+		animaciones.play("Idle")
 		if _timer_perdida <= 0.0:
 			enemigo.fsm.estado_investigar.ultimo_punto_visto = _ultimo_punto_visto
 			enemigo.fsm.cambiar_estado("investigar")
@@ -70,6 +71,13 @@ func _perseguir_posicion(posicion: Vector2, delta: float):
 	if _timer_recalculo <= 0.0:
 		agente.target_position = posicion
 		_timer_recalculo = INTERVALO_RECALCULO
+	
+	# Cuando el goblin sale de su area Navigation 2d activa idle
+	if not agente.is_target_reachable():
+		enemigo.velocity = Vector2.ZERO
+		animaciones.play("Idle")
+		return
+		
 	if not agente.is_navigation_finished():
 		var siguiente_pos = agente.get_next_path_position()
 		var dir = (siguiente_pos - enemigo.global_position).normalized()

@@ -8,6 +8,7 @@ signal escondido_cambiado # Permite que el player se esconada
 @onready var colision_goblin: CollisionShape2D = $Colision
 @onready var piedra_spawn_point: Marker2D = $PiedraSpawnPoint
 @onready var pasos_audio: AudioStreamPlayer2D = $PasosAudio
+@onready var cooldown_piedras: Timer = $CooldownPiedras
 
 @export var velocidad_andar_base:float = 50.0
 @export var velocidad_carrera:float = 100
@@ -130,6 +131,8 @@ func lanzar_piedra():
 			get_parent().add_child(piedra_scene) # La añade al arbol de nodos
 			piedra_scene.global_position = piedra_spawn_point.global_position # La coloca en la posicion del marker 2d
 			piedra_scene.direction = direccion_actual
+			activar_lanzar_piedra = false
+			cooldown_piedras.start()
 
 # Administrar el sonido de los pasos
 func _on_animaciones_goblin_frame_changed() -> void:
@@ -148,3 +151,7 @@ func correr():
 	else: 
 		velocidad_andar = velocidad_andar_base
 		#print("[CORRER] velocidad cambiada a: ", velocidad_andar)
+
+
+func _on_cooldown_piedras_timeout() -> void:
+	activar_lanzar_piedra = true

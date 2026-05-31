@@ -682,4 +682,8 @@ volume_db = -18.129
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=2008047419]
 
+[node name="CooldownPiedras" type="Timer" parent="." unique_id=959855963]
+wait_time = 3.0
+
 [connection signal="frame_changed" from="AnimacionesGoblin" to="." method="_on_animaciones_goblin_frame_changed"]
+[connection signal="timeout" from="CooldownPiedras" to="." method="_on_cooldown_piedras_timeout"]

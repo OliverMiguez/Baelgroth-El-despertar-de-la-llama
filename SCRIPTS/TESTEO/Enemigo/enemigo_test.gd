@@ -3,6 +3,9 @@ class_name Enemigo
 
 # Array que recoge todos los puntos en los que se podrá mover el enemigo
 @export var puntos_patrulla: Array[NodePath] = []
+# Distancia a la que se coloca el area por delante del enemigo
+@export var distancia := 15.0  # ajusta segun el tamaño de tu enemigo
+
 # Nodo que hace referencia al objeto que permite mover al enemigo entre los puntos de manera inteligentee
 @onready var agente: NavigationAgent2D = $NavigationAgent2D
 # Area de deteccion del enemigo(detectar al personaje principal)
@@ -42,12 +45,12 @@ func _physics_process(delta):
 	# Asignamos el valor que nos envia el global de la señal de la piedra
 	# Si es true -> enemigo viaja a la pos de la piedra SIEMPRE QUE EL GOBLIN NO ESTE O ESCONDIDO O CERCA DEL AREA DE DETECCION
 	# SI es false -> no se hará caso a la piedra
-	señal_piedra = ManejadorDeDeteccion.deteccion_enemigo
-
+	#señal_piedra = ManejadorDeDeteccion.deteccion_enemigo
+	
 	fsm.tick(delta)
 	move_and_slide() # Permite el movimiento del enemigo
 
-
+# Detecta cuando el goblin entra en el area del enemigo
 func _on_area_deteccion_body_entered(body: Node2D) -> void:
 	if body is goblin_principal:
 		goblin_en_area = body # Marcamos que entro el goblin en el area 
@@ -59,6 +62,7 @@ func _on_area_deteccion_body_entered(body: Node2D) -> void:
 
 	_evaluar_objetivo()
 
+# Cuando el goblin sale del enemigo
 func _on_area_deteccion_body_exited(body: Node2D) -> void:
 	if body is goblin_principal:
 		goblin_en_area = null
@@ -74,11 +78,17 @@ func _on_area_deteccion_body_exited(body: Node2D) -> void:
 
 	_evaluar_objetivo()
 	
-	
 # Permite ver a que objetivo perseguir o si hay ambos darle prioridad de persecucion al goblin principal
 func _evaluar_objetivo():
- # Caso 1: el goblin esta en el area y no esta escondido
-	# lo vemos claramente, lo marcamos como visto y lo perseguimos
+	# Si estamos investigando una piedra solo interrumpimos si aparece el goblin visible
+	if fsm.estado_activo == fsm.estado_investigar_piedra:
+		if goblin_en_area != null and not goblin_en_area.escondido:
+			goblin_fue_visto = true
+			goblin_detectado = goblin_en_area
+			fsm.cambiar_estado("alerta")
+		return  # en cualquier otro caso no interrumpimos
+
+	# Caso 1: el goblin esta en el area y no esta escondido
 	if goblin_en_area != null and not goblin_en_area.escondido:
 		goblin_fue_visto = true
 		goblin_detectado = goblin_en_area
@@ -102,7 +112,7 @@ func _evaluar_objetivo():
 	goblin_detectado = null
 	fsm.cambiar_estado("patrullar")
 
-# DETECTAN LA PIEDRA COMO AREA 
+# Deteccion de la piedra cuando entra en el area del enemigo 
 func _on_area_deteccion_area_entered(area: Area2D) -> void:
 	# Subimos al nodo padre del area para comprobar si es una piedra
 	# porque el area que entra es el hijo DeteccionPielda, no la piedra en si
@@ -111,22 +121,19 @@ func _on_area_deteccion_area_entered(area: Area2D) -> void:
 		piedras_en_area.append(padre)
 		_evaluar_objetivo()
 
+# Deteccion de la piedra cuando sale del area del enemigo
 func _on_area_deteccion_area_exited(area: Area2D) -> void:
 	var padre = area.get_parent()
 	if padre is pielda:
 		piedras_en_area.erase(padre)
-		# MODIFICADO: solo evaluamos si NO estamos ya investigando esa piedra
-		# para no interrumpir al enemigo que ya va hacia ella
+		# No interrumpimos si ya estamos investigando esa piedra
 		if fsm.estado_activo != fsm.estado_investigar_piedra:
 			_evaluar_objetivo()
 
-# En Enemigo.gd
+#  Mueve el area en base al movimiento del enemigo
 func actualizar_area_deteccion(direccion: Vector2):
 	if direccion == Vector2.ZERO:
 		return  # si no se mueve no cambiamos nada
-	
-	# Distancia a la que se coloca el area por delante del enemigo
-	var distancia := 30.0  # ajusta segun el tamaño de tu enemigo
 	
 	area_deteccion.position = direccion.normalized() * distancia
 	# Rota el area para que apunte en la direccion de movimiento
