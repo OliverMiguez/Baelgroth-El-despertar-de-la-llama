@@ -14,6 +14,7 @@ class_name Enemigo
 @onready var fsm: Node = $FSM
 # COlision del area de detecib
 @onready var colision_enemigo: CollisionShape2D = $ColisionEnemigo
+@onready var roberto_milos: roberto_milos = $"../RobertoMilos"
 
 # Puntos por los que ya pasó
 var puntos_resueltos: Array[Node2D] = []
@@ -32,6 +33,7 @@ var piedras_en_area:Array = [] # Para poder recoger todas las piedras
 var señal_piedra
 
 func _ready():
+	print("enemigo cargado correctamente")
 	# Recorre el array de los Marker2D
 	for path in puntos_patrulla:
 		puntos_resueltos.append(get_node(path)) # Añade el primer punto al array de putos por los que se han pasado
@@ -42,6 +44,7 @@ func _ready():
 	area_deteccion.area_exited.connect(_on_area_deteccion_area_exited)
 	
 func _physics_process(delta):
+	
 	# Asignamos el valor que nos envia el global de la señal de la piedra
 	# Si es true -> enemigo viaja a la pos de la piedra SIEMPRE QUE EL GOBLIN NO ESTE O ESCONDIDO O CERCA DEL AREA DE DETECCION
 	# SI es false -> no se hará caso a la piedra
@@ -138,3 +141,12 @@ func actualizar_area_deteccion(direccion: Vector2):
 	area_deteccion.position = direccion.normalized() * distancia
 	# Rota el area para que apunte en la direccion de movimiento
 	area_deteccion.rotation = direccion.angle()
+
+
+func _on_reinicio_body_entered(body: Node2D) -> void:
+	print("entro algo en reinicio: ", body.name)
+	if body is goblin_principal:
+		print("recargando escena")
+		await Transc.reproducir("Trans")  # cambia "trans" por el nombre exacto de tu animacion
+		Transc.queue_free()
+		get_tree().reload_current_scene()

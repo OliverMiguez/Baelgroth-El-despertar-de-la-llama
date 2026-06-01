@@ -17,6 +17,7 @@ var segundo_mov_completado:bool = false
 var cambio_detectado:bool = false
 
 func _ready() -> void:
+	Ui.hide()
 	animation_player.play("Trans")
 	tween = create_tween()
 	roberto_miloss.visible = true

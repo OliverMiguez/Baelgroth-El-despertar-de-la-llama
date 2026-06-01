@@ -170,6 +170,9 @@ radius = 9.055386
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqjbl"]
 size = Vector2(52, 34)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_7wa8m"]
+radius = 13.038404
+
 [node name="EnemigoTest" type="CharacterBody2D" unique_id=2057307827]
 collision_layer = 2
 collision_mask = 9
@@ -209,5 +212,13 @@ script = ExtResource("6_su5wh")
 [node name="EstadoInvestigarPiedra" type="Node" parent="FSM" unique_id=790574653]
 script = ExtResource("7_7wa8m")
 
+[node name="Reinicio" type="Area2D" parent="." unique_id=1588086695]
+collision_layer = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Reinicio" unique_id=1195189948]
+shape = SubResource("CircleShape2D_7wa8m")
+debug_color = Color(0.89283806, 0.32272527, 0, 0.41960785)
+
 [connection signal="body_entered" from="AreaDeteccion" to="." method="_on_area_deteccion_body_entered"]
 [connection signal="body_exited" from="AreaDeteccion" to="." method="_on_area_deteccion_body_exited"]
+[connection signal="body_entered" from="Reinicio" to="." method="_on_reinicio_body_entered"]

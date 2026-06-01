@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://btyiylnac7ay0"]
+
+[ext_resource type="Script" uid="uid://blw54vycyuobn" path="res://SCRIPTS/Reales/transc.gd" id="1_6uei4"]
+[ext_resource type="Shader" uid="uid://c45i5eiycvpee" path="res://Shaders/shader1.gdshader" id="1_ykfpi"]
+
+[sub_resource type="Animation" id="Animation_6uei4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control2/Transicion:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.0]
+}
+
+[sub_resource type="Animation" id="Animation_ubrjm"]
+resource_name = "Trans"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control2/Transicion:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.56666666),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [3.0, 2.0, 1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bp17u"]
+_data = {
+&"RESET": SubResource("Animation_6uei4"),
+&"Trans": SubResource("Animation_ubrjm")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mrlj0"]
+shader = ExtResource("1_ykfpi")
+shader_parameter/use_sprite_alpha = true
+shader_parameter/use_transition_texture = false
+shader_parameter/transition_type = 0
+shader_parameter/position = Vector2(0, 0)
+shader_parameter/invert = false
+shader_parameter/grid_size = Vector2(1, 1)
+shader_parameter/rotation_angle = 45.0
+shader_parameter/global_x_mirror = false
+shader_parameter/global_y_mirror = false
+shader_parameter/local_x_mirror = false
+shader_parameter/local_y_mirror = false
+shader_parameter/stagger = Vector2(0, 0)
+shader_parameter/cumulative_stagger_flip = false
+shader_parameter/cumulative_stagger = Vector2(0, 0)
+shader_parameter/stagger_frequency = Vector2i(2, 2)
+shader_parameter/flip_frequency = Vector2i(1, 1)
+shader_parameter/basic_feather = 0.0
+shader_parameter/use_mask_size = false
+shader_parameter/mask_size = Vector2(100, 100)
+shader_parameter/edges = 6
+shader_parameter/shape_feather = 0.0
+shader_parameter/sectors = 1
+shader_parameter/clock_feather = 0.0
+shader_parameter/progress = 3.0
+shader_parameter/progress_bias = Vector2(0, 0)
+
+[node name="Node2D" type="CanvasLayer" unique_id=280244861]
+script = ExtResource("1_6uei4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=575135128]
+libraries/ = SubResource("AnimationLibrary_bp17u")
+
+[node name="Control2" type="Control" parent="." unique_id=533821981]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -1635.0
+offset_top = -588.0
+offset_right = -486.0
+offset_bottom = 235.0
+scale = Vector2(2, 2)
+
+[node name="Transicion" type="ColorRect" parent="Control2" unique_id=958929560]
+material = SubResource("ShaderMaterial_mrlj0")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 770.0
+offset_top = 55.0
+offset_right = 770.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)

@@ -23,7 +23,8 @@ func state_process(_delta:float) -> void:
 	if Input.is_action_pressed("correr"):
 		next_state = run_state
 	
-	elif father.velocity == Vector2.ZERO:
+	# CORREGIDO: usamos input_direction en lugar de velocity
+	elif father.input_direction == Vector2.ZERO:
 		next_state = idle_state
 
 func actualizar_animacion_movimiento():

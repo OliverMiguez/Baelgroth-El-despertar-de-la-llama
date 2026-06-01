@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://8n8ah5xbehou"]
+
+[ext_resource type="Texture2D" uid="uid://dcrj43r4e8rrn" path="res://ARTE/Portada2-export.png" id="1_0nwwq"]
+[ext_resource type="Script" uid="uid://bhfxi1tyr2bjm" path="res://SCRIPTS/Reales/portada.gd" id="1_ycrcv"]
+[ext_resource type="AudioStream" uid="uid://bkqhq7641aem1" path="res://Musica/menuFinal2.wav" id="3_k0uy4"]
+
+[node name="Node2D" type="Node2D" unique_id=298948741]
+script = ExtResource("1_ycrcv")
+
+[node name="Portada2Export" type="Sprite2D" parent="." unique_id=1779738825]
+position = Vector2(963, 481)
+texture = ExtResource("1_0nwwq")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=817190526]
+stream = ExtResource("3_k0uy4")
+volume_db = -14.786
+
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

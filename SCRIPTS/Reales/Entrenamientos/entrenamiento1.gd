@@ -16,6 +16,8 @@ var segundo_mov_completado:bool = false
 var transicionando:bool = false
 
 func _ready() -> void:
+	#animaciones.play("Trans")
+	Ui.hide()
 	animation_player_2.play("dialogo")
 	tween = create_tween()
 	roberto_miloss.visible = true

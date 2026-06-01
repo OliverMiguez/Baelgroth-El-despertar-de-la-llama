@@ -1,5 +1,4 @@
 extends Node2D
-
 @onready var goblin_principal: goblin_principal = $GoblinPrincipal
 @onready var colision_prohibido1: CollisionShape2D = $ProhibidoPasar/CollisionShape2D
 @onready var colision_prohibido2: CollisionShape2D = $ProhibidoPasar/CollisionShape2D2
@@ -24,6 +23,7 @@ var transicionando:bool = false
 
 
 func _ready() -> void:
+	Ui.hide()
 	tween = create_tween()
 	roberto_miloss.visible = true
 	Dialogic.VAR.roberto_entra = true
@@ -69,11 +69,13 @@ func movimientos_roberto(destino:Vector2, duracion:float):
 				primer_mov_completado = true
 				roberto_mov_actual = 2
 				roberto_miloss.dialogo_con_roberto_terminado.connect(func():
+					Ui.show()
 					movimientos_roberto(pos_2_roberto.global_position, 4.0)
 				, CONNECT_ONE_SHOT)  # CONNECT_ONE_SHOT hace que se desconecte automaticamente tras ejecutarse
 			)
 
 		2:
+			
 			#print("4 - creando tween caso 2")
 			tween = create_tween()
 			tween.tween_property(roberto_miloss, "global_position", pos_2_roberto.global_position, 9.0)

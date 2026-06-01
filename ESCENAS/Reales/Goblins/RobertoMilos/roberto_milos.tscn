@@ -181,8 +181,9 @@ animations = [{
 "speed": 6.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_qbytb"]
-radius = 8.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v25r1"]
+radius = 6.6666665
+height = 21.666666
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t167e"]
 radius = 50.0
@@ -199,8 +200,8 @@ animation = &"Idle"
 frame_progress = 0.38803428
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1245992671]
-position = Vector2(0, 10)
-shape = SubResource("CircleShape2D_qbytb")
+position = Vector2(0.8333333, 8.333333)
+shape = SubResource("CapsuleShape2D_v25r1")
 
 [node name="Deteccion" type="Area2D" parent="." unique_id=749416554]
 collision_layer = 256

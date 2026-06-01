@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://khe2b8minjb2"]
+
+[ext_resource type="Texture2D" uid="uid://bqlmlijjckvyw" path="res://ARTE/Adoquines y piedras/piedra.png" id="1_qbol0"]
+[ext_resource type="Script" uid="uid://qo68sg6bdd4a" path="res://SCRIPTS/Reales/MontonPiedra/monton_piedras.gd" id="1_qvuym"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qbol0"]
+radius = 20.024984
+
+[node name="MontonPiedras" type="Node2D" unique_id=464072703]
+script = ExtResource("1_qvuym")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=570601256]
+texture = ExtResource("1_qbol0")
+
+[node name="DeteccionDelMonton" type="Area2D" parent="." unique_id=1480091389]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeteccionDelMonton" unique_id=1874976386]
+shape = SubResource("CircleShape2D_qbol0")
+debug_color = Color(0.9380541, 0.2506659, 0, 0.41960785)
+
+[connection signal="body_entered" from="DeteccionDelMonton" to="." method="_on_deteccion_del_monton_body_entered"]
+[connection signal="body_exited" from="DeteccionDelMonton" to="." method="_on_deteccion_del_monton_body_exited"]

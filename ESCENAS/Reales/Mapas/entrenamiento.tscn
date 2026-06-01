@@ -6,9 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://daq12104unw0k" path="res://ESCENAS/Reales/Goblins/RobertoMilos/roberto_milos.tscn" id="2_x5x8q"]
 [ext_resource type="AudioStream" uid="uid://djgpfm4hejuwq" path="res://EfectosSonido/Pasos.mp3" id="3_ekig6"]
 [ext_resource type="Texture2D" uid="uid://b1l4mx3l6yvar" path="res://ARTE/Bosque/tronco.png" id="4_2g7ht"]
-[ext_resource type="PackedScene" uid="uid://dwf7lm8q7ra35" path="res://ESCENAS/Testeo/Enemigo/GoblinDetector.tscn" id="5_hppwo"]
 [ext_resource type="Shader" uid="uid://c45i5eiycvpee" path="res://Shaders/shader1.gdshader" id="6_soxpl"]
 [ext_resource type="Texture2D" uid="uid://cb2oa8nsh8itc" path="res://ARTE/Bosque/nuevo arbol.png" id="7_6m4im"]
+[ext_resource type="PackedScene" uid="uid://dwu6d60vgw7vg" path="res://ESCENAS/Testeo/Enemigo/Enemigo_Test.tscn" id="9_6m4im"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_hpb87"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -344,14 +344,15 @@ zoom = Vector2(3, 3)
 stream = ExtResource("3_ekig6")
 volume_db = -16.28
 
-[node name="EnemigoTest" parent="." unique_id=2057307827 instance=ExtResource("5_hppwo")]
-position = Vector2(361, 124)
-puntos_patrulla = Array[NodePath]([NodePath("../Marker2D"), NodePath("../Marker2D2")])
-
 [node name="RobertoMilos" parent="." unique_id=1668356236 instance=ExtResource("2_x5x8q")]
 position = Vector2(106.5, 189)
 scale = Vector2(0.6, 0.6)
 dialogo_actual = 2
+
+[node name="EnemigoTest" parent="." unique_id=2057307827 instance=ExtResource("9_6m4im")]
+position = Vector2(363, 119)
+scale = Vector2(0.7, 0.7)
+puntos_patrulla = Array[NodePath]([NodePath("../Marker2D"), NodePath("../Marker2D2")])
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=936059904]
 navigation_polygon = SubResource("NavigationPolygon_6hv07")

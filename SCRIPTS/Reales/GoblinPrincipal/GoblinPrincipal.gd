@@ -17,6 +17,7 @@ signal escondido_cambiado # Permite que el player se esconada
 @export var pitch_min: float = 0.75
 @export var pitch_max: float = 1.25
 @export var frames_pasos: Array[int] = [1, 3]
+@export var max_piedras:float = 3.0
 
 var instancia_piedra_packed = preload("res://ESCENAS/Reales/Pielda/pielda.tscn")
 var last_input # Recoge el ultimo input introducido ( se usa en la máquina de estados)
@@ -29,6 +30,9 @@ var direccion_actual:Vector2 = Vector2.RIGHT
 var paso_alternado: bool = false # Para ajustar audio
 var esta_corriendo:bool = false # Verifica si esta corriendo 
 var velocidad_andar:float = 50.0
+var total_piedras:float = 0.0
+var quiere_piedra:bool = false
+
 
 func _ready():
 	velocidad_andar = velocidad_andar_base
@@ -36,11 +40,14 @@ func _ready():
 	#print("[READY] velocidad_andar: ", velocidad_andar)
 	
 func _physics_process(delta):
+	quiere_piedra = ControlPiedras.recoger_piedras
+	
 	state_machine._physics_process(delta)	# Activa la máquina de estados
 	manejar_movimiento()	# Activa el movimiento del player a traves de los inputs
 	manejar_esconderse()	# Activa el sistema de esconderse
 	lanzar_piedra() # Lanza una piedra
 	correr() # Permite que pueda moverse más rápido
+	recoger_piedras()
 	move_and_slide() # Permite que el personaje se mueva(MUY IMPORTANTE!)
 
 # Administra los inputs de moviento del jugador y aplica velocidades con prioridad al primer input
@@ -126,13 +133,16 @@ func anim():
 	await  animaciones_goblin.animation_finished
 # Instancia la piedra y la mueve a la direccion correspondiente
 func lanzar_piedra():
-	if activar_lanzar_piedra == true:
+	if activar_lanzar_piedra and total_piedras > 0:
 		if Input.is_action_just_pressed("Lanzar"):
-			var piedra_scene = instancia_piedra_packed.instantiate() # Instancia la escena de la piedra
-			get_parent().add_child(piedra_scene) # La añade al arbol de nodos
-			piedra_scene.global_position = piedra_spawn_point.global_position # La coloca en la posicion del marker 2d
+			var piedra_scene = instancia_piedra_packed.instantiate()
+			get_parent().add_child(piedra_scene)
+			piedra_scene.global_position = piedra_spawn_point.global_position
 			piedra_scene.direction = direccion_actual
+			total_piedras -= 1
+			ControlPiedras.piedras_jugador = total_piedras
 			activar_lanzar_piedra = false
+			# MODIFICADO: siempre iniciamos el cooldown, independientemente de piedras
 			cooldown_piedras.start()
 
 # Administrar el sonido de los pasos
@@ -155,4 +165,18 @@ func correr():
 
 
 func _on_cooldown_piedras_timeout() -> void:
+	# MODIFICADO: siempre reactivamos, la condicion de piedras la comprueba lanzar_piedra
 	activar_lanzar_piedra = true
+	
+func recoger_piedras():
+	if quiere_piedra and Input.is_action_just_pressed("Recoger"):
+		if total_piedras < max_piedras:
+			total_piedras += 3
+		else:
+			total_piedras = 3
+			ControlPiedras.piedras_jugador = total_piedras
+			# MODIFICADO: activamos siempre al recoger, no solo cuando total es 1
+			activar_lanzar_piedra = true
+			print("piedras: ", total_piedras)
+	else:
+			print("maximo de piedras alcanzado")

@@ -629,7 +629,7 @@ height = 23.333332
 
 [node name="GoblinPrincipal" type="CharacterBody2D" unique_id=988583641]
 scale = Vector2(0.6, 0.6)
-collision_mask = 493
+collision_mask = 1007
 script = ExtResource("1_xqqjy")
 
 [node name="AnimacionesGoblin" type="AnimatedSprite2D" parent="." unique_id=583185534]
@@ -683,7 +683,7 @@ volume_db = -18.129
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=2008047419]
 
 [node name="CooldownPiedras" type="Timer" parent="." unique_id=959855963]
-wait_time = 3.0
+wait_time = 1.5
 
 [connection signal="frame_changed" from="AnimacionesGoblin" to="." method="_on_animaciones_goblin_frame_changed"]
 [connection signal="timeout" from="CooldownPiedras" to="." method="_on_cooldown_piedras_timeout"]

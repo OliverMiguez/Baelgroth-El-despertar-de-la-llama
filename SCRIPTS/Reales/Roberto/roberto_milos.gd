@@ -3,6 +3,8 @@ class_name roberto_milos
 
 signal dialogo_con_roberto_terminado
 
+@onready var deteccion: Area2D = $Deteccion
+
 @export var dialogo_actual:int 
 
 var goblin_entro:bool = false
@@ -20,6 +22,7 @@ func dialogos():
 	match dialogo_actual:
 		1: 
 			Dialogic.start("res://DIALOGIC/DIALOGOS/Reales/Conocer a Roberto.dtl")
+			#deteccion.queue_free()
 			ControlEscondite.dialogo_activo = true
 			hablo = true
 			await  Dialogic.timeline_ended
@@ -28,6 +31,7 @@ func dialogos():
 			dialogo_con_roberto_terminado.emit()
 		2:
 			Dialogic.start("res://DIALOGIC/DIALOGOS/Reales/Entrenamiento1.dtl")
+			#deteccion.queue_free()
 			ControlEscondite.dialogo_activo = true
 			hablo = true
 			await  Dialogic.timeline_ended
@@ -36,6 +40,7 @@ func dialogos():
 			dialogo_con_roberto_terminado.emit()
 		3:
 			Dialogic.start("res://DIALOGIC/DIALOGOS/Reales/entrenamiento2.dtl")
+			#deteccion.queue_free()
 			ControlEscondite.dialogo_activo = true
 			hablo = true
 			await  Dialogic.timeline_ended
@@ -44,6 +49,7 @@ func dialogos():
 			dialogo_con_roberto_terminado.emit()
 		4:
 			Dialogic.start("res://DIALOGIC/DIALOGOS/Reales/Entrenamiento3.dtl")
+			#deteccion.queue_free()
 			ControlEscondite.dialogo_activo = true
 			hablo = true
 			await  Dialogic.timeline_ended
@@ -52,6 +58,7 @@ func dialogos():
 			dialogo_con_roberto_terminado.emit()
 func _on_dialogo_terminado():
 	dialogando = false
+	deteccion.queue_free()
 	ControlEscondite.dialogo_activo = false
 
 func manejar_dialogos():

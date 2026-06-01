@@ -25,6 +25,7 @@ var primer_mov_completado:bool = false
 var segundo_mov_completado:bool = false
 
 func _ready() -> void:
+	#Ui.hide()
 	#tween = create_tween()
 	roberto_miloss.visible = false
 	musica_cueva.play()
