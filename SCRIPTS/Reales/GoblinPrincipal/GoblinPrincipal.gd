@@ -54,8 +54,9 @@ func _physics_process(delta):
 func manejar_movimiento():
 	if ControlEscondite.dialogo_activo == true:
 		velocity = Vector2.ZERO
+		input_direction = Vector2.ZERO  # AÑADIDO: reseteamos el input
 		return
-	
+		
 # Manejo del eje horizontal con prioridad al primer input
 	if input_direction.x == 0:
 		if Input.is_action_pressed("Izquierda"): 
@@ -177,6 +178,4 @@ func recoger_piedras():
 			ControlPiedras.piedras_jugador = total_piedras
 			# MODIFICADO: activamos siempre al recoger, no solo cuando total es 1
 			activar_lanzar_piedra = true
-			print("piedras: ", total_piedras)
-	else:
-			print("maximo de piedras alcanzado")
+			#print("piedras: ", total_piedras)

@@ -14,7 +14,7 @@ class_name Enemigo
 @onready var fsm: Node = $FSM
 # COlision del area de detecib
 @onready var colision_enemigo: CollisionShape2D = $ColisionEnemigo
-@onready var roberto_milos: roberto_milos = $"../RobertoMilos"
+#@onready var roberto_milos: roberto_milos = $"../RobertoMilos"
 
 # Puntos por los que ya pasó
 var puntos_resueltos: Array[Node2D] = []
@@ -144,9 +144,10 @@ func actualizar_area_deteccion(direccion: Vector2):
 
 
 func _on_reinicio_body_entered(body: Node2D) -> void:
-	print("entro algo en reinicio: ", body.name)
 	if body is goblin_principal:
 		print("recargando escena")
-		await Transc.reproducir("Trans")  # cambia "trans" por el nombre exacto de tu animacion
-		Transc.queue_free()
-		get_tree().reload_current_scene()
+		Transc.animation_player.play("Trans")
+		await Transc.animation_player.animation_finished
+		Ui.queue_free()
+		# MODIFICADO: usamos call_deferred para evitar que se libere antes de tiempo
+		get_tree().call_deferred("reload_current_scene")

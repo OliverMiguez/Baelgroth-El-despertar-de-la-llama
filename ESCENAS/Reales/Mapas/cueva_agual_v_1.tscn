@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://ymucptjp01e7"]
+
+[ext_resource type="AudioStream" uid="uid://ciho1ibyatjlt" path="res://Musica/Test/dungeonAgua.wav" id="1_fbx02"]
+[ext_resource type="Script" uid="uid://b2834n5nvrbyo" path="res://ESCENAS/Reales/Mapas/cueva_agual_v_1.gd" id="1_yudm5"]
+
+[node name="CuevaAgualV1" type="Node2D" unique_id=337290409]
+script = ExtResource("1_yudm5")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1180035738]
+stream = ExtResource("1_fbx02")
+volume_db = -15.344
+
+[node name="Musica1" type="Timer" parent="." unique_id=1077881370]
+
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

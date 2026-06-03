@@ -19,7 +19,7 @@ func _ready() -> void:
 	#animaciones.play("Trans")
 	Ui.hide()
 	animation_player_2.play("dialogo")
-	tween = create_tween()
+	#tween = create_tween()
 	roberto_miloss.visible = true
 	Dialogic.VAR.roberto_entra = true
 	
@@ -38,7 +38,7 @@ func manejador_roberto():
 		movimientos_roberto(pos_1_roberto.global_position,8.0)
 
 # Mueve a roberto por el mapa
-func movimientos_roberto(destino:Vector2, duracion:float):
+func movimientos_roberto(destino:Vector2, _duracion:float):
 	#print("3 - movimientos_roberto llamado, caso: ", roberto_mov_actual, " destino: ", destino)
 	match  roberto_mov_actual:
 		1:

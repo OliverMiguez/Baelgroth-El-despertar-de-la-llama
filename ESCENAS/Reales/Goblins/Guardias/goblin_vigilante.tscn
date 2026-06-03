@@ -53,8 +53,9 @@ animations = [{
 "speed": 9.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_mc3iv"]
-radius = 8.571428
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d8fwy"]
+radius = 11.428571
+height = 31.428568
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d8fwy"]
 radius = 38.59787
@@ -72,8 +73,8 @@ frame = 2
 frame_progress = 0.60811865
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1064397177]
-position = Vector2(-2.857143, 12.857142)
-shape = SubResource("CircleShape2D_mc3iv")
+position = Vector2(-1.4285716, 4.2857146)
+shape = SubResource("CapsuleShape2D_d8fwy")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1232754942]
 collision_layer = 128

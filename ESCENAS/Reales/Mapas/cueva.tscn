@@ -247,7 +247,7 @@ size = Vector2(173, 20)
 size = Vector2(28.5, 149.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4d3p6"]
-size = Vector2(89.5625, 5.625)
+size = Vector2(99.78125, 20.8125)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6v0dv"]
 size = Vector2(13, 44)
@@ -445,12 +445,12 @@ shape = SubResource("RectangleShape2D_4d3p6")
 debug_color = Color(0.98767287, 0.1102451, 0, 0.41960785)
 
 [node name="CollisionShape2D29" type="CollisionShape2D" parent="ColisionesMapa" unique_id=537220542]
-position = Vector2(5.21875, -142)
+position = Vector2(5, -145)
 shape = SubResource("RectangleShape2D_4d3p6")
 debug_color = Color(0.98767287, 0.1102451, 0, 0.41960785)
 
 [node name="CollisionShape2D30" type="CollisionShape2D" parent="ColisionesMapa" unique_id=675401866]
-position = Vector2(-48, -141.8125)
+position = Vector2(-47, -146)
 shape = SubResource("RectangleShape2D_4d3p6")
 debug_color = Color(0.98767287, 0.1102451, 0, 0.41960785)
 
@@ -490,7 +490,7 @@ shape = SubResource("RectangleShape2D_4d3p6")
 debug_color = Color(0.98767287, 0.1102451, 0, 0.41960785)
 
 [node name="CollisionShape2D11" type="CollisionShape2D" parent="ColisionesMapa" unique_id=916672932]
-position = Vector2(-65, 170)
+position = Vector2(-70.109375, 162.40625)
 shape = SubResource("RectangleShape2D_4d3p6")
 debug_color = Color(0.98767287, 0.1102451, 0, 0.41960785)
 
@@ -579,6 +579,7 @@ numero_goblin = 2
 retraso_animacion = 0.92
 
 [node name="TransicionEntrada" type="Control" parent="." unique_id=283761973]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = -655.0
@@ -597,6 +598,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Transicion Salida" type="Control" parent="." unique_id=910972500]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = -504.0

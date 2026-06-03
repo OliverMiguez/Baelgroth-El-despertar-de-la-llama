@@ -1,5 +1,5 @@
 extends Node2D
-@onready var goblin_principal: goblin_principal = $GoblinPrincipal
+#@onready var goblin_principal: goblin_principal = $GoblinPrincipal
 @onready var colision_prohibido1: CollisionShape2D = $ProhibidoPasar/CollisionShape2D
 @onready var colision_prohibido2: CollisionShape2D = $ProhibidoPasar/CollisionShape2D2
 @onready var colision_dialogo: StaticBody2D = $ColisionObligatioria
@@ -98,3 +98,8 @@ func _on_prohibido_pasar_body_entered(body: Node2D) -> void:
 func _on_prohibido_pasar_body_exited(body: Node2D) -> void:
 		if body is goblin_principal:
 			goblin_detectado = false
+
+
+func _on_cambio_body_entered(body: Node2D) -> void:
+	if body is goblin_principal:
+		get_tree().change_scene_to_file("res://ESCENAS/Reales/Mapas/zona_de_paso.tscn")

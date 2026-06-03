@@ -19,7 +19,7 @@ func al_entrar():
 		return
 	agente.target_position = ultimo_punto_visto
 
-func tick(delta: float):
+func tick(_delta: float):
 	# Si el goblin reaparece visible, volvemos a perseguirlo
 	if enemigo.goblin_detectado and not enemigo.goblin_detectado.escondido:
 		enemigo.fsm.cambiar_estado("alerta")
