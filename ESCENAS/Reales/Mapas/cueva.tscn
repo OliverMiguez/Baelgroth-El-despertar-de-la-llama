@@ -579,7 +579,6 @@ numero_goblin = 2
 retraso_animacion = 0.92
 
 [node name="TransicionEntrada" type="Control" parent="." unique_id=283761973]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = -655.0
@@ -598,7 +597,6 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Transicion Salida" type="Control" parent="." unique_id=910972500]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = -504.0

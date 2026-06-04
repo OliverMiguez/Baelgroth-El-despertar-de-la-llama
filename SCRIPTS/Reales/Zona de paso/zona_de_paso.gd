@@ -5,6 +5,9 @@ var goblin_dentro: bool = false
 # Evita que el diálogo se ejecute en bucle infinito
 var dialogando: bool = false
 
+func _ready() -> void:
+	pass
+
 func _physics_process(_delta: float) -> void:
 	manejar_cartel()
 

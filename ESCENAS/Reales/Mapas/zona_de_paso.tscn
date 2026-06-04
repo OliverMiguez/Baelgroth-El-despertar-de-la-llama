@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://cor480yjrk1ye" path="res://ARTE/Adoquines y piedras/Calle_piedraV3.png" id="5_20oqj"]
 [ext_resource type="Texture2D" uid="uid://d3y6ve44fal33" path="res://ARTE/Adoquines y piedras/Calle_piedraV4.png" id="6_20oqj"]
 [ext_resource type="Texture2D" uid="uid://4fp761jig658" path="res://ARTE/Adoquines y piedras/Calle_piedraV5.png" id="7_1a0be"]
+[ext_resource type="Shader" uid="uid://c45i5eiycvpee" path="res://Shaders/shader1.gdshader" id="10_o3utu"]
+[ext_resource type="PackedScene" uid="uid://dwu6d60vgw7vg" path="res://ESCENAS/Testeo/Enemigo/Enemigo_Test.tscn" id="11_11cl1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3g15h"]
 texture = ExtResource("1_4lyqy")
@@ -321,6 +323,140 @@ size = Vector2(139, 39)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o3utu"]
 size = Vector2(20, 90.5)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_11cl1"]
+shader = ExtResource("10_o3utu")
+shader_parameter/use_sprite_alpha = true
+shader_parameter/use_transition_texture = false
+shader_parameter/transition_type = 0
+shader_parameter/position = Vector2(0, 0)
+shader_parameter/invert = false
+shader_parameter/grid_size = Vector2(1, 1)
+shader_parameter/rotation_angle = 45.0
+shader_parameter/global_x_mirror = false
+shader_parameter/global_y_mirror = false
+shader_parameter/local_x_mirror = false
+shader_parameter/local_y_mirror = false
+shader_parameter/stagger = Vector2(0, 0)
+shader_parameter/cumulative_stagger_flip = false
+shader_parameter/cumulative_stagger = Vector2(0, 0)
+shader_parameter/stagger_frequency = Vector2i(2, 2)
+shader_parameter/flip_frequency = Vector2i(1, 1)
+shader_parameter/basic_feather = 0.0
+shader_parameter/use_mask_size = false
+shader_parameter/mask_size = Vector2(100, 100)
+shader_parameter/edges = 6
+shader_parameter/shape_feather = 0.0
+shader_parameter/sectors = 1
+shader_parameter/clock_feather = 0.0
+shader_parameter/progress = 0.0
+shader_parameter/progress_bias = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hr4rc"]
+shader = ExtResource("10_o3utu")
+shader_parameter/use_sprite_alpha = true
+shader_parameter/use_transition_texture = false
+shader_parameter/transition_type = 0
+shader_parameter/position = Vector2(0, 0)
+shader_parameter/invert = false
+shader_parameter/grid_size = Vector2(1, 1)
+shader_parameter/rotation_angle = 45.0
+shader_parameter/global_x_mirror = false
+shader_parameter/global_y_mirror = false
+shader_parameter/local_x_mirror = false
+shader_parameter/local_y_mirror = false
+shader_parameter/stagger = Vector2(0, 0)
+shader_parameter/cumulative_stagger_flip = false
+shader_parameter/cumulative_stagger = Vector2(0, 0)
+shader_parameter/stagger_frequency = Vector2i(2, 2)
+shader_parameter/flip_frequency = Vector2i(1, 1)
+shader_parameter/basic_feather = 0.0
+shader_parameter/use_mask_size = false
+shader_parameter/mask_size = Vector2(100, 100)
+shader_parameter/edges = 6
+shader_parameter/shape_feather = 0.0
+shader_parameter/sectors = 1
+shader_parameter/clock_feather = 0.0
+shader_parameter/progress = 3.0
+shader_parameter/progress_bias = Vector2(0, 0)
+
+[sub_resource type="Animation" id="Animation_yksd0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("PointLight2D4:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.5539114, 0.54784447, 3.5207364e-07, 0.83770716)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/Transicion:material:shader_parameter/progress")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control2/Transicion:material:shader_parameter/progress")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.0]
+}
+
+[sub_resource type="Animation" id="Animation_qhpb0"]
+resource_name = "Trans"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Transicion:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8333333, 1.2, 1.2666667, 1.3666667, 1.6, 2, 2.4666667, 3.0333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0]
+}
+
+[sub_resource type="Animation" id="Animation_tfig0"]
+resource_name = "Transicion2"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control2/Transicion:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.43333334, 0.8, 1.1666666),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [3.0, 2.0, 1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o3utu"]
+_data = {
+&"RESET": SubResource("Animation_yksd0"),
+&"Trans": SubResource("Animation_qhpb0"),
+&"Transicion2": SubResource("Animation_tfig0")
+}
+
 [node name="Zona de paso" type="Node2D" unique_id=1038655493]
 scale = Vector2(2, 2)
 script = ExtResource("1_licqf")
@@ -330,7 +466,7 @@ tile_map_data = PackedByteArray("AADn//H/AAABAAEAAADn//L/AAABAAEAAADn//P/AAABAAE
 tile_set = SubResource("TileSet_defg0")
 
 [node name="GoblinPrincipal" parent="." unique_id=988583641 node_paths=PackedStringArray("sonido_pasos") instance=ExtResource("2_3g15h")]
-position = Vector2(-24, 45.5)
+position = Vector2(54.5, 23.5)
 sonido_pasos = NodePath("AudioStreamPlayer2D")
 
 [node name="Camera2D" type="Camera2D" parent="GoblinPrincipal" unique_id=1909335096]
@@ -364,6 +500,97 @@ shape = SubResource("RectangleShape2D_1a0be")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Castillo" unique_id=1888894724]
 position = Vector2(340, 122.25)
 shape = SubResource("RectangleShape2D_o3utu")
+
+[node name="Control" type="Control" parent="." unique_id=1204477487]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = -671.0
+offset_top = -385.5
+offset_right = 478.0
+offset_bottom = 437.5
+
+[node name="Transicion" type="ColorRect" parent="Control" unique_id=1966957194]
+material = SubResource("ShaderMaterial_11cl1")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 477.0
+offset_top = 109.0
+offset_right = 477.0
+offset_bottom = 109.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Control2" type="Control" parent="." unique_id=1693966249]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -528.5
+offset_top = -311.0
+offset_right = 620.5
+offset_bottom = 512.0
+
+[node name="Transicion" type="ColorRect" parent="Control2" unique_id=128117423]
+material = SubResource("ShaderMaterial_hr4rc")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 576.0
+offset_top = 538.0
+offset_right = 576.0
+offset_bottom = 538.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1207938763]
+libraries/ = SubResource("AnimationLibrary_o3utu")
+autoplay = &"Trans"
+
+[node name="1" parent="." unique_id=2057307827 instance=ExtResource("11_11cl1")]
+position = Vector2(144, -44)
+scale = Vector2(0.7, 0.7)
+puntos_patrulla = Array[NodePath]([NodePath("../1_1"), NodePath("../1_2"), NodePath("../1_3")])
+
+[node name="2" parent="." unique_id=1311308119 instance=ExtResource("11_11cl1")]
+position = Vector2(168, -44.000004)
+scale = Vector2(0.7, 0.7)
+
+[node name="3" parent="." unique_id=77513980 instance=ExtResource("11_11cl1")]
+position = Vector2(144.00002, -24.000002)
+scale = Vector2(0.7, 0.7)
+
+[node name="4" parent="." unique_id=1705586715 instance=ExtResource("11_11cl1")]
+position = Vector2(168, -23.999998)
+scale = Vector2(0.7, 0.7)
+
+[node name="5" parent="." unique_id=1408475733 instance=ExtResource("11_11cl1")]
+position = Vector2(144, -3.9999998)
+scale = Vector2(0.7, 0.7)
+
+[node name="6" parent="." unique_id=752376806 instance=ExtResource("11_11cl1")]
+position = Vector2(168, -3.9999998)
+scale = Vector2(0.7, 0.7)
+
+[node name="7" parent="." unique_id=1580388404 instance=ExtResource("11_11cl1")]
+position = Vector2(144.00002, 15.999998)
+scale = Vector2(0.7, 0.7)
+
+[node name="8" parent="." unique_id=1547248167 instance=ExtResource("11_11cl1")]
+position = Vector2(168, 16)
+scale = Vector2(0.7, 0.7)
+
+[node name="1_1" type="Marker2D" parent="." unique_id=459149155]
+position = Vector2(144, -44)
+
+[node name="1_2" type="Marker2D" parent="." unique_id=1684298595]
+position = Vector2(144, 88)
+
+[node name="1_3" type="Marker2D" parent="." unique_id=2082675138]
+position = Vector2(2480, 104)
 
 [connection signal="body_entered" from="Cartel" to="." method="_on_cartel_body_entered"]
 [connection signal="body_entered" from="Playa" to="." method="_on_playa_body_entered"]

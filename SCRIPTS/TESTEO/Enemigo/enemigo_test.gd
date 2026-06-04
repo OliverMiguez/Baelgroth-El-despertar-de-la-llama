@@ -33,6 +33,7 @@ var piedras_en_area:Array = [] # Para poder recoger todas las piedras
 var señal_piedra
 
 func _ready():
+	Ui.hide()
 	print("enemigo cargado correctamente")
 	# Recorre el array de los Marker2D
 	for path in puntos_patrulla:
@@ -148,6 +149,6 @@ func _on_reinicio_body_entered(body: Node2D) -> void:
 		print("recargando escena")
 		Transc.animation_player.play("Trans")
 		await Transc.animation_player.animation_finished
-		Ui.queue_free()
+
 		# MODIFICADO: usamos call_deferred para evitar que se libere antes de tiempo
 		get_tree().call_deferred("reload_current_scene")
