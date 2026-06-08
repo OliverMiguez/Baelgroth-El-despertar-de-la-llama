@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bwfdckmcj0xmd"]
+
+[ext_resource type="AudioStream" uid="uid://c6tk4d4r8dnyu" path="res://Musica/Test/aguav1.wav" id="1_eqh7x"]
+
+[node name="DungeonAgua" type="Node2D" unique_id=1130483920]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2122159518]
+stream = ExtResource("1_eqh7x")
+volume_db = -6.819

@@ -565,10 +565,10 @@ tile_set = SubResource("TileSet_aejp8")
 [node name="Control" type="Control" parent="." unique_id=1204477487]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -671.0
-offset_top = -385.5
-offset_right = 478.0
-offset_bottom = 437.5
+offset_left = -936.0
+offset_top = -412.0
+offset_right = 213.0
+offset_bottom = 411.0
 
 [node name="Transicion" type="ColorRect" parent="Control" unique_id=1966957194]
 material = SubResource("ShaderMaterial_11cl1")
@@ -587,10 +587,10 @@ color = Color(0, 0, 0, 1)
 [node name="Control2" type="Control" parent="." unique_id=1693966249]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -528.5
-offset_top = -311.0
-offset_right = 620.5
-offset_bottom = 512.0
+offset_left = -1020.0
+offset_top = -852.0
+offset_right = 129.0
+offset_bottom = -29.0
 
 [node name="Transicion" type="ColorRect" parent="Control2" unique_id=128117423]
 material = SubResource("ShaderMaterial_hr4rc")

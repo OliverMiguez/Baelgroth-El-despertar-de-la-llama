@@ -1,4 +1,5 @@
 extends Node2D
+@onready var animacion: AnimationPlayer = $AnimationPlayer
 
 # Controla si el goblin está físicamente dentro del área del cartel
 var goblin_dentro: bool = false
@@ -36,9 +37,13 @@ func _on_cartel_body_exited(body: Node2D) -> void:
 
 func _on_playa_body_entered(body: Node2D) -> void:
 	if body is goblin_principal:
+		animacion.play("Transicion2")
+		await  animacion.animation_finished
 		get_tree().change_scene_to_file("res://ESCENAS/Reales/Mapas/playa.tscn")
 
 
 func _on_castillo_body_entered(body: Node2D) -> void:
 	if body is goblin_principal:
+		animacion.play("Transicion2")
+		await  animacion.animation_finished
 		get_tree().change_scene_to_file("res://ESCENAS/Reales/Mapas/castillo_fuera.tscn")
