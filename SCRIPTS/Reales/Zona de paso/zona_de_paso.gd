@@ -7,7 +7,7 @@ var goblin_dentro: bool = false
 var dialogando: bool = false
 
 func _ready() -> void:
-	pass
+	Ui.show()
 
 func _physics_process(_delta: float) -> void:
 	manejar_cartel()

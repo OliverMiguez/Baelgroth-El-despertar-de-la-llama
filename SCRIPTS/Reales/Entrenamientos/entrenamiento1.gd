@@ -50,7 +50,7 @@ func movimientos_roberto(destino:Vector2, _duracion:float):
 				#print("5 - primer tween terminado")
 				primer_mov_completado = true
 				roberto_mov_actual = 2
-				
+				animaciones_roberto.play("Idle")
 				roberto_miloss.dialogo_con_roberto_terminado.connect(func():
 					movimientos_roberto(pos_2_roberto.global_position, 4.0)
 				, CONNECT_ONE_SHOT)  # CONNECT_ONE_SHOT hace que se desconecte automaticamente tras ejecutarse

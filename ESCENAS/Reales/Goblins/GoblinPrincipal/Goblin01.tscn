@@ -634,7 +634,7 @@ script = ExtResource("1_xqqjy")
 
 [node name="AnimacionesGoblin" type="AnimatedSprite2D" parent="." unique_id=583185534]
 sprite_frames = SubResource("SpriteFrames_5xw4v")
-animation = &"salir_esconderse"
+animation = &"Idle"
 autoplay = "Idle"
 
 [node name="Colision" type="CollisionShape2D" parent="." unique_id=1023046994]

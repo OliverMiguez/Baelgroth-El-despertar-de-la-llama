@@ -324,7 +324,7 @@ scale = Vector2(2, 2)
 script = ExtResource("1_dwks1")
 
 [node name="MontonPiedras" parent="." unique_id=464072703 instance=ExtResource("2_j2cxd")]
-position = Vector2(118.5, 246.5)
+position = Vector2(119, 260)
 
 [node name="MontonPiedras2" parent="." unique_id=590068314 instance=ExtResource("2_j2cxd")]
 position = Vector2(292, 145)

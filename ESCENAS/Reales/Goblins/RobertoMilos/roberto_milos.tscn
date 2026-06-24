@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://ji00s2wqjoaf" path="res://ARTE/Goblins/Roberto.png" id="1_qbytb"]
 [ext_resource type="Script" uid="uid://beey7li5ihp7t" path="res://SCRIPTS/Reales/Roberto/roberto_milos.gd" id="1_t167e"]
 [ext_resource type="Texture2D" uid="uid://ctow8wu0lwdcy" path="res://ARTE/Goblins/Roberto Milos/roberto milos v2.png" id="3_v25r1"]
+[ext_resource type="Texture2D" uid="uid://d3hhnvu6ryaly" path="res://ARTE/Goblins/Roberto Milos/roberto_milos_v2.png" id="4_x6ikp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v25r1"]
 atlas = ExtResource("3_v25r1")
@@ -64,33 +65,29 @@ region = Rect2(352, 96, 32, 32)
 atlas = ExtResource("3_v25r1")
 region = Rect2(288, 128, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uusv0"]
-atlas = ExtResource("3_v25r1")
+[sub_resource type="AtlasTexture" id="AtlasTexture_pt7sk"]
+atlas = ExtResource("4_x6ikp")
 region = Rect2(288, 160, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2lvot"]
-atlas = ExtResource("3_v25r1")
+[sub_resource type="AtlasTexture" id="AtlasTexture_uusv0"]
+atlas = ExtResource("4_x6ikp")
 region = Rect2(320, 160, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vbqaj"]
-atlas = ExtResource("3_v25r1")
+[sub_resource type="AtlasTexture" id="AtlasTexture_2lvot"]
+atlas = ExtResource("4_x6ikp")
 region = Rect2(352, 160, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_h1gt6"]
-atlas = ExtResource("3_v25r1")
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbqaj"]
+atlas = ExtResource("4_x6ikp")
 region = Rect2(288, 192, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pyxu2"]
-atlas = ExtResource("3_v25r1")
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1gt6"]
+atlas = ExtResource("4_x6ikp")
 region = Rect2(320, 192, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cn13k"]
-atlas = ExtResource("3_v25r1")
+[sub_resource type="AtlasTexture" id="AtlasTexture_pyxu2"]
+atlas = ExtResource("4_x6ikp")
 region = Rect2(352, 192, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_06nvi"]
-atlas = ExtResource("3_v25r1")
-region = Rect2(288, 224, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3nmjb"]
 animations = [{
@@ -156,6 +153,9 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_pt7sk")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_uusv0")
 }, {
 "duration": 1.0,
@@ -169,16 +169,10 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pyxu2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cn13k")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_06nvi")
 }],
 "loop": true,
 "name": &"Lado",
-"speed": 6.0
+"speed": 7.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v25r1"]
@@ -196,8 +190,8 @@ script = ExtResource("1_t167e")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1267684123]
 sprite_frames = SubResource("SpriteFrames_3nmjb")
-animation = &"Idle"
-frame_progress = 0.38803428
+animation = &"Lado"
+frame_progress = 0.31608292
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1245992671]
 position = Vector2(0.8333333, 8.333333)
