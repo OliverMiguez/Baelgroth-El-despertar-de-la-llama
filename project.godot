@@ -93,6 +93,10 @@ layout/style_list=["res://DIALOGIC/Styles/Style1.tres"]
 layout/default_style="res://DIALOGIC/Styles/Style1.tres"
 glossary/default_case_sensitive=true
 
+[display]
+
+window/size/mode=3
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/dialogic/plugin.cfg")

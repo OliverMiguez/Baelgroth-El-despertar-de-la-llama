@@ -3,8 +3,9 @@ class_name pielda
 
 signal piedra_detenida
 
-@onready var deteccion_pielda: Area2D = $DeteccionPielda
+@onready var deteccion_pielda:Area2D = $DeteccionPielda
 @onready var sprite_pielda: Sprite2D = $PieldaSprite
+@onready var sprite_sombra: Sprite2D = $PieldaSombra
 
 @export var velocidad: float = 150.0
 @export var dist_max: float = 160.0
@@ -53,9 +54,13 @@ func _physics_process(delta: float) -> void:
 		tratar_piedra() 							 # Si es asi llama a la funcion y detiene la ejecucion
 		return
 	
-	# MOVIMIENTO PARÁBOLA (La altura visual)
+	# MOVIMIENTO PARÁBOLA (Solo afecta visualmente a la piedra, NO a la sombra)
 	obtener_parabola_y()
-	sprite_pielda.position.y = pos_final_y # Aplicamos el cálculo al Sprite
+	sprite_pielda.position.y = pos_final_y 
+	
+	# MANTENER SOMBRA EN EL SUELO 
+	# Al no modificar su position.y, se mantendrá en 0 (el centro del RigidBody que se mueve por el suelo)
+	sprite_sombra.position.y = 0 
 	
 	# Si no calcula la distancia a viajar
 	distancia_viajada += distancia_a_moverse

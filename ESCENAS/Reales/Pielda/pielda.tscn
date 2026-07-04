@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://blqe6w0d7qml2" path="res://ARTE/Pielda/Pielda.png" id="1_v7q6g"]
 [ext_resource type="Script" uid="uid://fwwiwopfant2" path="res://SCRIPTS/Reales/Pielda/PieldaArea.gd" id="2_ojo83"]
+[ext_resource type="Texture2D" uid="uid://cgr7cvsltdq51" path="res://ARTE/Pielda/Pielda_sombra.png" id="3_n45v2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n45v2"]
 radius = 3.1622777
@@ -17,6 +18,9 @@ collision_mask = 40
 script = ExtResource("2_ojo83")
 tiempo_duracion = 0.5
 altura_pixel = 20.0
+
+[node name="PieldaSombra" type="Sprite2D" parent="." unique_id=979654253]
+texture = ExtResource("3_n45v2")
 
 [node name="PieldaSprite" type="Sprite2D" parent="." unique_id=2141551571]
 texture = ExtResource("1_v7q6g")
