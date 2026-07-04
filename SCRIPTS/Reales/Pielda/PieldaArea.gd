@@ -4,6 +4,7 @@ class_name pielda
 signal piedra_detenida
 
 @onready var deteccion_pielda: Area2D = $DeteccionPielda
+@onready var sprite_pielda: Sprite2D = $PieldaSprite
 
 @export var velocidad: float = 150.0
 @export var dist_max: float = 160.0
@@ -14,40 +15,90 @@ var direction: Vector2 = Vector2.ZERO
 var distancia_viajada: float = 0.0
 var deteccion_enemigo: bool = false
 
-func _ready() -> void:
-	freeze = true # Le quita las fisicas de gravedad
+## Variables calculo parábola
+@export var tiempo_duracion:float = 2.0  # Duracion total de la caida de la piedra
+@export var altura_pixel:float = 40.0    # Altura maxima que alcanzará la 
 
-func _physics_process(delta: float) -> void:
-	if velocidad == null: velocidad = 150.0 # Asigna velocidad siempre a la piedra
-	if direction == Vector2.ZERO: return # Si no se esta moviendo, detiene la accion
+var pos_final_X:float = 0.0
+var pos_ini_x:float   = 0.0
+var pos_final_y:float = 0.0
+var pos_ini_y:float   = 0.0
+
+var tiempo_transcurrido:float = 0.0 # Tiempo que transcurre antes de llegar al objetivo
+var gravedad:float = 0.0
+var impulso:float = 0.0   # Velocidad Inicial Y
+var punto_final:Vector2
+
+func _ready() -> void:
+	freeze = true 		# Le quita las fisicas de gravedad
+	calcular_gravedad() # Obtiene la gravedad perfecta para X movimiento
+	calcular_impulso()  # Obtiene el impulso perfecto para X altura
 	
-	# Calcula los movimientos que realizará la piedra
+func _physics_process(delta: float) -> void:
+	
+	# Asigna velocidad siempre a la piedra
+	if velocidad == null: velocidad = 150.0 
+	# Si no se esta moviendo, detiene la accion
+	if direction == Vector2.ZERO: return    
+	
+	# Obtiene el tiempo que tarda el completar el movimiento la piedra
+	tiempo_transcurrido += delta
+	
+	# MOVIMIENTOS TIERRA PIEDRA
 	var distancia_a_moverse = velocidad * delta
 	var movimiento_real = direction * distancia_a_moverse
 
-	var colision = move_and_collide(movimiento_real) # Intenta mover el cuerpo físico en base al vector movimiento_real
-	if colision: # Comprueba si el objeto colisionó con algo
-		tratar_piedra() #Si es asi llama a la funcion y detiene la ejecucion
+	var colision = move_and_collide(movimiento_real) # Intenta mover el cuerpo físico en base al vector movimiento_reall
+	if colision: 									 # Comprueba si el objeto colisionó con algo
+		tratar_piedra() 							 # Si es asi llama a la funcion y detiene la ejecucion
 		return
+	
+	# MOVIMIENTO PARÁBOLA (La altura visual)
+	obtener_parabola_y()
+	sprite_pielda.position.y = pos_final_y # Aplicamos el cálculo al Sprite
 	
 	# Si no calcula la distancia a viajar
 	distancia_viajada += distancia_a_moverse
 	
-	# Si la distancia es mayor o igual a la maxima que puede recoger activa la funcion
-	if distancia_viajada >= dist_max:
+	# Si la distancia es mayor a la máxima O el tiempo de vuelo terminó, aterriza
+	if distancia_viajada >= dist_max or tiempo_transcurrido >= tiempo_duracion:
 		tratar_piedra()
+
+# Calcula la gravedad perfecta para la parabola para T tiempo
+func calcular_gravedad():
+	gravedad = (8 * altura_pixel) / pow(tiempo_duracion,2)
+
+func calcular_impulso():
+	impulso = (4 * altura_pixel) / tiempo_duracion
+	impulso = -impulso # Lo hacemos negativo para que suba
+
+# Calcula las posiciones a las que se moverá la piedra en la parábola en x
+func obtener_parabola_x():
+	pos_final_X = pos_ini_x + velocidad * tiempo_transcurrido
+	
+# Calcula las posiciones a las que se moverá la piedra en la parábola en x
+func obtener_parabola_y():
+	pos_final_y = pos_ini_y + (impulso * tiempo_transcurrido) + (0.5 * gravedad * tiempo_transcurrido**2)
+	
+func obtener_punto_final():
+	punto_final.x = pos_final_X
+	punto_final.y = pos_final_y
 
 # Detiene a la piedra, lanza una señal y espera un tiempo antes de eliminarla
 func tratar_piedra():
 	direction = Vector2.ZERO
+	# Bajamos el sprite al suelo (0) para que no se quede flotando si choca con una pared
+	sprite_pielda.position.y = 0 
+	#Activamos el Area2D solo al aterrizar/chocar
+	deteccion_pielda.monitoring = true 
+	
 	piedra_detenida.emit()
-	# MODIFICADO: esperamos mas tiempo antes de eliminar el area
-	# para dar tiempo al enemigo de llegar y reaccionar
+	# Esperamos mas tiempo antes de eliminar el area
 	await get_tree().create_timer(tiempo_desaparicion).timeout 
-	_eliminar_area()
+	eliminar_area()
 
 # Elimina el area de deteccion de la piedra
-func _eliminar_area():
+func eliminar_area():
 	# Revisa si esta guardada en memoria el area
 	if is_instance_valid(deteccion_pielda):
 		# La elimina si esta guardada
