@@ -297,6 +297,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_mt028"]
 
 [node name="EnemigoAtacante" type="CharacterBody2D" unique_id=1466959541]
+scale = Vector2(0.7, 0.7)
 script = ExtResource("1_slkrn")
 attack_speed = 120.0
 

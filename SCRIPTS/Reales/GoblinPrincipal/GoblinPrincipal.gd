@@ -31,7 +31,7 @@ var paso_alternado: bool = false # Para ajustar audio
 var esta_corriendo:bool = false # Verifica si esta corriendo 
 var velocidad_andar:float = 50.0
 var total_piedras:float = 0.0
-var quiere_piedra:bool = false
+#var quiere_piedra:bool = false
 
 
 func _ready():
@@ -40,7 +40,7 @@ func _ready():
 	#print("[READY] velocidad_andar: ", velocidad_andar)
 	
 func _physics_process(delta):
-	quiere_piedra = ControlPiedras.recoger_piedras
+	#quiere_piedra = ControlPiedras.recoger_piedras
 	
 	state_machine._physics_process(delta)	# Activa la máquina de estados
 	manejar_movimiento()	# Activa el movimiento del player a traves de los inputs
@@ -135,7 +135,7 @@ func anim():
 # Instancia la piedra y la mueve a la direccion correspondiente
 func lanzar_piedra():
 	if activar_lanzar_piedra and total_piedras > 0:
-		if Input.is_action_just_pressed("Lanzar"):
+		if Input.is_action_just_pressed("LanzarRecoger") and ControlPiedras.recoger_piedras == false:
 			var piedra_scene = instancia_piedra_packed.instantiate()
 			get_parent().add_child(piedra_scene)
 			piedra_scene.global_position = piedra_spawn_point.global_position
@@ -170,9 +170,14 @@ func _on_cooldown_piedras_timeout() -> void:
 	activar_lanzar_piedra = true
 	
 func recoger_piedras():
-	if quiere_piedra and Input.is_action_just_pressed("Recoger"):
+	if ControlPiedras.recoger_piedras == true and Input.is_action_just_pressed("LanzarRecoger"):
+		total_piedras = 3
+		print("Piedras recogidas: " ,total_piedras)
 		if total_piedras < max_piedras:
-			total_piedras += 3
+			if total_piedras == 0:
+				total_piedras += 3
+			else:
+				total_piedras = total_piedras
 		else:
 			total_piedras = 3
 			ControlPiedras.piedras_jugador = total_piedras

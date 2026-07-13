@@ -16,9 +16,10 @@ var _indice   := 0
 var _pausando := false
 var _timer    := 0.0
 
-var posicion_inicial_x:float
-var posicion_inicial_y:float
-var posicion_inicial:Vector2
+# BORRAR SI NO SE USAN
+#var posicion_inicial_x:float
+#var posicion_inicial_y:float
+#var posicion_inicial:Vector2
 
 
 # Configura las variables iniciales con los valores correspondientes
@@ -29,9 +30,12 @@ func configurar(nodo_enemigo: Enemigo):
 # Cuando se inicia el estado
 func al_entrar():
 	print("Estado patrulla")
-	posicion_inicial_x = enemigo.position.x
-	posicion_inicial_y = enemigo.position.y
-	posicion_inicial = Vector2(enemigo.position)
+	
+	# BORRAR SI NO SE USAN
+	#posicion_inicial_x = enemigo.position.x
+	#posicion_inicial_y = enemigo.position.y
+	#posicion_inicial = Vector2(enemigo.position)
+	
 	# Si no se registro ningun marker2D al enemigo
 	if enemigo.puntos_resueltos.is_empty():
 		# Envia una advertencia por terminal

@@ -114,7 +114,7 @@ func _evaluar_objetivo():
 
 	# Caso 4: el area esta vacia de objetivos relevantes
 	goblin_detectado = null
-	fsm.cambiar_estado("patrullar")
+	fsm.cambiar_estado("patrulla")
 
 # Deteccion de la piedra cuando entra en el area del enemigo 
 func _on_area_deteccion_area_entered(area: Area2D) -> void:

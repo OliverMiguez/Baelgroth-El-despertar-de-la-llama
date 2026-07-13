@@ -55,10 +55,6 @@ func tick(delta: float):
 		enemigo.fsm.cambiar_estado("alerta")
 		return
 
-	if enemigo.goblin_en_area != null and not enemigo.goblin_en_area.escondido:
-		enemigo.fsm.cambiar_estado("alerta")
-		return
-
 	match _fase:
 		Fase.ESPERANDO:
 			# El enemigo se queda quieto, la señal se encarga de avanzar

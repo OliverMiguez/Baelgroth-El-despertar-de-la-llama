@@ -9,7 +9,7 @@ var goblin_detectado:bool = false
 func _on_deteccion_del_monton_body_entered(body: Node2D) -> void:
 	if body is goblin_principal :
 		goblin_detectado = true
-		ControlPiedras.recoger_piedras = goblin_detectado
+		ControlPiedras.recoger_piedras = goblin_detectado # Verifica si estamos sobre un monton de piedras
 
 func _on_deteccion_del_monton_body_exited(body: Node2D) -> void:
 	if body is goblin_principal:
