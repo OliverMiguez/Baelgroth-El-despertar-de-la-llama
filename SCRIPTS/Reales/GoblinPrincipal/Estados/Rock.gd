@@ -16,30 +16,31 @@ func on_enter():
 		animation_player.animation_finished.connect(_on_animation_finished)
 	
 	# Iniciar a continuación la animación del personaje
-	if father.last_input == "arriba":
-		animation_player.flip_h = false
-		animation_player.play("Lanzar_arriba")
-	elif father.last_input == "abajo":
-		animation_player.flip_h = false
-		animation_player.play("Lanzar_abajo")
-	elif father.last_input == "izquierda":
-		animation_player.flip_h = true
-		animation_player.play("Lanzar_lateral")
-	elif father.last_input == "derecha":
-		animation_player.flip_h = false
-		animation_player.play("Lanzar_lateral")
-	elif father.last_input == "diagonal_derecha_arrbia":
-		animation_player.flip_h = false
-		animation_player.play("Lanzar_lateral")
-	elif father.last_input == "diagonal_izquierda_arriba":
-		animation_player.flip_h = true
-		animation_player.play("Lanzar_lateral")
-	elif father.last_input == "diagonal_derecha_abajo":
-		animation_player.flip_h = false
-		animation_player.play("Lanzar_lateral")
-	elif father.last_input == "diagonal_izquierda_abajo":
-		animation_player.flip_h = true
-		animation_player.play("Lanzar_lateral")
+
+		if father.last_input == "arriba":
+			animation_player.flip_h = false
+			animation_player.play("Lanzar_arriba")
+		elif father.last_input == "abajo":
+			animation_player.flip_h = false
+			animation_player.play("Lanzar_abajo")
+		elif father.last_input == "izquierda":
+			animation_player.flip_h = true
+			animation_player.play("Lanzar_lateral")
+		elif father.last_input == "derecha":
+			animation_player.flip_h = false
+			animation_player.play("Lanzar_lateral")
+		elif father.last_input == "diagonal_derecha_arrbia":
+			animation_player.flip_h = false
+			animation_player.play("Lanzar_lateral")
+		elif father.last_input == "diagonal_izquierda_arriba":
+			animation_player.flip_h = true
+			animation_player.play("Lanzar_lateral")
+		elif father.last_input == "diagonal_derecha_abajo":
+			animation_player.flip_h = false
+			animation_player.play("Lanzar_lateral")
+		elif father.last_input == "diagonal_izquierda_abajo":
+			animation_player.flip_h = true
+			animation_player.play("Lanzar_lateral")
 
 func on_exit():
 	# Desconectamos la señal al salir para evitar problemas
@@ -58,3 +59,5 @@ func state_process(_delta:float) -> void:
 	# Si el jugador se mueve mientras lanza, cancelamos y vamos a caminar
 	if father.velocity != Vector2.ZERO:
 		next_state = walk_state
+	#elif father.total_piedras <= 0: # Cuando no tenemos piedra, cambiar a un estado en el que ejecute una animacion de error no tienes mas piedras
+		#next_state = idle_state

@@ -172,7 +172,7 @@ func _on_cooldown_piedras_timeout() -> void:
 func recoger_piedras():
 	if ControlPiedras.recoger_piedras == true and Input.is_action_just_pressed("LanzarRecoger"):
 		total_piedras = 3
-		print("Piedras recogidas: " ,total_piedras)
+		#print("Piedras recogidas: " ,total_piedras)
 		if total_piedras < max_piedras:
 			if total_piedras == 0:
 				total_piedras += 3

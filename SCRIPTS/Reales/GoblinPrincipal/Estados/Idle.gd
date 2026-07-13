@@ -47,7 +47,10 @@ func state_process(_delta:float) -> void:
 		
 	# Cambia al estado rock
 	if Input.is_action_just_pressed("LanzarRecoger") and father.velocity == Vector2.ZERO and father.activar_lanzar_piedra == true:
-		next_state = rock_state
+		if father.total_piedras > 0:
+			next_state = rock_state
+		#TODO else:
+		#TODO next_state = consufison_no_hay_piedra
 	elif father.velocity != Vector2.ZERO and Input.is_action_pressed("correr"):
 		next_state = run_state
 	# Permite el cambio al estado de andar (walk)
