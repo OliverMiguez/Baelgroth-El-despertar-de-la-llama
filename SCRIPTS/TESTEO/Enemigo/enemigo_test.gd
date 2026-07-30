@@ -61,8 +61,6 @@ func _on_area_deteccion_body_entered(body: Node2D) -> void:
 		# Conectamos la señal para reaccionar cuando cambie escondido
 		if not body.escondido_cambiado.is_connected(_evaluar_objetivo):
 			body.escondido_cambiado.connect(_evaluar_objetivo)
-	elif body is pielda:
-		piedras_en_area.append(body)
 
 	_evaluar_objetivo()
 
@@ -73,17 +71,18 @@ func _on_area_deteccion_body_exited(body: Node2D) -> void:
 		goblin_fue_visto = false
 		if body.escondido_cambiado.is_connected(_evaluar_objetivo):
 			body.escondido_cambiado.disconnect(_evaluar_objetivo)
-	elif body is pielda:
-		piedras_en_area.erase(body)
-		# MODIFICADO: misma proteccion
-		if fsm.estado_activo != fsm.estado_investigar_piedra:
-			_evaluar_objetivo()
-			return
 
 	_evaluar_objetivo()
 	
 # Permite ver a que objetivo perseguir o si hay ambos darle prioridad de persecucion al goblin principal
 func _evaluar_objetivo():
+	# Limpiamos referencias de piedras eliminadas para evitar crashes con instancias liberadas
+	var piedras_validas = []
+	for p in piedras_en_area:
+		if is_instance_valid(p):
+			piedras_validas.append(p)
+	piedras_en_area = piedras_validas
+
 	# Si estamos investigando una piedra solo interrumpimos si aparece el goblin visible
 	if fsm.estado_activo == fsm.estado_investigar_piedra:
 		if goblin_en_area != null and not goblin_en_area.escondido:
@@ -122,7 +121,8 @@ func _on_area_deteccion_area_entered(area: Area2D) -> void:
 	# porque el area que entra es el hijo DeteccionPielda, no la piedra en si
 	var padre = area.get_parent()
 	if padre is pielda:
-		piedras_en_area.append(padre)
+		if not piedras_en_area.has(padre):
+			piedras_en_area.append(padre)
 		_evaluar_objetivo()
 
 # Deteccion de la piedra cuando sale del area del enemigo

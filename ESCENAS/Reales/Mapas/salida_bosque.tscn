@@ -109,16 +109,21 @@ sources/1 = SubResource("TileSetAtlasSource_6jyjg")
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x4uy3"]
 texture = ExtResource("2_3jx61")
 0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 0:1/0 = 0
-0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3.4173203, -8, 5.3957596, -8, 5.2158966, 8, -3.4173203, 8)
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 0:2/0 = 0
-0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.8777428, -8, 8, -8, 8, 2.8777409, -2.5180244, 2.8777409)
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:2/0 = 0
-1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -5.755479, 8, -5.755479, 8, 3.7770348, -8, 3.7770348)
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSet" id="TileSet_cihlx"]
 physics_layer_0/collision_layer = 8
@@ -445,6 +450,7 @@ libraries/ = SubResource("AnimationLibrary_kty7h")
 autoplay = &"Trans"
 
 [node name="Control" type="Control" parent="." unique_id=906830015]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = -655.0

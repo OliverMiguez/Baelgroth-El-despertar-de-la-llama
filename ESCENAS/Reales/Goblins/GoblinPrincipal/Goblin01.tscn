@@ -623,23 +623,24 @@ animations = [{
 "speed": 4.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j0npl"]
-radius = 5.0
-height = 23.333332
+[sub_resource type="CircleShape2D" id="CircleShape2D_1w6kn"]
+radius = 6.6666665
 
 [node name="GoblinPrincipal" type="CharacterBody2D" unique_id=988583641]
+y_sort_enabled = true
 scale = Vector2(0.6, 0.6)
 collision_mask = 2031
 script = ExtResource("1_xqqjy")
 
 [node name="AnimacionesGoblin" type="AnimatedSprite2D" parent="." unique_id=583185534]
+position = Vector2(1.6666666, -15)
 sprite_frames = SubResource("SpriteFrames_5xw4v")
 animation = &"Idle"
 autoplay = "Idle"
 
 [node name="Colision" type="CollisionShape2D" parent="." unique_id=1023046994]
-position = Vector2(1.6666666, 3.3333333)
-shape = SubResource("CapsuleShape2D_j0npl")
+position = Vector2(0, -3.3333333)
+shape = SubResource("CircleShape2D_1w6kn")
 
 [node name="FSM" type="Node" parent="." unique_id=559475433 node_paths=PackedStringArray("father", "animation_player", "current_state")]
 script = ExtResource("4_w2rh8")
@@ -670,7 +671,7 @@ idle_state = NodePath("../Idle")
 walk_sate = NodePath("../Walk")
 
 [node name="PiedraSpawnPoint" type="Marker2D" parent="." unique_id=1623606182]
-position = Vector2(-9.999999, 0)
+position = Vector2(-11.666666, -15)
 
 [node name="PasosAudio" type="AudioStreamPlayer2D" parent="." unique_id=1218933246]
 stream = ExtResource("11_pdu6u")

@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://dsee78f5jmtoq" path="res://EfectosSonido/arena.wav" id="5_6vi4y"]
 [ext_resource type="Texture2D" uid="uid://cc1g02rygow6c" path="res://ARTE/playa/Sandv4.png" id="5_vmoa5"]
 [ext_resource type="Texture2D" uid="uid://bfytai42olq4c" path="res://ARTE/playa/SandV5.png" id="6_3kr5f"]
+[ext_resource type="AudioStream" uid="uid://brpdibe3nha4x" path="res://Musica/Test/PlayaFinal.wav" id="9_sqwbi"]
 [ext_resource type="PackedScene" uid="uid://dwu6d60vgw7vg" path="res://ESCENAS/Testeo/Enemigo/Enemigo_Test.tscn" id="10_u83ed"]
 [ext_resource type="Shader" uid="uid://c45i5eiycvpee" path="res://Shaders/shader1.gdshader" id="11_sqwbi"]
 
@@ -815,6 +816,7 @@ tile_map_data = PackedByteArray("AADv/wwAAQALAAAAAADw/xoAAQALAAMAAADx/wMAAQALAAE
 tile_set = SubResource("TileSet_bbbjv")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1200478336]
+stream = ExtResource("9_sqwbi")
 volume_db = -8.524
 
 [node name="1" parent="." unique_id=2057307827 instance=ExtResource("10_u83ed")]

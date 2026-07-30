@@ -21,7 +21,7 @@ func al_entrar():
 
 func tick(_delta: float):
 	# Si el goblin reaparece visible, volvemos a perseguirlo
-	if enemigo.goblin_detectado and not enemigo.goblin_detectado.escondido:
+	if enemigo.goblin_detectado is goblin_principal and not enemigo.goblin_detectado.escondido:
 		enemigo.fsm.cambiar_estado("alerta")
 		return
 
