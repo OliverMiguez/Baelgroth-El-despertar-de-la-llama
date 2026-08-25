@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cb2oa8nsh8itc" path="res://ARTE/Bosque/nuevo arbol.png" id="1_5h8fl"]
 [ext_resource type="Texture2D" uid="uid://4fp761jig658" path="res://ARTE/Adoquines y piedras/Calle_piedraV5.png" id="2_oxdhs"]
 [ext_resource type="PackedScene" uid="uid://dyw8875pb8bj2" path="res://ESCENAS/Reales/Goblins/GoblinPrincipal/Goblin01.tscn" id="3_yl282"]
+[ext_resource type="Texture2D" uid="uid://dflo4tydalh30" path="res://ARTE/Barril/vela.png" id="4_oxdhs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pv7mx"]
 texture = ExtResource("1_5h8fl")
@@ -138,3 +139,30 @@ scale = Vector2(1.6666666, 1.6666666)
 
 [node name="Camara" type="Camera2D" parent="GoblinPrincipal" unique_id=143015987]
 zoom = Vector2(3, 3)
+
+[node name="Vela" type="Sprite2D" parent="." unique_id=390139038]
+position = Vector2(370, 168)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("4_oxdhs")
+
+[node name="Vela2" type="Sprite2D" parent="." unique_id=171387248]
+position = Vector2(369.49997, 158.00002)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("4_oxdhs")
+
+[node name="Vela3" type="Sprite2D" parent="." unique_id=1947874820]
+position = Vector2(369.5, 148)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("4_oxdhs")
+
+[node name="Vela4" type="Sprite2D" parent="." unique_id=647064716]
+position = Vector2(349, 211.5)
+rotation = 1.5754025
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("4_oxdhs")
+
+[node name="Vela5" type="Sprite2D" parent="." unique_id=635240175]
+position = Vector2(340.5, 211.00002)
+rotation = 1.5754025
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("4_oxdhs")
