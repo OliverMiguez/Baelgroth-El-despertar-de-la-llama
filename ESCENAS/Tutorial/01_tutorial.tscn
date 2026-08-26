@@ -3,7 +3,15 @@
 [ext_resource type="Texture2D" uid="uid://cb2oa8nsh8itc" path="res://ARTE/Bosque/nuevo arbol.png" id="1_5h8fl"]
 [ext_resource type="Texture2D" uid="uid://4fp761jig658" path="res://ARTE/Adoquines y piedras/Calle_piedraV5.png" id="2_oxdhs"]
 [ext_resource type="PackedScene" uid="uid://dyw8875pb8bj2" path="res://ESCENAS/Reales/Goblins/GoblinPrincipal/Goblin01.tscn" id="3_yl282"]
-[ext_resource type="Texture2D" uid="uid://dflo4tydalh30" path="res://ARTE/Barril/vela.png" id="4_oxdhs"]
+[ext_resource type="Texture2D" uid="uid://dflo4tydalh30" path="res://ARTE/Barril/Barril.png" id="4_oxdhs"]
+[ext_resource type="Texture2D" uid="uid://cvtc05d6xn7xo" path="res://ARTE/Cajas/Caja A.png" id="5_vmt0u"]
+[ext_resource type="Texture2D" uid="uid://drocc5mhqg3jw" path="res://ARTE/Cajas/Caja D.png" id="6_q71ra"]
+[ext_resource type="Texture2D" uid="uid://dwfljt2xmubqu" path="res://ARTE/Cajas/Caja S.png" id="7_osdmc"]
+[ext_resource type="Texture2D" uid="uid://bmnadf6tuqkab" path="res://ARTE/Cajas/Caja W.png" id="8_vqwqu"]
+[ext_resource type="Texture2D" uid="uid://b13qre2evvqf2" path="res://ARTE/Cajas/Caja.png" id="9_hn7o3"]
+[ext_resource type="Texture2D" uid="uid://dk7e8u2upbn71" path="res://ARTE/Tela/Tela 1.png" id="10_osdmc"]
+[ext_resource type="Texture2D" uid="uid://05yt22b12a71" path="res://ARTE/Tela/Tela 2.png" id="11_vqwqu"]
+[ext_resource type="Texture2D" uid="uid://cpe1adtrqtiv7" path="res://ARTE/Cesta/Cesta Test.png" id="12_vqwqu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pv7mx"]
 texture = ExtResource("1_5h8fl")
@@ -112,7 +120,6 @@ sources/0 = SubResource("TileSetAtlasSource_vmt0u")
 
 [node name="01_Tutorial" type="Node2D" unique_id=1334010049]
 y_sort_enabled = true
-position = Vector2(-12, 24)
 scale = Vector2(2, 2)
 
 [node name="Suelo" type="TileMapLayer" parent="." unique_id=1319969493]
@@ -130,7 +137,7 @@ tile_set = SubResource("TileSet_q71ra")
 polygon = PackedVector2Array(154.5, 47.5, 148.5, 324, 547, 315.5, 541.5, 52.5, 132.5, 44, 563.5, 33.5, 574, 336, 118.5, 343, 130.5, 44)
 
 [node name="GoblinPrincipal" parent="." unique_id=988583641 node_paths=PackedStringArray("sonido_pasos") instance=ExtResource("3_yl282")]
-position = Vector2(300, 188)
+position = Vector2(337.5, 184)
 sonido_pasos = NodePath("Pasos")
 
 [node name="Pasos" type="AudioStreamPlayer2D" parent="GoblinPrincipal" unique_id=236187030]
@@ -140,29 +147,88 @@ scale = Vector2(1.6666666, 1.6666666)
 [node name="Camara" type="Camera2D" parent="GoblinPrincipal" unique_id=143015987]
 zoom = Vector2(3, 3)
 
-[node name="Vela" type="Sprite2D" parent="." unique_id=390139038]
-position = Vector2(370, 168)
-scale = Vector2(0.7, 0.7)
+[node name="Barril" type="Sprite2D" parent="." unique_id=390139038]
+position = Vector2(368, 168)
+scale = Vector2(0.6, 0.6)
 texture = ExtResource("4_oxdhs")
 
-[node name="Vela2" type="Sprite2D" parent="." unique_id=171387248]
-position = Vector2(369.49997, 158.00002)
-scale = Vector2(0.7, 0.7)
+[node name="Barril2" type="Sprite2D" parent="." unique_id=171387248]
+position = Vector2(368, 160)
+scale = Vector2(0.6, 0.6)
 texture = ExtResource("4_oxdhs")
 
-[node name="Vela3" type="Sprite2D" parent="." unique_id=1947874820]
-position = Vector2(369.5, 148)
-scale = Vector2(0.7, 0.7)
+[node name="Barril3" type="Sprite2D" parent="." unique_id=1947874820]
+position = Vector2(368, 152)
+scale = Vector2(0.6, 0.6)
 texture = ExtResource("4_oxdhs")
 
-[node name="Vela4" type="Sprite2D" parent="." unique_id=647064716]
-position = Vector2(349, 211.5)
-rotation = 1.5754025
-scale = Vector2(0.7, 0.7)
-texture = ExtResource("4_oxdhs")
+[node name="CajaA" type="Sprite2D" parent="." unique_id=557828673]
+position = Vector2(292.5, 168.5)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("5_vmt0u")
 
-[node name="Vela5" type="Sprite2D" parent="." unique_id=635240175]
-position = Vector2(340.5, 211.00002)
-rotation = 1.5754025
-scale = Vector2(0.7, 0.7)
-texture = ExtResource("4_oxdhs")
+[node name="CajaD" type="Sprite2D" parent="." unique_id=1527648373]
+position = Vector2(307, 168.5)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("6_q71ra")
+
+[node name="CajaS" type="Sprite2D" parent="." unique_id=1575600236]
+position = Vector2(300.5, 174)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("7_osdmc")
+
+[node name="Caja2" type="Sprite2D" parent="." unique_id=1537672822]
+position = Vector2(351.5, 241.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_hn7o3")
+
+[node name="Caja3" type="Sprite2D" parent="." unique_id=422581800]
+position = Vector2(314.5, 226)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_hn7o3")
+
+[node name="Caja5" type="Sprite2D" parent="." unique_id=324317411]
+position = Vector2(390.5, 177)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_hn7o3")
+
+[node name="Caja7" type="Sprite2D" parent="." unique_id=1561208001]
+position = Vector2(374, 137.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_hn7o3")
+
+[node name="Caja4" type="Sprite2D" parent="." unique_id=438423729]
+position = Vector2(318, 234)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_hn7o3")
+
+[node name="CajaW" type="Sprite2D" parent="." unique_id=1131195970]
+position = Vector2(299.5, 163)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("8_vqwqu")
+
+[node name="Tela2" type="Sprite2D" parent="." unique_id=1736510882]
+z_index = 1
+position = Vector2(356, 248)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_osdmc")
+
+[node name="Tela3" type="Sprite2D" parent="." unique_id=609747743]
+position = Vector2(300.5, 185.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_osdmc")
+
+[node name="Tela4" type="Sprite2D" parent="." unique_id=1102811789]
+position = Vector2(293.5, 182)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_osdmc")
+
+[node name="Tela5" type="Sprite2D" parent="." unique_id=1658372306]
+position = Vector2(297, 184)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("11_vqwqu")
+
+[node name="CestaTest" type="Sprite2D" parent="." unique_id=1555954453]
+position = Vector2(358, 201.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_vqwqu")
