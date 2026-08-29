@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://qo68sg6bdd4a" path="res://SCRIPTS/Reales/MontonPiedra/monton_piedras.gd" id="1_qvuym"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qbol0"]
-radius = 20.024984
+radius = 5.0
 
 [node name="MontonPiedras" type="Node2D" unique_id=464072703]
 script = ExtResource("1_qvuym")

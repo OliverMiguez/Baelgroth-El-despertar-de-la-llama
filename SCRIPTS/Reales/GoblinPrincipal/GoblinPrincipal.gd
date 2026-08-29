@@ -132,19 +132,21 @@ func salir_de_arbusto():
 func anim():
 	animaciones_goblin.play("salir_esconderse")
 	await  animaciones_goblin.animation_finished
+	
 # Instancia la piedra y la mueve a la direccion correspondiente
 func lanzar_piedra():
 	if activar_lanzar_piedra and total_piedras > 0:
 		if Input.is_action_just_pressed("LanzarRecoger") and ControlPiedras.recoger_piedras == false:
+			print("Ejecutando lanzamiento")
 			var piedra_scene = instancia_piedra_packed.instantiate()
 			get_parent().add_child(piedra_scene)
 			piedra_scene.global_position = piedra_spawn_point.global_position
 			piedra_scene.direction = direccion_actual
 			total_piedras -= 1
 			ControlPiedras.piedras_jugador = total_piedras
-			activar_lanzar_piedra = false
-			# MODIFICADO: siempre iniciamos el cooldown, independientemente de piedras
-			cooldown_piedras.start()
+			activar_lanzar_piedra = false # Evita que se pueda volver a lanzar otra piedra
+
+			cooldown_piedras.start() # Cooldown para poder lanzar otra
 
 # Administrar el sonido de los pasos
 func _on_animaciones_goblin_frame_changed() -> void:
@@ -166,11 +168,12 @@ func correr():
 
 
 func _on_cooldown_piedras_timeout() -> void:
-	# MODIFICADO: siempre reactivamos, la condicion de piedras la comprueba lanzar_piedra
+	# Permite volver a lanzar piedras
 	activar_lanzar_piedra = true
 	
 func recoger_piedras():
 	if ControlPiedras.recoger_piedras == true and Input.is_action_just_pressed("LanzarRecoger"):
+		print("Activar_lanzar_piedras:", activar_lanzar_piedra)
 		total_piedras = 3
 		#print("Piedras recogidas: " ,total_piedras)
 		if total_piedras < max_piedras:

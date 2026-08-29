@@ -19,7 +19,7 @@ func _ready():
 		current_state.on_enter()
 
 func _physics_process(_delta):
-	current_state.state_process(_delta)
+	current_state.state_process(_delta) # Comprueba lo que el estado actual esta ejecutando
 	if current_state.next_state!= null:				#Si hay un estado nuevo 
 		change_state(current_state.next_state)		#ejecuto la función para cambiar al siguiente estado
 
