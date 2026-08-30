@@ -34,7 +34,7 @@ var señal_piedra
 
 func _ready():
 	Ui.hide()
-	print("enemigo cargado correctamente")
+	#print("enemigo cargado correctamente")
 	# Recorre el array de los Marker2D
 	for path in puntos_patrulla:
 		puntos_resueltos.append(get_node(path)) # Añade el primer punto al array de putos por los que se han pasado

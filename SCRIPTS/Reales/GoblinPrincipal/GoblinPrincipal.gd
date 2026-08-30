@@ -32,15 +32,19 @@ var esta_corriendo:bool = false # Verifica si esta corriendo
 var velocidad_andar:float = 50.0
 var total_piedras:float = 0.0
 #var quiere_piedra:bool = false
+var modo_lanzar:bool = false # Comprueba si se entró en modo lanzar piedra
 
 
 func _ready():
 	velocidad_andar = velocidad_andar_base
+	print("Modo lanzar: ",modo_lanzar)
+
 	#print("[READY] velocidad_andar_base: ", velocidad_andar_base)
 	#print("[READY] velocidad_andar: ", velocidad_andar)
 	
 func _physics_process(delta):
 	#quiere_piedra = ControlPiedras.recoger_piedras
+
 	
 	state_machine._physics_process(delta)	# Activa la máquina de estados
 	manejar_movimiento()	# Activa el movimiento del player a traves de los inputs
@@ -49,10 +53,11 @@ func _physics_process(delta):
 	correr() # Permite que pueda moverse más rápido
 	recoger_piedras()
 	move_and_slide() # Permite que el personaje se mueva(MUY IMPORTANTE!)
+	modo_lanzamiento_piedras() # Revisa si se activo el modo lanzamiento
 
 # Administra los inputs de moviento del jugador y aplica velocidades con prioridad al primer input
 func manejar_movimiento():
-	if ControlEscondite.dialogo_activo == true:
+	if ControlEscondite.dialogo_activo or modo_lanzar:
 		velocity = Vector2.ZERO
 		input_direction = Vector2.ZERO  # AÑADIDO: reseteamos el input
 		return
@@ -135,18 +140,18 @@ func anim():
 	
 # Instancia la piedra y la mueve a la direccion correspondiente
 func lanzar_piedra():
-	if activar_lanzar_piedra and total_piedras > 0:
+	if activar_lanzar_piedra and total_piedras > 0 and modo_lanzar:
 		if Input.is_action_just_pressed("LanzarRecoger") and ControlPiedras.recoger_piedras == false:
-			print("Ejecutando lanzamiento")
-			var piedra_scene = instancia_piedra_packed.instantiate()
-			get_parent().add_child(piedra_scene)
-			piedra_scene.global_position = piedra_spawn_point.global_position
-			piedra_scene.direction = direccion_actual
-			total_piedras -= 1
-			ControlPiedras.piedras_jugador = total_piedras
-			activar_lanzar_piedra = false # Evita que se pueda volver a lanzar otra piedra
+				print("Ejecutando lanzamiento")
+				var piedra_scene = instancia_piedra_packed.instantiate()
+				get_parent().add_child(piedra_scene)
+				piedra_scene.global_position = piedra_spawn_point.global_position
+				piedra_scene.direction = direccion_actual
+				total_piedras -= 1
+				ControlPiedras.piedras_jugador = total_piedras
+				activar_lanzar_piedra = false # Evita que se pueda volver a lanzar otra piedra
 
-			cooldown_piedras.start() # Cooldown para poder lanzar otra
+				cooldown_piedras.start() # Cooldown para poder lanzar otra
 
 # Administrar el sonido de los pasos
 func _on_animaciones_goblin_frame_changed() -> void:
@@ -172,8 +177,8 @@ func _on_cooldown_piedras_timeout() -> void:
 	activar_lanzar_piedra = true
 	
 func recoger_piedras():
-	if ControlPiedras.recoger_piedras == true and Input.is_action_just_pressed("LanzarRecoger"):
-		print("Activar_lanzar_piedras:", activar_lanzar_piedra)
+	if ControlPiedras.recoger_piedras == true and Input.is_action_just_pressed("LanzarRecoger") and modo_lanzar == false:
+		print("Recogiendo piedras")
 		total_piedras = 3
 		#print("Piedras recogidas: " ,total_piedras)
 		if total_piedras < max_piedras:
@@ -187,3 +192,13 @@ func recoger_piedras():
 			# MODIFICADO: activamos siempre al recoger, no solo cuando total es 1
 			activar_lanzar_piedra = true
 			#print("piedras: ", total_piedras)
+
+## Permite entrar en el modo lanzamiento de piedras
+func modo_lanzamiento_piedras():
+	if Input.is_action_just_pressed("ActivarLanzamiento"):
+		if modo_lanzar == true:
+			print("Modo lanzar: ",modo_lanzar)
+			modo_lanzar = false
+		else:
+			print("Modo lanzar: ",modo_lanzar)
+			modo_lanzar = true

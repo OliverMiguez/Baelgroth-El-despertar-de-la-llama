@@ -29,7 +29,7 @@ func configurar(nodo_enemigo: Enemigo):
 
 # Cuando se inicia el estado
 func al_entrar():
-	print("Estado patrulla")
+	#print("Estado patrulla")
 	
 	# BORRAR SI NO SE USAN
 	#posicion_inicial_x = enemigo.position.x

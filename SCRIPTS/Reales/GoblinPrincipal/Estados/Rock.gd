@@ -13,6 +13,7 @@ const LANZAMIENTOS = {
 
 # Ejecuta este código cuando cambia a este estado
 func on_enter():
+	father.velocidad_andar = 0
 	if father.esta_corriendo == true:
 		father.esta_corriendo = false
 	
@@ -23,13 +24,14 @@ func on_enter():
 		animation_player.animation_finished.connect(_on_animation_finished)
 	
 	# Iniciar a continuación la animación del personaje
-	if ControlPiedras.recoger_piedras == false:
-		var dir = father.last_input
-		animation_player.flip_h = "izquierda" in dir
-		# El .get lo que hace es si el input que se busca es arriba o abajo
-		# accede al diccionario si no ejecuta  lanzamiento lateral
-		animation_player.play(LANZAMIENTOS.get(dir, "Lanzar_lateral")) 
-		
+	if father.modo_lanzar:
+		if ControlPiedras.recoger_piedras == false and father.total_piedras > 0:
+			var dir = father.last_input
+			animation_player.flip_h = "izquierda" in dir
+			# El .get lo que hace es si el input que se busca es arriba o abajo
+			# accede al diccionario si no ejecuta  lanzamiento lateral
+			animation_player.play(LANZAMIENTOS.get(dir, "Lanzar_lateral")) 
+			
 		## DEPRECADO ( versión antigua )
 		#if father.last_input == "arriba":
 			#animation_player.flip_h = false
@@ -69,9 +71,11 @@ func _on_animation_finished():
 func state_process(_delta:float) -> void:
 	if !father:
 		return
-	
-	# Si el jugador se mueve mientras lanza, cancelamos y vamos a caminar
-	if father.velocity != Vector2.ZERO:
+# Si desactivamos el modo_lanzar (modo_lanzar == false), salimos al estado idle
+	if father.modo_lanzar == false:
+		next_state = idle_state
+		return
+
+	# Si el jugador de alguna manera se mueve y NO está en modo lanzar, cancela y camina
+	if father.velocity != Vector2.ZERO and father.modo_lanzar == false:
 		next_state = walk_state
-	#elif father.total_piedras <= 0: # Cuando no tenemos piedra, cambiar a un estado en el que ejecute una animacion de error no tienes mas piedras
-		#next_state = idle_state

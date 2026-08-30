@@ -7,6 +7,7 @@ extends "res://SCRIPTS/Reales/GoblinPrincipal/Estados/State.gd"
 
 # Ejecuta este código cuando cambia a este estado
 func on_enter():
+	father.velocidad_andar = father.velocidad_andar_base
 	if father.esta_corriendo == true:
 		father.esta_corriendo = false
 	#print("[Test]: Iniciando estado walk ")
@@ -17,7 +18,9 @@ func state_process(_delta:float) -> void:
 	actualizar_animacion_movimiento()
 
 	# Cambia al estado rock
-	if Input.is_action_just_pressed("LanzarRecoger") and father.velocity == Vector2.ZERO and father.activar_lanzar_piedra == true:
+	#if Input.is_action_just_pressed("LanzarRecoger") and father.velocity == Vector2.ZERO and father.activar_lanzar_piedra == true:
+		#next_state = rock_state
+	if Input.is_action_just_pressed("LanzarRecoger") and father.activar_lanzar_piedra == true:
 		next_state = rock_state
 	
 	if Input.is_action_pressed("correr"):
